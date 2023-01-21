@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>First Bank Sign Up page</title>
+    <link rel="stylesheet" href="first.css">
+    <link rel="stylesheet" href="bootstrap.css">
+    <link rel="stylesheet" href="./all.css">
+</head>
+<body id="bdisp">
+    <div class="upFixed"><nav class="d-flex justify-content-center suNav"><img src="./First-bank logo.png" alt="" class="logo"></nav>
+    <header class="regHead p-1">
+        <p class="fw-bold p-2">REGISTRATION FOR BANKING APP</p>
+        <div id="empty"></div>
+    </header>
+    </div>
+    <section class="px-3 py-4 susec w-100 justify-content-center d-flex">
+            <div class="signUpform p-3">
+                <div class="mb-3  form-check">
+                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                    <label class="form-check-label" for="exampleCheck1">Show Card Pin </label>
+                  </div>
+                <div class="mb-3 justify-content-center d-flex">
+                  <label for="fName" class="form-label w-50">First Name<span class="text-danger">*</span></label>
+                  <input type="text" class=" w-50" id="fName">
+                </div>
+
+                <div class="mb-3 justify-content-center d-flex">
+                    <label for="mName" class="form-label w-50">Middle Name<span class="text-danger">*</span></label>
+                    <input type="text" class=" w-50" id="mName">
+                </div>
+
+                <div class="mb-3 justify-content-center d-flex">
+                    <label for="lName" class="form-label w-50">Last Name<span class="text-danger">*</span></label>
+                    <input type="text" class=" w-50" id="lName">
+                </div>
+
+                <div class="mb-3 justify-content-center d-flex">
+                    <label for="mNumber" class="form-label w-50">Mobile Number<span class="text-danger">*</span></label>
+                    <input type="tel" maxlength="11" class=" w-50" id="mNumber">
+                </div>
+
+                <div class="mb-3 justify-content-center d-flex">
+                    <label for="eAddress" class="form-label w-50">Email<span class="text-danger">*</span></label>
+                    <input type="email" class=" w-50" id="eAddress">
+                </div>
+
+                <div class="mb-3 justify-content-center d-flex">
+                    <label for="bvn" class="form-label w-50">B. V. N<span class="text-danger">*</span></label>
+                    <input type="number" class=" w-50" id="bvn">
+                </div>
+
+                <div class="mb-3 justify-content-center d-flex">
+                    <label for="bvnPhoneNo" class="form-label w-50">BVN Phone No.<span class="text-danger">*</span></label>
+                    <input type="text" class=" w-50" id="bvnPhoneNo">
+                </div>
+
+                <div class="mb-3 justify-content-center d-flex">
+                    <label for="dob" class="form-label w-50">Date of Birth<span class="text-danger">*</span></label>
+                    <input type="date" class=" w-50" id="dob">
+                </div>
+
+                <div class="mb-3 justify-content-center d-flex">
+                    <label for="gender" class="form-label w-50">Gender<span class="text-danger">*</span></label>
+                    <select name="" id="gender" class="w-50">
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                    </select>
+                </div>
+
+                <div class="mb-3 justify-content-center d-flex">
+                    <label for="mStatus" class="form-label w-50">Marital Status<span class="text-danger">*</span></label>
+                    <select name="" id="mStatus" class="w-50">
+                        <option value="">Select an Option</option>
+                        <option value="Single">Single</option>
+                        <option value="Married">Married</option>
+                        <option value="Divorce">Divorce</option>
+                        <option value="Seperate">Seperate</option>
+                    </select>
+                </div>
+
+                <div class="mb-3 justify-content-center d-flex">
+                    <label for="pTitle" class="form-label w-50">Position Title<span class="text-danger">*</span></label>
+                    <select name="" id="pTitle" class="w-50">
+                        <option value="">Select an Option</option>
+                        <option value="Mr.">Mr.</option>
+                        <option value="Miss.">Miss.</option>
+                        <option value="Mrs.">Mrs.</option>
+                        <option value="Dr.">Dr.</option>
+                        <option value="Prof.">Prof</option>
+                    </select>
+                </div>
+
+                <div class="mb-3 justify-content-center d-flex">
+                    <label for="occupation" class="form-label w-50">Occupation<span class="text-danger">*</span></label>
+                    <select name="" id="occupation" class="w-50">
+                        <option value="">Select an Option</option>
+                        <option value="Developer">Developer</option>
+                        <option value="Banker">Banker</option>
+                        <option value="Student">Student</option>
+                        <option value="Graphics Designer">Graphics Designer</option>
+                        <option value="UI/UX Designer">UI/UX Designer</option>
+                    </select>
+                </div>
+
+                <div class="mb-3 justify-content-center d-flex">
+                    <label for="stateOrigin" class="form-label w-50">State of Origin<span class="text-danger">*</span></label>
+                    <select name="" id="stateOrigin" class="w-50">
+                        <option value="">Select an Option</option>
+                        <option value="Abia">Abia</option>
+                        <option value="Adamawa">Adamawa</option>
+                        <option value="Akwa-Ibom">Akwa-Ibom</option>
+                        <option value="Oyo">Oyo</option>
+                        <option value="Ondo">Ondo</option>
+                        <option value="Osun">Osun</option>
+                    </select>
+                </div>
+
+                <div class="mb-3 justify-content-center d-flex">
+                    <label for="stateResidence" class="form-label w-50">State of Residence<span class="text-danger">*</span></label>
+                    <select name="" id="stateResidence" class="w-50">
+                        <option value="">Select an Option</option>
+                        <option value="Abia">Abia</option>
+                        <option value="Adamawa">Adamawa</option>
+                        <option value="Akwa-Ibom">Akwa-Ibom</option>
+                        <option value="Oyo">Oyo</option>
+                        <option value="Ondo">Ondo</option>
+                        <option value="Osun">Osun</option>
+                    </select>
+                </div>
+
+                <div class="mb-3 justify-content-center d-flex">
+                    <label for="city" class="form-label w-50">City<span class="text-danger">*</span></label>
+                    <select name="" id="city" class="w-50">
+                        <option value="">Select an Option</option>
+                        <option value="Abia">Abia</option>
+                        <option value="Adamawa">Adamawa</option>
+                        <option value="Akwa-Ibom">Akwa-Ibom</option>
+                        <option value="Oyo">Oyo</option>
+                        <option value="Ogbomoso">Ogbomoso</option>
+                        <option value="Oyo">Ibadan</option>
+                        <option value="Ilorin">Ilorin</option>
+                        <option value="Ibadan">Ondo</option>
+                        <option value="Osun">Osun</option>
+                    </select>
+                </div>
+
+
+                <div class="mb-3 justify-content-center d-flex">
+                    <label for="rAddress" class="form-label w-50">Res. Address<span class="text-danger">*</span></label>
+                    <input type="text" class=" w-50" id="rAddress">
+                </div>
+
+                <div class="mb-3 justify-content-center d-flex">
+                    <label for="password" class="form-label w-50">Password<span class="text-danger">*</span></label>
+                    <input type="password" class=" w-50" id="password">
+                </div>
+
+                <div class="mb-3 justify-content-center d-flex">
+                    <label for="cPassword" class="form-label w-50">Confm. Password<span class="text-danger">*</span></label>
+                    <input type="password" class=" w-50" id="cPassword">
+                </div>
+
+
+                <button type="submit" class="btn btn-primary w-100" onclick="toOpenAcc2()">Submit</button>
+              </div>
+              
+    </section>
+
+    <script src="first.js"></script>
+    <script src="bootstrap.bundle.js"></script>
+    <script src="all.js"></script>
+</body>
+</html>

@@ -1,0 +1,319 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    /* outline: red solid 1px; */
+}
+.land{
+    background-image: url(./bg.webp);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    width: 100%;
+    position: relative;
+}
+.logo{
+    width: 200px;
+}
+.bell{
+    position: fixed;
+    top: 1%;
+    right: 2%;
+}
+.land section{
+    /* margin-top: 30px; */
+    text-align: center;
+}
+.arrBut{
+    width: 100%;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: black;
+    color: white;
+    border: none;
+    margin: 20px 0;
+    text-align: left;
+}
+.sm{
+    font-size: 12px;
+    margin-bottom: -1px;
+}
+
+/* ============SIGN UP========== */
+.susec{
+    background-image: url(./colorful-equalizer-wave-background_52683-33072.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-top: 150px;
+    overflow: scroll;
+    position: absolute;
+}
+.signUpform .form-check{
+    justify-content: right;
+    display: flex;
+    
+}
+.regHead{
+    background-color: rgb(219, 217, 217);
+}
+.suNav{
+    background-color: rgb(21, 21, 77);
+
+    width: 100%;
+}
+.upFixed{
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 2;
+}
+.signUpform{
+    background: rgb(225, 228, 243);
+    margin: auto;
+    border-radius: 20px;
+    width: 100%;
+
+}
+.signUpform input:focus{
+    outline:solid 1px rgb(18, 18, 88);
+}
+.signUpform select:focus{
+    outline:solid 1px rgb(18, 18, 88);
+}
+#empty{
+    height: 30px;
+    margin-top: -20px;
+}
+
+/* ===========CONGRATULATIONS============ */
+.congratCon{
+    height: 100vh;
+    position: relative;
+    width: 100%;
+}
+.congrat{
+ width: 250px;
+ animation-name: gif;
+ animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+ animation-duration: 2s;
+ animation-iteration-count: infinite;
+}
+@keyframes gif{
+    0%{
+        transform: scale(1);
+    }
+    50%{
+        transform: scale(1.1);
+    }
+    100%{
+        transform: scale(1);
+    }
+}
+.congratBut{
+    position:unset;
+    width: 100%;
+    background-color:rgb(18, 18, 88);
+    color: white;
+    border-radius: 10px;
+    font-size: 20px;
+    padding: 10px;
+}
+
+
+
+/* ==============SIGN IN=========== */
+.signInInput div{
+    height: 100px;
+}
+.signInInput input{
+    border: none;
+    background: transparent;
+    border-bottom: 2px solid white;
+    color: white;
+    transition: 800ms;
+}
+.signInInput input:focus{
+    border-bottom:2px solid gold;
+    outline: 0;
+    padding: 5px;
+}
+.signInBut{
+    padding: 10px;
+    background: goldenrod;
+    color: rgb(8, 8, 39);
+    font-weight: bold;
+    border-radius: 10px;
+}
+.signInBut:hover{
+    background-color: gold;
+    transition: 1s;
+    transform: scale(1.01);
+}
+
+
+/* ===================DASHBOARD============ */
+.dashNav{
+    position: fixed;
+    padding:20px;
+    z-index: 5;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    top: 0;
+    background: transparent;
+    color: white;
+}
+#displayDash{
+    position: relative;
+}
+.sec1{
+    position: fixed;
+    top: 0px;
+    z-index: 2;
+    width: 100%;
+    background-color: rgb(46, 62, 97);
+}
+
+.sec1 button{
+    color: white;
+}
+.cameraBut{
+    color: rgb(219, 217, 217);
+    font-size: 30px;
+    padding: 10px 17px;
+    border: none;
+    border-radius: 50%;
+    background-color: rgb(39, 39, 102);
+}
+.wlc{
+    font-size: 11px;
+}
+#dispDash{
+    margin-bottom: -1px;
+    font-size: 13px;
+}
+.balanceContainer{
+    width: 80%;
+    margin: auto;
+    background-color: rgb(155, 164, 177);
+    border-radius: 15px;
+    padding: 10px 20px;
+}
+#accBalDisp{
+    margin-top: -20px;
+}
+.sec2{
+    background-color: white;
+    margin-top: 200px;
+}
+.iconTaskBut{
+    background-color: transparent;
+    border: none;
+    align-items: center;
+    justify-content: center;
+    display: block;
+}
+.taskCont{
+    margin:auto;
+    padding: 30px;
+    font-size: 12px;
+}
+.iconTaskBut:hover{
+    background-color: rgb(224, 220, 220);
+}
+.iconTask{
+    color: goldenrod;
+    font-size: 20px  ;
+    padding: 10px;
+    width: 52px;
+    background: white;
+    border-radius: 50%;
+    box-shadow: 0px 0px 2px 0px gray;
+}
+.offbtn{
+    margin-left: 90%;
+}
+.offbtnns button{
+    background-color: transparent;
+    border: none;
+    display: flex;
+    color: white;
+    gap: 20px;
+    justify-content: center;
+}
+.offbtnns button:focus{
+    color: goldenrod;
+}
+.offbtnns button p{
+    margin-top: -5px;
+}
+.footerTaskCont{
+    background-color:  rgb(46, 62, 97);
+    width: 100%;
+    position: fixed;
+    padding: 0px 20px;
+    bottom: 0;
+}
+ .footerTask button{
+    background: transparent;
+    border: none;
+    font-size: 20px;
+    color: white;
+    z-index: 2;
+}
+.footerTask button:focus{
+    color: goldenrod;
+}
+.spaced{
+    height: 20px;
+}
+
+/* ========FREQUENT========= */
+.transNav{
+    background-color:  rgb(46, 62, 97);
+    position: fixed;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: 10px 50px;
+}
+.freqImg1{
+    background-image: url(./asset/11.png);
+}
+.freqImg2{
+    background-image: url(./asset/26200.jpg);
+}
+.freqImg4{
+    background-image: url(./asset/9.png) , linear-gradient(rgb(221, 217, 217), rgb(226, 224, 224)) ;
+}
+.freqImg3{
+    background-image:url(./asset/african-american-business-woman-removebg-preview.png), linear-gradient(rgb(221, 217, 217), rgb(226, 224, 224)) ;
+}
+.freqImages div{
+    width: 100%;
+    border-radius: 25px;
+    margin: 30px 0;
+    background-position: center;
+    background-size: 110%;
+    height: 500px;
+    background-repeat: no-repeat;
+}
+.freqImages{
+    padding: 30px;
+}
+
+.Lognotice{
+    position: fixed;
+    z-index: 7;
+    top: 20%;
+    width: 100%;
+    padding: 30px;
+}
+.blurBg{
+    position: fixed;
+    z-index: 6;
+    top: 0;
+    height: 100vh;
+    width: 100%;
+    background-color: rgba(240, 248, 255, 0.425);
+}

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>First Bank Dashboard</title>
+    <link rel="stylesheet" href="first.css">
+    <link rel="stylesheet" href="./bootstrap.bundle.js">
+    <link rel="stylesheet" href="./brands.min.css">
+    <link rel="stylesheet" href="./regular.min.css">
+    <link rel="stylesheet" href="bootstrap.css">
+    <link rel="stylesheet" href="./all.css">
+</head>
+<body onload="displayDash()">
+   
+    <div class="dashNav">
+        <button class="bg-transparent text-light border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions"
+                    aria-controls="offcanvasWithBothOptions"><i class="fa fa-bars"></i></button>
+                
+                <div style="background-color:rgb(57, 57, 104) ;" class="offcanvas leftDet offcanvas-start w-75" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions"
+                    aria-labelledby="offcanvasWithBothOptionsLabel">
+        
+                    <div class="offcanvas-body  offbtnns">
+                        <button class="" onclick="myAcc()"><i class="far fa-user"> </i> <p>My account</p></button>
+        
+                        <button class=""><i class="fa fa-exchange-alt"> </i> <p>Frequent Transaction</p></button>
+        
+                        <button class=""><i class="fa fa-money-bills"> </i> <p>Pay Bills</p></button>
+        
+                        <button class=""><i class="fa fa-mobile-android"> </i> <p>Buy Airtime</p></button>
+        
+                        <button class=""><i class="fa fa-exchange"> </i> <p>Transfer Money</p></button>
+        
+                        <button class=""><i class="fa fa-user"> </i> <p>Beneficiary Management</p></button>
+        
+                        <button class=""><i class="far fa-credit-card"> </i> <p>Card Services</p></button>
+        
+                        <button class=""><i class="fa fa-exclamation-circle"> </i> <p>Self Service</p></button>
+        
+                        <button class=""><p class="">&#8358 </p> <p>My account</p></button>
+        
+                        <button class=""><i class="fa fa-credit-card"> </i> <p>Digital Payment</p></button>
+        
+                        <button class=""><i class="fa fa-glass-cheers"> </i> <p>Lifestyle</p></button>
+        
+                        <hr class="border-light border-2 bg-light">
+        
+                        <button class=""><i class="fa fa-cog"> </i> <p>Account Setting</p></button>
+        
+                        <button class=""><i class="fa fa-share"> </i> <p>Share Experience</p></button>
+        
+                        <button class="" onclick="signOut()"><i class="fa fa-sign-out"> </i> <p>Log out</p></button>
+                        
+                    </div>
+                </div>
+    </div>
+
+    <div id="bodyDisp">
+        <section class="sec1 p-2">
+            <nav class="text-light navbar align-items-center">
+                <div></div>
+    
+                <p class="text-light">Dashboard</p>
+        
+                <button class="border-0 bg-transparent fs-5 text-light">
+                    <i class="far fa-bell"></i>
+                </button>
+            </nav>
+        
+                <div class="d-flex align-items-center navbar p-2 text-light">
+                    <div>
+                        <button class="cameraBut"><i class="fas fa-camera"></i></button>
+                    </div>
+    
+                    <div>
+                        <p id="dispDash">Good Day,</p>
+                        <p class="wlc">Welcome to your dashboard</p>
+                    </div>
+    
+                    <div>
+                        <button class="border-0 bg-transparent">HISTORY <i class="far fa-calendar"></i></button>
+                    </div>
+                </div>
+                
+            <div class="balanceContainer text-light">
+                <p id="accNumDisp">ACCOUNT #</p>
+                <h1 id="accBalDisp">&#8358 </h1>
+            </div>    
+        </section>
+    
+        <section class="sec2 d-flex align-items-center justify-content-center">
+            <div class="row w-100 justify-content-center taskCont">
+                <div class="col-4 my-3">
+                    <button class="iconTaskBut">
+                        <div class="iconTask"><i class="fa fa-exchange"></i></div>
+                        Transfer
+                    </button>
+                </div>
+    
+                <div class="col-4 my-3">
+                    <button class="iconTaskBut">
+                        <div class="iconTask"><i class="fa fa-money-bill-alt"></i></div>
+                        PayBills
+                    </button>
+                </div>
+    
+                <div class="col-4 my-3">
+                    <button class="iconTaskBut">
+                        <div class="iconTask"><i class="fa fa-mobile-android"></i></div>
+                        Buy Airtime
+                    </button>
+                </div>
+    
+                <div class="col-4 my-3">
+                    <button class="iconTaskBut">
+                        <div class="iconTask"><i class="fa fa-qrcode"></i></div>
+                        QR Payment
+                    </button>
+                </div>
+    
+                <div class="col-4 my-3">
+                    <button class="iconTaskBut">
+                        <div class="iconTask">&#8358</div>
+                        Loan
+                    </button>
+                </div>
+    
+                <div class="col-4 my-3">
+                    <button class="iconTaskBut">
+                        <div class="iconTask"><i class="fa fa-credit-card"></i></div>
+                        Virtual Cards 
+                    </button>
+                </div>
+            </div>
+        </section>
+    
+        <section class="sec3">
+            <div class="p-3">
+                <header>MY ADS</header>
+    
+                <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                      <div class="carousel-item active">
+                        <img src="./ads/ads1 (1).jpeg" class="d-block w-100" alt="...">
+                      </div>
+                      <div class="carousel-item">
+                        <img src="./ads/ads1 (1).jpg" class="d-block w-100" alt="...">
+                      </div>
+                      <div class="carousel-item">
+                        <img src="./ads/ads1 (2).jpeg" class="d-block w-100" alt="...">
+                      </div>
+                    </div>
+                </div>
+    
+            </div>
+        </section>
+    </div>
+    <div id="dispBlur"></div>
+
+    <p class="spaced"></p>
+    <footer class="footerTaskCont">
+        <nav class="navbar footerTask">
+            <button><i class="fa fa-home" onclick="myAcc()"></i></button>
+            <button><i class="far fa-user-circle"></i></button>
+            <button onclick="freqTrans()"><i class="far fa-heart"></i></button>
+            <button><i class="fa fa-cog"></i></button>
+        </nav>
+    </footer>
+
+   
+    
+    </section>
+    <script src="first.js"></script>
+    <script src="./regular.js"></script>
+    <script src="./solid.min.js"></script>
+    <script src="./brands.js"></script>
+    <script src="bootstrap.bundle.js"></script>
+    <script src="all.js"></script>
+</body>
+</html>
+
+
+
+
+
+<!-- 
+    <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="..." class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="..." class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="..." class="d-block w-100" alt="...">
+    </div>
+  </div>
+</div>
+ -->
