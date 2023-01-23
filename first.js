@@ -246,7 +246,8 @@ let freqTrans=()=>{
         <div class="freqImg1"></div>
         <div class="freqImg2"></div>
         <div class="freqImg3"></div>
-        <div class="freqImg4"></div>`;
+        <div class="freqImg4"></div>
+        `;
         
 }
 
@@ -272,3 +273,77 @@ const logContinue=()=>{
 const logCancel=()=>{
     dispBlur.innerHTML = "";
 }
+
+const addBene = ()=>{
+    bodyDisp.innerHTML =    `
+    <nav class="navbar p-2 position-fixed w-100" style="z-index:7; background-color: rgb(46, 62, 97); color:white;">
+    <div onclick="buyAirtime()"><i class="fa text-light fa-arrow-left"></i></div>
+    <p>Add Favorites</p>
+    <div></div>
+    </nav>
+    <section class="p-2">
+    <div class="" style="height: 70px;"></div>
+    <header class="mb-5"><b>BENEFICIARIES</b></header>
+    <div>
+        <p>No Beneficiaries Yet</p>
+    </div>
+    </section>
+
+    `
+}
+
+const backFav = ()=>{
+    buyAirtime()
+}
+
+const buyAirtime = ()=>{
+    bodyDisp.innerHTML=`
+    <nav class="navbar position-fixed top-0 w-100" style="z-index:1; background-color: rgb(46, 62, 97); color:white;">
+        <div></div>
+        <p>Buy Airtime</p>
+        <div></div>
+    </nav>
+
+    <section class="p-3 airtimeSec">
+        <div class="" style="height: 50px;"></div>
+        <header><b>MY FAVORITES</b></header>
+
+        <div onclick="addBene()" class="shadow bg-light mt-3 mb-5 d-block justify-content-center text-center p-3 w-50 rounded rounded-3">
+            <button class="border-0 bg-warning rounded rounded-circle text-light fs-1 px-3 py-2"><i class="fa fa-plus"></i></button>
+            <p>Add</p>
+        </div>
+
+        <div class="w-100 navbar rounded rounded-4 my-2 bg-light p-3">
+            <div class="d-flex gap-3 align-items-center">
+                <button class="border-0 bg-warning rounded rounded-circle text-light fs-5 px-3 py-2"><i class="fa fa-mobile-android"></i></button>
+                <p class="my-2">MY CONTACT LIST</p>
+            </div>
+            <div>
+                <i class="fa fa-arrow-right fs-3"></i>
+            </div>
+        </div>
+
+        <div class="w-100 navbar rounded rounded-4 my-2 bg-light mb-5 p-3">
+            <div class="d-flex gap-3 align-items-center">
+                <button class="border-0 bg-warning rounded rounded-circle text-light fs-5 px-3 py-2"><i class="fa fa-bank"></i></button>
+                <p class="my-2">SELECT FROM BENEFICIARY</p>
+            </div>
+            <div>
+                <i class="fa fa-arrow-right fs-3"></i>
+            </div>
+        </div>
+
+        <div class="w-100 airtimeInfo navbar rounded rounded-4 my-2 bg-light p-3">
+            <header class="mb-5">BUY AIRTIME</header>
+            <select name="" id="" class="w-100" placeholder="Enter Phone Number">
+                <option value="">Select Beneficiary</option>
+            </select>
+            <input type="text" class="w-100" placeholder="Enter Phone Number">
+            <button class="btn btn-warning w-100">Continue</button>
+
+        </div>
+    </section>
+
+                    `
+}
+

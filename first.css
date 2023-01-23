@@ -277,7 +277,7 @@
     justify-content: space-between;
     padding: 10px 50px;
 }
-.freqImg1{
+/* .freqImg1{
     background-image: url(./asset/11.png);
 }
 .freqImg2{
@@ -288,15 +288,15 @@
 }
 .freqImg3{
     background-image:url(./asset/african-american-business-woman-removebg-preview.png), linear-gradient(rgb(221, 217, 217), rgb(226, 224, 224)) ;
-}
+} */
 .freqImages div{
     width: 100%;
     border-radius: 25px;
     margin: 30px 0;
     background-position: center;
     background-size: 110%;
-    height: 500px;
-    background-repeat: no-repeat;
+    /* height: 500px; */
+    /* background-repeat: no-repeat; */
 }
 .freqImages{
     padding: 30px;
