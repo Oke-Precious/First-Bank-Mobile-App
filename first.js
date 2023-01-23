@@ -69,6 +69,9 @@ const toOpenAcc2=()=>{
             balance: 1000,
             cvv:Math.floor(Math.random()*1000),
             accNo: `319${Math.floor(Math.random()*10000000)}`,
+            recPhoneNumber:enterPhone.value,
+            airtimeAmount:enterAmount.value,
+            recAcctNumber:enterAcct.value,
             atmCardNumber: `5399 ${Math.floor(Math.random()*10000)} ${Math.floor(Math.random()*10000)} ${Math.floor(Math.random()*10000)}` 
         };
         allCustomer.push(customerDetails);
@@ -277,11 +280,13 @@ const buyAirtime = ()=>{
             </div>
         </div>
             
-            <input type="text" class="w-100" placeholder="Enter Phone Number">
+            <input type="text" id="enterPhone" class="w-100" placeholder="Enter Phone Number">
             <button class="btn btn-warning rounded rounded-5 w-100" onclick="contPayment()">Continue</button>
         </div>
     </section>
                     `
+                    // enterPhone.value==toNum.innerHTML;                
+                    
 }
 const displayNet=(param)=>{
     selectBiller.innerHTML=param;
@@ -338,8 +343,8 @@ const contPayment=()=>{
                     </div>
                 </div>
                 
-                <input type="text" class="w-100 ownerAcc" placeholder="Enter Phone Number">
-                <button class="btn btn-warning rounded rounded-5 w-100" onclick="contAirtime">Continue</button>
+                <input type="text" id="enterAmount" class="w-100 ownerAcc" placeholder="Enter Amount">
+                <button class="btn btn-warning rounded rounded-5 w-100" onclick="contAirtime()">Continue</button>
             
             </div>
             </div>
@@ -363,7 +368,6 @@ const billAccount=()=>{
 const accountDet=()=>{
    
     for (let index = 0; index < allCustomer.length; index++) {
-        
         acctd.innerHTML =   `
         <div class="navbar">
         <p>SAVINGS ACCOUNT ${allCustomer[currentUserIndex].accNo} </p>
@@ -374,5 +378,44 @@ const accountDet=()=>{
 }
 
 const contAirtime=()=>{
-    
+    bodyDisp.innerHTML = `
+            <nav class="navbar p-2 position-fixed w-100" style="z-index:7; background-color: rgb(46, 62, 97); color:white;">
+                <div onclick="contPayment()"><i class="fa text-light fa-arrow-left"></i></div>
+                <p>Buy Airtime</p>
+                <div></div>
+            </nav>
+            <p style="height: 50px;"></p>
+            <section class="p-3">
+                <div class="confirmBuy">
+                    <p>From:</p>
+                    <p id="dispMyAcc"></p>
+                </div>
+
+                <div class="confirmBuy">
+                    <p>To:</p>
+                    <p id="toNum"></p>
+                </div>
+
+                <div class="confirmBuy">
+                    <p>Date:</p>
+                    <p id="">kjhjkh</p>
+                </div>
+
+                <div class="confirmBuy">
+                    <p>Amount:</p>
+                    <p id="">kjhjkh</p>
+                </div>
+
+                <div class="pinContainer">
+                    <p>Enter Transaction PIN</p>
+                    <input type="password">
+                </div>
+                
+                <div class="butn w-100 gap-3 p-2 mt-5 row">
+                    <button class="btn col-9 btn-warning rounded rounded-5 ">CONFIRM</button>
+                    <button class="btn col-2 btn-warning rounded rounded-circle fs-3"><i class="fa fa-fingerprint"></i></button>
+                </div>
+            </section>
+    `;
+    dispMyAcc.innerHTML=`<p>ACCOUNT ${allCustomer[currentUserIndex].accNo} </p>`;
 }
