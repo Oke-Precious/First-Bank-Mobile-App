@@ -278,7 +278,7 @@ const buyAirtime = ()=>{
         </div>
             
             <input type="text" class="w-100" placeholder="Enter Phone Number">
-            <button class="btn btn-warning w-100" onclick="contPayment()">Continue</button>
+            <button class="btn btn-warning rounded rounded-5 w-100" onclick="contPayment()">Continue</button>
         </div>
     </section>
                     `
@@ -290,7 +290,7 @@ const contPayment=()=>{
     bodyDisp.innerHTML =    `
     <nav class="navbar p-2 position-fixed w-100" style="z-index:7; background-color: rgb(46, 62, 97); color:white;">
     <div onclick="buyAirtime()"><i class="fa text-light fa-arrow-left"></i></div>
-    <p>Add Favorites</p>
+    <p>Buy Airtime</p>
     <div></div>
     </nav>
     
@@ -302,9 +302,9 @@ const contPayment=()=>{
             <div>
                 
                 <div class="selectBene navbar position-relative w-100">
-                    <div class="w-100 p-0" id="selectBiller" onclick="billAccount()" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom"
+                    <div class="w-100 p-0 ownerAccD" id="selectBiller" onclick="billAccount()" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom"
                         aria-controls="offcanvasBottom">
-                        <p>Select Biller</p>
+                        <p id="acctd">Select account to debit</p>
                     </div>
                     <i class="fa position-absolute angleDbtn fa-angle-down"></i>
                 </div>
@@ -320,9 +320,10 @@ const contPayment=()=>{
                             <div onclick="accountDet()" style="background-color: rgb(141, 135, 135);" class="rounded rounded-4 py-2 px-3 text-light">
                                 <div class="navbar">
                                     <p>SAVINGS ACCOUNT</p>
-                                    <di>
+                                    <div class="d-flex gap-2">
                                     <p>#</p>
-                                    <p id="accNumDispp">#</p>
+                                    <p id="accNumDispp"></p>
+                                    </div>
                                 </div>
                                 <div class="d-flex">
                                     <h2>&#8358</h2>
@@ -337,9 +338,9 @@ const contPayment=()=>{
                     </div>
                 </div>
                 
-                <input type="text" class="w-100" placeholder="Enter Phone Number">
-                <button class="btn btn-warning w-100" onclick="contPayment()">Continue</button>
-
+                <input type="text" class="w-100 ownerAcc" placeholder="Enter Phone Number">
+                <button class="btn btn-warning rounded rounded-5 w-100" onclick="contAirtime">Continue</button>
+            
             </div>
             </div>
         </section>
@@ -360,5 +361,18 @@ const billAccount=()=>{
 }
 
 const accountDet=()=>{
+   
+    for (let index = 0; index < allCustomer.length; index++) {
+        
+        acctd.innerHTML =   `
+        <div class="navbar">
+        <p>SAVINGS ACCOUNT ${allCustomer[currentUserIndex].accNo} </p>
+        <p>&#8358 ${allCustomer[currentUserIndex].balance}</p>
+        </div>
+        `
+    }
+}
+
+const contAirtime=()=>{
     
 }

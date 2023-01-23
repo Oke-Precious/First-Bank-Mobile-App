@@ -346,3 +346,13 @@
 #selectBiller{
     z-index: 2;
 }
+
+.ownerAcc, .ownerAccD{
+    border: none;
+    outline: 0;
+    margin: 30px 0px;
+    border-bottom: solid rgb(29, 28, 28) 1px;
+}
+.ownerAcc:focus{
+    border-bottom: goldenrod solid;
+}
