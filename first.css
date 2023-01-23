@@ -317,3 +317,14 @@
     width: 100%;
     background-color: rgba(240, 248, 255, 0.425);
 }
+
+
+/* ==============Airtime=========== */
+.airtimeSec{
+    background-color: rgb(240, 238, 238);
+}
+.airtimeInfo select, .airtimeInfo input{
+    border: none;
+    border-bottom: 1px solid rgb(59, 57, 57);
+    margin-bottom: 40px;
+}
