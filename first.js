@@ -127,8 +127,8 @@ const displayDash=()=>{
                     `
     accBalDisp.innerHTML +=`
                         ${allCustomer[currentUserIndex].balance}
-                    `;   
-                      
+                    `;
+               
 }
 
 
@@ -293,14 +293,72 @@ const contPayment=()=>{
     <p>Add Favorites</p>
     <div></div>
     </nav>
-    <section class="p-2">
-    <div class="" style="height: 70px;"></div>
-    <header class="mb-5"><b>BENEFICIARIES</b></header>
-    <div>
-        <p>No Beneficiaries Yet</p>
-    </div>
-    </section>
+    
+    <section class="p-4">
+            <p style="height:30px"></p>
+            <div class="container shadow p-3 rounded ">
+                <div class="" style="height: 70px;"></div>
+            <header class="m-5 text-center"><b>Enter Details</b></header>
+            <div>
+                
+                <div class="selectBene navbar position-relative w-100">
+                    <div class="w-100 p-0" id="selectBiller" onclick="billAccount()" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom"
+                        aria-controls="offcanvasBottom">
+                        <p>Select Biller</p>
+                    </div>
+                    <i class="fa position-absolute angleDbtn fa-angle-down"></i>
+                </div>
+                <div class="offcanvas offcanvas-bottom" style="height: 100vh;" tabindex="-1" id="offcanvasBottom"
+                    aria-labelledby="offcanvasBottomLabel">
+                    <div class="offcanvas-header">
+                
+                    </div>
+                    <div class="offcanvas-body small">
+                        <header class="fs-3 text-center mb-5">Select account to debit</header>
+                
+                        <div class="networkBTN" data-bs-dismiss="offcanvas">
+                            <div onclick="accountDet()" style="background-color: rgb(141, 135, 135);" class="rounded rounded-4 py-2 px-3 text-light">
+                                <div class="navbar">
+                                    <p>SAVINGS ACCOUNT</p>
+                                    <di>
+                                    <p>#</p>
+                                    <p id="accNumDispp">#</p>
+                                </div>
+                                <div class="d-flex">
+                                    <h2>&#8358</h2>
+                                    <h2 id="accBalDispp">#</h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <button type="button" class=" btn" style="position: fixed; bottom: 2%; margin: auto;"
+                                data-bs-dismiss="offcanvas" aria-label="Close">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <input type="text" class="w-100" placeholder="Enter Phone Number">
+                <button class="btn btn-warning w-100" onclick="contPayment()">Continue</button>
+
+            </div>
+            </div>
+        </section>
 
     `
 }
 
+const billAccount=()=>{
+    accBalDispp.innerHTML="";
+    accNumDispp.innerHTML="";
+
+    accNumDispp.innerHTML +=`
+                    ${allCustomer[currentUserIndex].accNo}
+                `;
+    accBalDispp.innerHTML +=`
+                    ${allCustomer[currentUserIndex].balance}
+                `; 
+}
+
+const accountDet=()=>{
+    
+}

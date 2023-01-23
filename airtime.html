@@ -13,14 +13,50 @@
     
         <nav class="navbar p-2 position-fixed w-100" style="z-index:7; background-color: rgb(46, 62, 97); color:white;">
             <div onclick="buyAirtime()"><i class="fa text-light fa-arrow-left"></i></div>
-            <p>Add Favorites</p>
+            <p>Buy Airtime</p>
             <div></div>
         </nav>
         <section class="p-2">
-            <div class="" style="height: 70px;"></div>
-            <header class="mb-5"><b>BENEFICIARIES</b></header>
+            <div class="container shadow">
+                <div class="" style="height: 70px;"></div>
+            <header class="m-5 text-center"><b>Enter Details</b></header>
             <div>
-                <p>No Beneficiaries Yet</p>
+                
+                <div class="selectBene navbar position-relative w-100">
+                    <div class="w-100 p-0" id="selectBiller" onclick="billAccount()" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom"
+                        aria-controls="offcanvasBottom">
+                        <p>Select Biller</p>
+                    </div>
+                    <i class="fa position-absolute angleDbtn fa-angle-down"></i>
+                </div>
+                <div class="offcanvas offcanvas-bottom" style="height: 100vh;" tabindex="-1" id="offcanvasBottom"
+                    aria-labelledby="offcanvasBottomLabel">
+                    <div class="offcanvas-header">
+                
+                    </div>
+                    <div class="offcanvas-body small">
+                        <header class="fs-3 text-center mb-5">Select account to debit</header>
+                
+                        <div class="networkBTN" data-bs-dismiss="offcanvas">
+                            <div style="background-color: rgb(141, 135, 135);" class="rounded rounded-4 py-2 px-3 text-light">
+                                <div class="navbar">
+                                    <p>SAVINGS ACCOUNT</p>
+                                    <p id="accNumDispp">#</p>
+                                </div>
+                                <h1 id="accBalDispp">&#8358 </h1>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <button type="button" class=" btn" style="position: fixed; bottom: 2%; margin: auto;"
+                                data-bs-dismiss="offcanvas" aria-label="Close">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <input type="text" class="w-100" placeholder="Enter Phone Number">
+                <button class="btn btn-warning w-100" onclick="contPayment()">Continue</button>
+
+            </div>
             </div>
         </section>
 
