@@ -323,7 +323,7 @@
     color: rgb(71, 70, 70);
 }
 .airtimeInfo input:focus{
-    border-bottom: solid red 2px;
+    border-bottom: solid goldenrod 2px;
 }
 
 .networkBTN button{

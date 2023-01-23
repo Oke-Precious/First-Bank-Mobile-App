@@ -278,13 +278,29 @@ const buyAirtime = ()=>{
         </div>
             
             <input type="text" class="w-100" placeholder="Enter Phone Number">
-            <button class="btn btn-warning w-100">Continue</button>
+            <button class="btn btn-warning w-100" onclick="contPayment()">Continue</button>
         </div>
-        <div id="comeUp"></div>
     </section>
                     `
 }
 const displayNet=(param)=>{
- selectBiller.innerHTML=param;
+    selectBiller.innerHTML=param;
+}
+const contPayment=()=>{
+    bodyDisp.innerHTML =    `
+    <nav class="navbar p-2 position-fixed w-100" style="z-index:7; background-color: rgb(46, 62, 97); color:white;">
+    <div onclick="buyAirtime()"><i class="fa text-light fa-arrow-left"></i></div>
+    <p>Add Favorites</p>
+    <div></div>
+    </nav>
+    <section class="p-2">
+    <div class="" style="height: 70px;"></div>
+    <header class="mb-5"><b>BENEFICIARIES</b></header>
+    <div>
+        <p>No Beneficiaries Yet</p>
+    </div>
+    </section>
+
+    `
 }
 
