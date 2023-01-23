@@ -41,7 +41,7 @@ const toOpenAcc2=()=>{
         // alert("ssjj")
         empty.innerHTML=`
         <div class="border-danger bg-light justify-content-between d-flex align-items-center px-2 bg-gray border-start border-2">
-            <div> error! Your password did not correspond</div>
+            <div> error! Your password does not correspond</div>
             <button class="btn fs-4 text-danger" onclick="cancelEmpty()"><i class="fa fa-times-circle"></i></button>
         </div>
                         `
@@ -66,7 +66,7 @@ const toOpenAcc2=()=>{
             address: rAddress.value,
             password: password.value,
             confirmPassword: cPassword.value,
-            balance: 0,
+            balance: 1000,
             cvv:Math.floor(Math.random()*1000),
             accNo: `319${Math.floor(Math.random()*10000000)}`,
             atmCardNumber: `5399 ${Math.floor(Math.random()*10000)} ${Math.floor(Math.random()*10000)} ${Math.floor(Math.random()*10000)}` 
@@ -127,114 +127,17 @@ const displayDash=()=>{
                     `
     accBalDisp.innerHTML +=`
                         ${allCustomer[currentUserIndex].balance}
-                    `        
+                    `;   
+                      
 }
 
 
-const myAcc=()=>{
-    bodyDisp.innerHTML=`
-    <section class="sec1 p-2">
-    <nav class="text-light navbar align-items-center">
-    <div></div>
 
-    <p class="text-light">Dashboard</p>
 
-    <button class="border-0 bg-transparent fs-5 text-light">
-        <i class="far fa-bell"></i>
-    </button>
-    </nav>
-        <div class="d-flex align-items-center navbar p-2 text-light">
-            <div>
-                <button class="cameraBut"><i class="fas fa-camera"></i></button>
-            </div>
-
-            <div>
-                <p id="dispDash">Good Day,</p>
-                <p class="wlc">Welcome to your dashboard</p>
-            </div>
-
-            <div>
-                <button class="border-0 bg-transparent">HISTORY <i class="far fa-calendar"></i></button>
-            </div>
-        </div>
-        
-    <div class="balanceContainer text-light">
-        <p id="accNumDisp">ACCOUNT #</p>
-        <h1 id="accBalDisp">&#8358 </h1>
-    </div>    
-</section>
-
-<section class="sec2 d-flex align-items-center justify-content-center">
-    <div class="row w-100 justify-content-center taskCont">
-        <div class="col-4 my-3">
-            <button class="iconTaskBut">
-                <div class="iconTask"><i class="fa fa-exchange"></i></div>
-                Transfer
-            </button>
-        </div>
-
-        <div class="col-4 my-3">
-            <button class="iconTaskBut">
-                <div class="iconTask"><i class="fa fa-money-bill-alt"></i></div>
-                PayBills
-            </button>
-        </div>
-
-        <div class="col-4 my-3">
-            <button class="iconTaskBut">
-                <div class="iconTask"><i class="fa fa-mobile-android"></i></div>
-                Buy Airtime
-            </button>
-        </div>
-
-        <div class="col-4 my-3">
-            <button class="iconTaskBut">
-                <div class="iconTask"><i class="fa fa-qrcode"></i></div>
-                QR Payment
-            </button>
-        </div>
-
-        <div class="col-4 my-3">
-            <button class="iconTaskBut">
-                <div class="iconTask">&#8358</div>
-                Loan
-            </button>
-        </div>
-
-        <div class="col-4 my-3">
-            <button class="iconTaskBut">
-                <div class="iconTask"><i class="fa fa-credit-card"></i></div>
-                Virtual Cards 
-            </button>
-        </div>
-    </div>
-</section>
-
-<section class="sec3">
-    <div class="p-3">
-        <header>MY ADS</header>
-
-        <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-inner">
-              <div class="carousel-item active">
-                <img src="./ads/ads1 (1).jpeg" class="d-block w-100" alt="...">
-              </div>
-              <div class="carousel-item">
-                <img src="./ads/ads1 (1).jpg" class="d-block w-100" alt="...">
-              </div>
-              <div class="carousel-item">
-                <img src="./ads/ads1 (2).jpeg" class="d-block w-100" alt="...">
-              </div>
-            </div>
-        </div>
-
-    </div>
-</section>
-    `
+const myAcc= ()=>{
+    window.location.href="dashboard.html"
 }
-
-
-let freqTrans=()=>{
+const freqTrans=()=>{
     bodyDisp.innerHTML =`
     <nav class="transNav text-light">
     <div></div>
@@ -243,10 +146,23 @@ let freqTrans=()=>{
     </nav>
 
     <section class="freqImages">
-        <div class="freqImg1"></div>
-        <div class="freqImg2"></div>
-        <div class="freqImg3"></div>
-        <div class="freqImg4"></div>
+            <p style="height: 20px;"></p>
+            <div class="freqImg1">
+                <img src="./asset/11.png" alt="" class="w-100">
+            </div>
+
+            <div class="freqImg2">
+                <img src="./asset/26200.jpg" alt="" class="w-100">
+            </div>
+
+            <div class="freqImg3">
+                <img src="./asset/1.png" alt="" class="w-100">
+            </div>
+
+            <div class="freqImg4">
+                <img src="./asset/5d9917c65741b (1).png" alt="" class="w-100">
+            </div>
+            </section>   
         `;
         
 }
@@ -335,15 +251,40 @@ const buyAirtime = ()=>{
 
         <div class="w-100 airtimeInfo navbar rounded rounded-4 my-2 bg-light p-3">
             <header class="mb-5">BUY AIRTIME</header>
-            <select name="" id="" class="w-100" placeholder="Enter Phone Number">
-                <option value="">Select Beneficiary</option>
-            </select>
+            <div class="selectBene navbar position-relative w-100">
+                <div class="w-100 p-0" id="selectBiller" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom"
+                aria-controls="offcanvasBottom"><p>Select Biller</p> </div>
+                <i class="fa position-absolute angleDbtn fa-angle-down"></i>
+            </div>
+        <div class="offcanvas offcanvas-bottom" style="height: 100vh;" tabindex="-1" id="offcanvasBottom"
+            aria-labelledby="offcanvasBottomLabel">
+            <div class="offcanvas-header">
+        
+            </div>
+            <div class="offcanvas-body small">
+                <header class="fs-3 text-center mb-5">Select Provider</header>
+        
+                <div class="networkBTN">
+                    <button onclick="displayNet('MTN')" data-bs-dismiss="offcanvas">MTN</button>
+                    <button onclick="displayNet('GLO')" data-bs-dismiss="offcanvas">Glomobile</button>
+                    <button onclick="displayNet('9mobile')" data-bs-dismiss="offcanvas">9Mobile</button>
+                    <button onclick="displayNet('Airtel')" data-bs-dismiss="offcanvas">Airtel</button>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <button type="button" class=" btn" style="position: fixed; bottom: 2%; margin: auto;"
+                        data-bs-dismiss="offcanvas" aria-label="Close">Cancel</button>
+                </div>
+            </div>
+        </div>
+            
             <input type="text" class="w-100" placeholder="Enter Phone Number">
             <button class="btn btn-warning w-100">Continue</button>
-
         </div>
+        <div id="comeUp"></div>
     </section>
-
                     `
+}
+const displayNet=(param)=>{
+ selectBiller.innerHTML=param;
 }
 

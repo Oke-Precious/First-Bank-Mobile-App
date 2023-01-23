@@ -169,7 +169,7 @@
 .sec1{
     position: fixed;
     top: 0px;
-    z-index: 2;
+    z-index: 4;
     width: 100%;
     background-color: rgb(46, 62, 97);
 }
@@ -277,18 +277,7 @@
     justify-content: space-between;
     padding: 10px 50px;
 }
-/* .freqImg1{
-    background-image: url(./asset/11.png);
-}
-.freqImg2{
-    background-image: url(./asset/26200.jpg);
-}
-.freqImg4{
-    background-image: url(./asset/9.png) , linear-gradient(rgb(221, 217, 217), rgb(226, 224, 224)) ;
-}
-.freqImg3{
-    background-image:url(./asset/african-american-business-woman-removebg-preview.png), linear-gradient(rgb(221, 217, 217), rgb(226, 224, 224)) ;
-} */
+
 .freqImages div{
     width: 100%;
     border-radius: 25px;
@@ -300,6 +289,9 @@
 }
 .freqImages{
     padding: 30px;
+}
+.freqImages div img{
+    border-radius: 25px;
 }
 
 .Lognotice{
@@ -323,8 +315,34 @@
 .airtimeSec{
     background-color: rgb(240, 238, 238);
 }
-.airtimeInfo select, .airtimeInfo input{
+.airtimeInfo .selectBene, .airtimeInfo input{
     border: none;
     border-bottom: 1px solid rgb(59, 57, 57);
     margin-bottom: 40px;
+    outline: 0;
+    color: rgb(71, 70, 70);
+}
+.airtimeInfo input:focus{
+    border-bottom: solid red 2px;
+}
+
+.networkBTN button{
+    width: 100%;
+    margin: 10px 0;
+    background: gray;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 17px;
+    text-align: left;
+    padding:15px 20px;
+}
+.selectBene p{
+    margin-bottom: 0;
+}
+.angleDbtn{
+    right: 0;
+}
+#selectBiller{
+    z-index: 2;
 }
