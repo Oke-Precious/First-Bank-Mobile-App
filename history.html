@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>First Bank History</title>
+    <link rel="stylesheet" href="first.css">
+    <link rel="stylesheet" href="bootstrap.css">
+    <link rel="stylesheet" href="./all.css">
+</head>
+<body onload="hist()">
+
+    <nav class=" p-2 position-fixed w-100" style="z-index:7; background-color: rgb(46, 62, 97); color:white;">
+        <div class="navbar">
+            <div onclick=""><i class="fa text-light fa-arrow-left"></i></div>
+            <p>Transaction History</p>
+            <div></div>
+        </div>
+        <div class="balanceContainer text-light">
+            <p id="accNumDisp3" style="margin: 0px;">ACCOUNT #</p>
+            <h3 id="accBalDisp3" style="margin: 0px;">&#8358 </h3>
+        </div>
+    </nav>
+    <div style="height: 150px;"></div>
+    <section class="p-3">
+        <div class="navbar text-dark">
+            <p>Last 20 transactions Only</p>
+            <button class="btn"><i class="fa fa-calendar-week"></i></button>
+        </div>
+    
+        <div class="transactionHistory" id="trtHistDisp">
+            <!-- <div class="transC">
+                    <button class="text-success">
+                        <i class="fa fa-arrow-up"></i>
+                    </button>
+                    <div class="d-block">
+                        <p style="margin: 0;" id="accNumDisp3">From:</p>
+                        <p style="margin: 0;" id="toUser">to: </p>
+                        <p></p>
+                        <p style="margin: 0; color: gray;" id="day"></p>
+                    </div>
+                    <div class="">
+                        <p id="hAmount"></p>
+                    </div>
+                </div> -->
+                <!-- <div class="transC">
+            <button class="text-danger">
+                <i class="fa fa-arrow-down"></i>
+            </button>
+            <div class="d-block">
+                <p style="margin: 0;" id="accNumDisp4">From:</p>
+                <p style="margin: 0;" id="toUser">to: </p>
+                <p></p>
+                <p style="margin: 0; color: gray;" id="day"></p>
+            </div>
+            <div class="text-danger">
+                <p id="hAmount">&#8358 -</p>
+            </div>
+        </div>
+                 -->
+
+            
+    
+        </div>
+    
+    
+    </section>
+
+    <script src="./all.js"></script>
+    <script src="bootstrap.bundle.js"></script>
+    <script src="./first.js"></script>
+</body>
+</html>    
