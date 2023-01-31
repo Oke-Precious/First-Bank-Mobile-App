@@ -419,3 +419,15 @@ const contAirtime=()=>{
     `;
     dispMyAcc.innerHTML=`<p>ACCOUNT ${allCustomer[currentUserIndex].accNo} </p>`;
 }
+
+const myHistory=()=>{
+    window.location.href="history.html";
+}
+
+const pada=()=>{
+    window.history.back() ="history.html";
+}
+
+const hist=()=>{
+    alert("izz working")
+}
