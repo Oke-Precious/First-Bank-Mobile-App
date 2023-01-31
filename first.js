@@ -65,16 +65,13 @@ const toOpenAcc2=()=>{
             city: city.value,
             address: rAddress.value,
             password: password.value,
-            history : [],
-            amount : [],
-            realHist:[],
-            localHistory : [],
-            immediateTime : [],
-            pin:[],
             confirmPassword: cPassword.value,
             balance: 1000,
             cvv:Math.floor(Math.random()*1000),
             accNo: `319${Math.floor(Math.random()*10000000)}`,
+            recPhoneNumber:enterPhone.value,
+            airtimeAmount:enterAmount.value,
+            recAcctNumber:enterAcct.value,
             atmCardNumber: `5399 ${Math.floor(Math.random()*10000)} ${Math.floor(Math.random()*10000)} ${Math.floor(Math.random()*10000)}` 
         };
         allCustomer.push(customerDetails);
@@ -111,7 +108,6 @@ const signIn = () => {
             found = true;
             break;
         }
-        
     }
     if(found==true){
         window.location.href = "dashboard.html";
@@ -137,6 +133,8 @@ const displayDash=()=>{
                     `;
                
 }
+
+
 
 
 const myAcc= ()=>{
@@ -195,11 +193,27 @@ const logCancel=()=>{
     dispBlur.innerHTML = "";
 }
 
+const addBene = ()=>{
+    bodyDisp.innerHTML =    `
+    <nav class="navbar p-2 position-fixed w-100" style="z-index:7; background-color: rgb(46, 62, 97); color:white;">
+    <div onclick="buyAirtime()"><i class="fa text-light fa-arrow-left"></i></div>
+    <p>Add Favorites</p>
+    <div></div>
+    </nav>
+    <section class="p-2">
+    <div class="" style="height: 70px;"></div>
+    <header class="mb-5"><b>BENEFICIARIES</b></header>
+    <div>
+        <p>No Beneficiaries Yet</p>
+    </div>
+    </section>
+
+    `
+}
+
 const backFav = ()=>{
     buyAirtime()
 }
-
-// ===================AIRTIME PAGE ================================
 
 const buyAirtime = ()=>{
     bodyDisp.innerHTML=`
@@ -270,39 +284,14 @@ const buyAirtime = ()=>{
             <button class="btn btn-warning rounded rounded-5 w-100" onclick="contPayment()">Continue</button>
         </div>
     </section>
-                    `;
+                    `
+                    // enterPhone.value==toNum.innerHTML;                
+                    
 }
-
-
-const addBene = ()=>{
-    bodyDisp.innerHTML =    `
-    <nav class="navbar p-2 position-fixed w-100" style="z-index:7; background-color: rgb(46, 62, 97); color:white;">
-    <div onclick="buyAirtime()"><i class="fa text-light fa-arrow-left"></i></div>
-    <p>Add Favorites</p>
-    <div></div>
-    </nav>
-    <section class="p-2">
-    <div class="" style="height: 70px;"></div>
-    <header class="mb-5"><b>BENEFICIARIES</b></header>
-    <div>
-        <p>No Beneficiaries Yet</p>
-    </div>
-    </section>
-
-    `
-}
-
 const displayNet=(param)=>{
     selectBiller.innerHTML=param;
 }
-
 const contPayment=()=>{
-    let airtimeHistory = {
-        airtimeNumber : enterPhone.value,
-        airtimeNetwork : selectBiller.innerHTML
-    };
-    allCustomer[currentUserIndex].history.splice(0,1, airtimeHistory);
-    localStorage.setItem("customerPersonalDetails", JSON.stringify(allCustomer))
     bodyDisp.innerHTML =    `
     <nav class="navbar p-2 position-fixed w-100" style="z-index:7; background-color: rgb(46, 62, 97); color:white;">
     <div onclick="buyAirtime()"><i class="fa text-light fa-arrow-left"></i></div>
@@ -316,10 +305,6 @@ const contPayment=()=>{
                 <div class="" style="height: 70px;"></div>
             <header class="m-5 text-center"><b>Enter Details</b></header>
             <div>
-
-
-            
-
                 
                 <div class="selectBene navbar position-relative w-100">
                     <div class="w-100 p-0 ownerAccD" id="selectBiller" onclick="billAccount()" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom"
@@ -347,7 +332,7 @@ const contPayment=()=>{
                                 </div>
                                 <div class="d-flex">
                                     <h2>&#8358</h2>
-                                    <h2 id="accBalDispp"></h2>
+                                    <h2 id="accBalDispp">#</h2>
                                 </div>
                             </div>
                         </div>
@@ -364,6 +349,7 @@ const contPayment=()=>{
             </div>
             </div>
         </section>
+
     `
 }
 
@@ -392,19 +378,9 @@ const accountDet=()=>{
 }
 
 const contAirtime=()=>{
-    
-    let amountHistory = {
-        amountPaid: enterAmount.value,
-        airtimeTime:`${new Date().toLocaleTimeString()}`,
-        airtimeDay: `${new Date().toDateString()}`
-    }
-    allCustomer[currentUserIndex].amount.splice(0,1, amountHistory);
-    localStorage.setItem("customerPersonalDetails", JSON.stringify(allCustomer))
-    
-
     bodyDisp.innerHTML = `
             <nav class="navbar p-2 position-fixed w-100" style="z-index:7; background-color: rgb(46, 62, 97); color:white;">
-                <div onclick="buyAirtime()"><i class="fa text-light fa-arrow-left"></i></div>
+                <div onclick="contPayment()"><i class="fa text-light fa-arrow-left"></i></div>
                 <p>Buy Airtime</p>
                 <div></div>
             </nav>
@@ -422,12 +398,12 @@ const contAirtime=()=>{
 
                 <div class="confirmBuy">
                     <p>Date:</p>
-                    <p id="dispT"></p>
+                    <p id="">kjhjkh</p>
                 </div>
 
                 <div class="confirmBuy">
                     <p>Amount:</p>
-                    <p id="dispAm">0.00</p>
+                    <p id="">kjhjkh</p>
                 </div>
 
                 <div class="pinContainer">
@@ -436,310 +412,10 @@ const contAirtime=()=>{
                 </div>
                 
                 <div class="butn w-100 gap-3 p-2 mt-5 row">
-                    <button class="btn col-9 btn-warning rounded rounded-5" onclick="confirmedPayment()">CONFIRM</button>
+                    <button class="btn col-9 btn-warning rounded rounded-5 ">CONFIRM</button>
                     <button class="btn col-2 btn-warning rounded rounded-circle fs-3"><i class="fa fa-fingerprint"></i></button>
                 </div>
             </section>
     `;
-    allPhoneNo = allCustomer[currentUserIndex].history;
-    allAmount = allCustomer[currentUserIndex].amount;
     dispMyAcc.innerHTML=`<p>ACCOUNT ${allCustomer[currentUserIndex].accNo} </p>`;
-    toNum.innerHTML = allPhoneNo[currentUserIndex].airtimeNumber;
-    dispAm.innerHTML = `&#8358 ${allAmount[currentUserIndex].amountPaid}.00`;
-    dispT.innerHTML = `${allAmount[currentUserIndex].airtimeTime}`;
-   
 }
-allPhoneNo = allCustomer[currentUserIndex].history;
-
-const confirmedPayment = () =>{
-
-    
-
-
-    allAmount = allCustomer[currentUserIndex].amount;
-    // alert("worki oo")
-    if(allCustomer[currentUserIndex].balance < allAmount[currentUserIndex].amountPaid){
-        alert("insufficient Fund")
-    }
-    else{
-        allCustomer[currentUserIndex].balance = Number(allCustomer[currentUserIndex].balance) - Number(allAmount[currentUserIndex].amountPaid)
-        localStorage.setItem("customerPersonalDetails", JSON.stringify(allCustomer));
-        // accNumDisp3.innerHTML= allCustomer[currentUserIndex].balance;
-    }
-    
-}
-
-// ==========================AIRTIME PAGE END======================
-
-
-            // ===============Transfer Page==================
-
-const transfer =()=>{
-    bodyDisp.innerHTML=`
-    <nav class="navbar position-fixed top-0 w-100" style="z-index:1; background-color: rgb(46, 62, 97); color:white;">
-        <div></div>
-        <p>Buy Airtime</p>
-        <div></div>
-    </nav>
-
-    <section class="p-3 airtimeSec">
-        <div class="" style="height: 50px;"></div>
-        <header><b>MY FAVORITES</b></header>
-
-        <div onclick="addTransBene()" class="shadow bg-light mt-3 mb-5 d-block justify-content-center text-center p-3 w-50 rounded rounded-3">
-            <button class="border-0 bg-warning rounded rounded-circle text-light fs-1 px-3 py-2"><i class="fa fa-plus"></i></button>
-            <p>Add</p>
-        </div>
-
-        <header><b>CHOOSE TRANSFER TYPE</b></header>
-
-        <div class="w-100 navbar rounded rounded-4 my-2 bg-light p-3" onclick="toMyBank()">
-            <div class="d-flex gap-3 align-items-center">
-                <button class="border-0 bg-warning rounded rounded-circle text-light fs-5 px-3 py-2">FB</button>
-                <p class="my-2">To FirstBank Account</p>
-            </div>
-            <div>
-                <i class="fa fa-arrow-right fs-3"></i>
-            </div>
-        </div>
-
-        <div class="w-100 navbar rounded rounded-4 my-2 bg-light p-3">
-            <div class="d-flex gap-3 align-items-center">
-                <button class="border-0 bg-warning rounded rounded-circle text-light fs-5 px-3 py-2"><i class="fa fa-bank"></i></button>
-                <p class="my-2">To Other Bank Account</p>
-            </div>
-            <div>
-                <i class="fa fa-arrow-right fs-3"></i>
-            </div>
-        </div>
-
-        <div class="w-100 navbar rounded rounded-4 my-2 bg-light p-3">
-            <div class="d-flex gap-3 align-items-center">
-                <button class="border-0 bg-warning rounded rounded-circle text-light fs-5 px-3 py-2"><i class="fa fa-bank"></i></button>
-                <p class="my-2">Send To Saved Beneficiary</p>
-            </div>
-            <div>
-                <i class="fa fa-arrow-right fs-3"></i>
-            </div>
-        </div>
-
-        <div class="w-100 navbar rounded rounded-4 my-2 bg-light mb-5 p-3">
-            <div class="d-flex gap-3 align-items-center">
-                <button class="border-0 bg-warning rounded rounded-circle text-light fs-5 px-3 py-2"><i class="fa fa-bank"></i></button>
-                <p class="my-2">eNaira</p>
-            </div>
-            <div>
-                <i class="fa fa-arrow-right fs-3"></i>
-            </div>
-        </div>
-
-          
-        
-    </section>
-                    `;
-}
-
-
-
-
-
-
-const toMyBank=()=>{
-    alert("izz working")
-
-    let airtimeHistory = {
-        airtimeNumber : enterPhone.value
-    };
-    allCustomer[currentUserIndex].history.splice(0,1, airtimeHistory);
-    localStorage.setItem("customerPersonalDetails", JSON.stringify(allCustomer))
-
- 
-
-    bodyDisp.innerHTML =    `
-    <nav class="navbar p-2 position-fixed w-100" style="z-index:7;top:0; background-color: rgb(46, 62, 97); color:white;">
-    <div onclick="transfer()"><i class="fa text-light fa-arrow-left"></i></div>
-    <p>To First Bank</p>
-    <div></div>
-    </nav>
-    
-    <section class="p-4 mt-5">
-            <p class="text-center">Available Daily Transaction Limit <br>&#8358 1,000 000.00</p>
-            <div class="container shadow  rounded ">
-                <div class="" "></div>
-            <header class="m-4 text-center">Enter Transaction Details</header>
-            <div>
-
-
-            <section>
-            <!-- Button trigger modal -->
-            <div class="w-100 ownerAcc" id="acctd" onclick="billAccount2()" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-            Select account to debit   
-              </div>
-              
-              <!-- Modal -->
-              <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
-                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                    <div onclick="accountDet()" data-bs-dismiss="modal" style="background-color: rgb(141, 135, 135);" class="rounded rounded-4 py-2 px-3 text-light">
-                    <div class="navbar">
-                        <p>SAVINGS ACCOUNT</p>
-                        <div class="d-flex gap-2">
-                        <p>#</p>
-                        <p id="accNumDispp2"></p>
-                        </div>
-                    </div>
-                    <div class="d-flex">
-                        <h2>&#8358</h2>
-                        <h2 id="accBalDispp2"></h2>
-                    </div>
-                </div>
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn " data-bs-dismiss="modal">Close</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </section>
-
-
-                
-                <div class="selectBene navbar position-relative w-100">
-                    <div class="w-100 p-0 ownerAccD" id="selectBiller" onclick="" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom"
-                        aria-controls="offcanvasBottom">
-                        Select Beneficiary Bank
-                    </div>
-                    <i class="fa position-absolute angleDbtn fa-angle-down"></i>
-                </div>
-                <div class="offcanvas offcanvas-bottom" style="height: 100vh;" tabindex="-1" id="offcanvasBottom"
-                    aria-labelledby="offcanvasBottomLabel">
-                    <div class="offcanvas-header">
-                
-                    </div>
-                    <div class="offcanvas-body small">
-                        <header class="fs-3 text-center mb-5">Select account to debit</header>
-                
-                        <div class="networkBTN" data-bs-dismiss="offcanvas">
-                        
-                        <button onclick="displayNet('First Bank')" data-bs-dismiss="offcanvas">First Bank</button>
-                        <button onclick="displayNet('Special Bank')" data-bs-dismiss="offcanvas">Special Bank</button>
-                        <button onclick="displayNet('SQI Bank')" data-bs-dismiss="offcanvas">SQI Bank</button>
-                        <button onclick="displayNet('Kuda Bank')" data-bs-dismiss="offcanvas">Kuda Bank</button></button>
-                    
-                        </div>
-                        <div class="d-flex justify-content-center">
-                            <button type="button" class=" btn" style="position: fixed; bottom: 2%; margin: auto;"
-                                data-bs-dismiss="offcanvas" aria-label="Close">Cancel</button>
-                        </div>
-                    </div>
-                </div>
-                
-                <input type="text" id="enterAmount" class="w-100 ownerAcc" placeholder="Enter Destination Account">
-                <input type="text" id="enterAmount" class="w-100 ownerAcc" placeholder="Enter Amount">
-                <input type="text" id="enterAmount" class="w-100 ownerAcc" placeholder="Enter Narration">
-                <button class="btn btn-warning rounded rounded-5 w-100" onclick="goTransferPin()">Continue</button>
-            
-            </div>
-            </div>
-        </section>
-    `
-
-}
-
-const billAccount2=()=>{
-    accNumDispp2.innerHTML="";
-    accBalDispp2.innerHTML="";
-    
-    for (let index = 0; index < allCustomer.length; index++) {
-    accNumDispp2.innerHTML +=`
-    ${allCustomer[currentUserIndex].accNo}
-`;
-accBalDispp2.innerHTML +=`
-    ${allCustomer[currentUserIndex].balance}
-`;
-    }
-}
-
-const goTransferPin=()=>{
-    alert("iss working")
-}
-
-
-const addTransBene = ()=>{
-    bodyDisp.innerHTML =    `
-    <nav class="navbar p-2 position-fixed w-100" style="z-index:7; background-color: rgb(46, 62, 97); color:white;">
-    <div onclick="transfer()"><i class="fa text-light fa-arrow-left"></i></div>
-    <p>Add Favorites</p>
-    <div></div>
-    </nav>
-    <section class="p-2">
-    <div class="" style="height: 70px;"></div>
-    <header class="mb-5"><b>BENEFICIARIES</b></header>
-    <div>
-        <p>No Beneficiaries Yet</p>
-    </div>
-    </section>
-
-    `
-}
-
-
-// ====================TRANSFER PAGE END================================
-const hist=()=>{
-    
-    for (let index = 0; index < allCustomer.length; index++) {
-        trtHistDisp.innerHTML +=`
-        <div class="transC">
-        <button class="text-danger">
-            <i class="fa fa-arrow-down"></i>
-        </button>
-        <div class="d-block">
-            <p style="margin: 0;" id="accNumDisp4">From:</p>
-            <p style="margin: 0;" id="toUser">to: </p>
-            <p></p>
-            <p style="margin: 0; color: gray;" id="day"></p>
-        </div>
-        <div class="text-danger">
-            <p id="hAmount">&#8358 -</p>
-        </div>
-    </div>
-            
-                    `
-}
-    
-let allTransactionHistory = {
-    fromAccount: allCustomer[currentUserIndex].accNo,
-    toAccount: allPhoneNo[currentUserIndex].airtimeNumber,
-    TransactionDay: allAmount[currentUserIndex].airtimeDay,
-    TransactionAmount: ` ${allAmount[currentUserIndex].amountPaid}.00`,
-}
-allCustomer[currentUserIndex].realHist.push(allTransactionHistory);
-localStorage.setItem("customerPersonalDetails", JSON.stringify(allCustomer))
-
-    allPhoneNo = allCustomer[currentUserIndex].history;
-    allAmount = allCustomer[currentUserIndex].amount;
-    allHistory = allCustomer[currentUserIndex].realHist;
-
-    toUser.innerHTML += allPhoneNo[currentUserIndex].airtimeNumber;
-    day.innerHTML += allAmount[currentUserIndex].airtimeDay;
-    hAmount.innerHTML =`&#8358 ${allAmount[currentUserIndex].amountPaid}.00`;
-    
-    accNumDisp3.innerHTML +=`
-                        ${allCustomer[currentUserIndex].accNo}
-                    `
-   accNumDisp4.innerHTML +=`
-                    ${allCustomer[currentUserIndex].accNo}
-                `;
-    accBalDisp3.innerHTML +=`
-                        ${allCustomer[currentUserIndex].balance}
-                    `;
-   
-    }
-    allPhoneNo = allCustomer[currentUserIndex].history;
-    allAmount = allCustomer[currentUserIndex].amount;
-    allHistory = allCustomer[currentUserIndex].realHist;
