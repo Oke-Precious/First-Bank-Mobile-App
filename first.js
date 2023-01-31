@@ -241,7 +241,7 @@ const buyAirtime = ()=>{
             <header class="mb-5">BUY AIRTIME</header>
             <div class="selectBene navbar position-relative w-100">
                 <div class="w-100 p-0" id="selectBiller" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom"
-                aria-controls="offcanvasBottom"><p>Select Biller</p> </div>
+                aria-controls="offcanvasBottom">Select Biller</div>
                 <i class="fa position-absolute angleDbtn fa-angle-down"></i>
             </div>
         <div class="offcanvas offcanvas-bottom" style="height: 100vh;" tabindex="-1" id="offcanvasBottom"
@@ -270,13 +270,31 @@ const buyAirtime = ()=>{
         </div>
     </section>
                     `
-                    // enterPhone.value==toNum.innerHTML;                
+                    // enterPhone.value==toNum.innerHTML;    
                     
+               
 }
 const displayNet=(param)=>{
     selectBiller.innerHTML=param;
 }
 const contPayment=()=>{
+    if(selectBiller.innerHTML== "Select Biller"){
+        alert("Fill in the Require Details")
+    }
+    else if(enterPhone.value==""){
+        alert("Fill in the Require Details")
+    }
+    else if(selectBiller.innerHTML== "Select Biller" && enterPhone.value==""){
+        alert("Fill in the Require Details")
+    }
+    else{
+    phoneNumberDetails={
+        recPhoneNumber: enterPhone.value,
+        biller: selectBiller.innerHTML,
+    }            
+    allCustomer[currentUserIndex].history.splice(0,1, phoneNumberDetails);
+    localStorage.setItem("customerPersonalDetails", JSON.stringify(allCustomer));
+    
     bodyDisp.innerHTML =    `
     <nav class="navbar p-2 position-fixed w-100" style="z-index:7; background-color: rgb(46, 62, 97); color:white;">
     <div onclick="buyAirtime()"><i class="fa text-light fa-arrow-left"></i></div>
@@ -337,6 +355,8 @@ const contPayment=()=>{
 
     `
 }
+         
+}
 
 const billAccount=()=>{
     accBalDispp.innerHTML="";
@@ -363,6 +383,14 @@ const accountDet=()=>{
 }
 
 const contAirtime=()=>{
+
+    amountDetails={
+        amountEnter: enterAmount.value,
+        currentDate: new Date().toLocaleDateString(),
+    }            
+    allCustomer[currentUserIndex].amount.splice(0,1, amountDetails);
+    localStorage.setItem("customerPersonalDetails", JSON.stringify(allCustomer));
+
     bodyDisp.innerHTML = `
             <nav class="navbar p-2 position-fixed w-100" style="z-index:7; background-color: rgb(46, 62, 97); color:white;">
                 <div onclick="contPayment()"><i class="fa text-light fa-arrow-left"></i></div>
@@ -414,5 +442,7 @@ const pada=()=>{
 }
 
 const hist=()=>{
-    alert("izz working")
+    // alert("izz working")
+    accNumDisp3.innerHTML +=`${allCustomer[currentUserIndex].accNo}`;
+    accBalDisp3.innerHTML +=`${allCustomer[currentUserIndex].balance}`;
 }
