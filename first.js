@@ -65,13 +65,16 @@ const toOpenAcc2=()=>{
             city: city.value,
             address: rAddress.value,
             password: password.value,
+            history : [],
+            amount : [],
+            realHist:[],
+            localHistory : [],
+            immediateTime : [],
+            pin:[],
             confirmPassword: cPassword.value,
             balance: 1000,
             cvv:Math.floor(Math.random()*1000),
             accNo: `319${Math.floor(Math.random()*10000000)}`,
-            recPhoneNumber:enterPhone.value,
-            airtimeAmount:enterAmount.value,
-            recAcctNumber:enterAcct.value,
             atmCardNumber: `5399 ${Math.floor(Math.random()*10000)} ${Math.floor(Math.random()*10000)} ${Math.floor(Math.random()*10000)}` 
         };
         allCustomer.push(customerDetails);
@@ -92,7 +95,7 @@ const toOpenAcc2=()=>{
 
 const cancelEmpty=()=>{
     empty.innerHTML ="";
-    noUser.innerHTML = "";
+    // noUser.innerHTML = "";
 }
 const signInbut=()=>{
     window.location.href = "firstsignIn.html";
@@ -108,6 +111,7 @@ const signIn = () => {
             found = true;
             break;
         }
+        
     }
     if(found==true){
         window.location.href = "dashboard.html";
@@ -133,8 +137,6 @@ const displayDash=()=>{
                     `;
                
 }
-
-
 
 
 const myAcc= ()=>{
@@ -193,27 +195,10 @@ const logCancel=()=>{
     dispBlur.innerHTML = "";
 }
 
-const addBene = ()=>{
-    bodyDisp.innerHTML =    `
-    <nav class="navbar p-2 position-fixed w-100" style="z-index:7; background-color: rgb(46, 62, 97); color:white;">
-    <div onclick="buyAirtime()"><i class="fa text-light fa-arrow-left"></i></div>
-    <p>Add Favorites</p>
-    <div></div>
-    </nav>
-    <section class="p-2">
-    <div class="" style="height: 70px;"></div>
-    <header class="mb-5"><b>BENEFICIARIES</b></header>
-    <div>
-        <p>No Beneficiaries Yet</p>
-    </div>
-    </section>
-
-    `
-}
-
 const backFav = ()=>{
     buyAirtime()
 }
+
 
 const buyAirtime = ()=>{
     bodyDisp.innerHTML=`
