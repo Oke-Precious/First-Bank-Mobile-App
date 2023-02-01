@@ -242,7 +242,7 @@ const buyAirtime = ()=>{
             <header class="mb-5">BUY AIRTIME</header>
             <div class="selectBene navbar position-relative w-100">
                 <div class="w-100 p-0" id="selectBiller" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom"
-                aria-controls="offcanvasBottom"><p>Select Biller</p> </div>
+                aria-controls="offcanvasBottom">Select Biller</div>
                 <i class="fa position-absolute angleDbtn fa-angle-down"></i>
             </div>
         <div class="offcanvas offcanvas-bottom" style="height: 100vh;" tabindex="-1" id="offcanvasBottom"
@@ -266,8 +266,10 @@ const buyAirtime = ()=>{
             </div>
         </div>
             
-            <input type="text" id="enterPhone" class="w-100" placeholder="Enter Phone Number">
+            <input type="text" id="enterPhone" class="w-100 " placeholder="Enter Phone Number">
+            <label for="enterPhone" id="phoneLabel" class="text-danger"></label>
             <button class="btn btn-warning rounded rounded-5 w-100" onclick="contPayment()">Continue</button>
+
         </div>
     </section>
                     `;
@@ -296,7 +298,31 @@ const displayNet=(param)=>{
     selectBiller.innerHTML=param;
 }
 
+const cancelWarning=()=>{
+    warningPage.innerHTML="";
+    warningPage.style.transition="4s";
+    
+}
+
 const contPayment=()=>{
+    if(selectBiller.innerHTML =="Select Biller"){
+        warningPage.style.transition="4s";
+        warningPage.overflowY="hidden";
+        warningPage.innerHTML=`
+        <div class="warningPage text-light">
+          <div class="text-center w-50">
+            <h2>Warning</h2>
+            <p>Select Biller</p>
+            <button onclick="cancelWarning()" class="mt-5 btn btn-warning rounded rounded-5 w-100">OK</button>
+          </div>
+        </div>
+        `
+    }
+    else if(enterPhone.value==""){
+        enterPhone.style.borderBottomColor = "red";
+        phoneLabel.innerHTML = "Enter a valid Phone Number"
+    }
+    else{
     let airtimeHistory = {
         airtimeNumber : enterPhone.value,
         airtimeNetwork : selectBiller.innerHTML
@@ -365,6 +391,7 @@ const contPayment=()=>{
             </div>
         </section>
     `
+}
 }
 
 const billAccount=()=>{
@@ -510,9 +537,9 @@ const hist=()=>{
     accNumDisp3.innerHTML +=`
                         ${allCustomer[currentUserIndex].accNo}
                     `
-   accNumDisp4.innerHTML +=`
-                    ${allCustomer[currentUserIndex].accNo}
-                `;
+//    accNumDisp4.innerHTML +=`
+//                     ${allCustomer[currentUserIndex].accNo}
+//                 `;
     accBalDisp3.innerHTML +=`
                         ${allCustomer[currentUserIndex].balance}
                     `;
