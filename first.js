@@ -396,7 +396,7 @@ const contAirtime=()=>{
     let amountHistory = {
         amountPaid: enterAmount.value,
         airtimeTime:`${new Date().toLocaleTimeString()}`,
-        airtimeDay: `${new Date().toDateString()}`
+        airtimeDay: `${new Date().toDateString()}`,
     }
     allCustomer[currentUserIndex].amount.splice(0,1, amountHistory);
     localStorage.setItem("customerPersonalDetails", JSON.stringify(allCustomer))
@@ -453,7 +453,15 @@ allPhoneNo = allCustomer[currentUserIndex].history;
 
 const confirmedPayment = () =>{
 
-    
+    let allTransactionHistory = {
+        fromAccount: allCustomer[currentUserIndex].accNo,
+        toAccount: allPhoneNo[currentUserIndex].airtimeNumber,
+        TransactionDay: allAmount[currentUserIndex].airtimeDay,
+        TransactionAmount: ` ${allAmount[currentUserIndex].amountPaid}.00`,
+        TransactionID: `AT${Math.floor(Math.random()*1000)}/${allCustomer[currentUserIndex].history[currentUserIndex].airtimeNetwork}`
+    }
+    allCustomer[currentUserIndex].realHist.push(allTransactionHistory);
+    localStorage.setItem("customerPersonalDetails", JSON.stringify(allCustomer))
 
 
     allAmount = allCustomer[currentUserIndex].amount;
@@ -470,6 +478,55 @@ const confirmedPayment = () =>{
 }
 
 // ==========================AIRTIME PAGE END======================
+
+const hist=()=>{
+    allHistory.reverse();
+    for (let index = 0; index < allHistory.length; index++) {
+        trtHistDisp.innerHTML +=`
+        <div class="transC">
+        <button class="text-danger">
+            <i class="fa fa-arrow-down"></i>
+        </button>
+        <div class="d-block">
+            <p style="margin: 0;" id="">From: ${allCustomer[currentUserIndex].accNo}</p>
+            <p style="margin: 0;" id="toUser">to: ${allHistory[index].toAccount}</p>
+            <p style="margin: 0;">${allHistory[index].TransactionID}</p>
+            <p style="margin: 0; color: gray;" id="day">${allHistory[index].TransactionDay}</p>
+        </div>
+        <div class="text-danger">
+            <p id="hAmount">- &#8358${allHistory[index].TransactionAmount}</p>
+        </div>
+    </div>
+            
+                    `
+}
+    
+
+    
+    allHistory = allCustomer[currentUserIndex].realHist;
+
+    
+    
+    accNumDisp3.innerHTML +=`
+                        ${allCustomer[currentUserIndex].accNo}
+                    `
+   accNumDisp4.innerHTML +=`
+                    ${allCustomer[currentUserIndex].accNo}
+                `;
+    accBalDisp3.innerHTML +=`
+                        ${allCustomer[currentUserIndex].balance}
+                    `;
+   
+    }
+    allPhoneNo = allCustomer[currentUserIndex].history;
+    allAmount = allCustomer[currentUserIndex].amount;
+    allHistory = allCustomer[currentUserIndex].realHist;
+const goHistory=()=>{
+    window.location.href="history.html"
+}
+const pada=()=>{
+    window.history.back()
+}
 
 
             // ===============Transfer Page==================
@@ -690,56 +747,3 @@ const addTransBene = ()=>{
 
 
 // ====================TRANSFER PAGE END================================
-const hist=()=>{
-    
-    for (let index = 0; index < allCustomer.length; index++) {
-        trtHistDisp.innerHTML +=`
-        <div class="transC">
-        <button class="text-danger">
-            <i class="fa fa-arrow-down"></i>
-        </button>
-        <div class="d-block">
-            <p style="margin: 0;" id="accNumDisp4">From:</p>
-            <p style="margin: 0;" id="toUser">to: </p>
-            <p></p>
-            <p style="margin: 0; color: gray;" id="day"></p>
-        </div>
-        <div class="text-danger">
-            <p id="hAmount">&#8358 -</p>
-        </div>
-    </div>
-            
-                    `
-}
-    
-let allTransactionHistory = {
-    fromAccount: allCustomer[currentUserIndex].accNo,
-    toAccount: allPhoneNo[currentUserIndex].airtimeNumber,
-    TransactionDay: allAmount[currentUserIndex].airtimeDay,
-    TransactionAmount: ` ${allAmount[currentUserIndex].amountPaid}.00`,
-}
-allCustomer[currentUserIndex].realHist.push(allTransactionHistory);
-localStorage.setItem("customerPersonalDetails", JSON.stringify(allCustomer))
-
-    allPhoneNo = allCustomer[currentUserIndex].history;
-    allAmount = allCustomer[currentUserIndex].amount;
-    allHistory = allCustomer[currentUserIndex].realHist;
-
-    toUser.innerHTML += allPhoneNo[currentUserIndex].airtimeNumber;
-    day.innerHTML += allAmount[currentUserIndex].airtimeDay;
-    hAmount.innerHTML =`&#8358 ${allAmount[currentUserIndex].amountPaid}.00`;
-    
-    accNumDisp3.innerHTML +=`
-                        ${allCustomer[currentUserIndex].accNo}
-                    `
-   accNumDisp4.innerHTML +=`
-                    ${allCustomer[currentUserIndex].accNo}
-                `;
-    accBalDisp3.innerHTML +=`
-                        ${allCustomer[currentUserIndex].balance}
-                    `;
-   
-    }
-    allPhoneNo = allCustomer[currentUserIndex].history;
-    allAmount = allCustomer[currentUserIndex].amount;
-    allHistory = allCustomer[currentUserIndex].realHist;
