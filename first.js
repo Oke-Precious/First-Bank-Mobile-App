@@ -382,15 +382,22 @@ const accountDet=()=>{
     }
 }
 
+
+allRecNumber = allCustomer[currentUserIndex].history;
+let allInputAmuont = allCustomer[currentUserIndex].amount;
 const contAirtime=()=>{
 
-    amountDetails={
-        amountEnter: enterAmount.value,
-        currentDate: new Date().toLocaleDateString(),
-    }            
+
+    for (let index = 0; index < allCustomer.length; index++) {
+        amountDetails={
+            amountEnter: enterAmount.value,
+            currentDate: new Date().toLocaleDateString(),
+        }                
+    
     allCustomer[currentUserIndex].amount.splice(0,1, amountDetails);
     localStorage.setItem("customerPersonalDetails", JSON.stringify(allCustomer));
-
+     
+    // allRecNumber = allCustomer[currentUserIndex].history;
     bodyDisp.innerHTML = `
             <nav class="navbar p-2 position-fixed w-100" style="z-index:7; background-color: rgb(46, 62, 97); color:white;">
                 <div onclick="contPayment()"><i class="fa text-light fa-arrow-left"></i></div>
@@ -400,8 +407,8 @@ const contAirtime=()=>{
             <p style="height: 50px;"></p>
             <section class="p-3">
                 <div class="confirmBuy">
-                    <p>From:</p>
-                    <p id="dispMyAcc"></p>
+                    <p>From: </p>
+                    <p id="dispMyAcc">ACCOUNT ${allCustomer[currentUserIndex].accNo}</p>
                 </div>
 
                 <div class="confirmBuy">
@@ -411,7 +418,7 @@ const contAirtime=()=>{
 
                 <div class="confirmBuy">
                     <p>Date:</p>
-                    <p id="">kjhjkh</p>
+                    <p>${allCustomer[currentUserIndex].amount[currentUserIndex].currentDate}</p>
                 </div>
 
                 <div class="confirmBuy">
@@ -430,7 +437,10 @@ const contAirtime=()=>{
                 </div>
             </section>
     `;
-    dispMyAcc.innerHTML=`<p>ACCOUNT ${allCustomer[currentUserIndex].accNo} </p>`;
+    
+    // dispMyAcc.innerHTML=`<p>ACCOUNT ${allCustomer[currentUserIndex].accNo} </p>`;
+    
+    }
 }
 
 const myHistory=()=>{
