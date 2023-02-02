@@ -410,8 +410,7 @@
 }
 #warningPage{
     position: fixed;
-    width: 100%;
-    z-index: 10;
+    width: 100%;     z-index: 10;
 }
 #phoneLabel{
     margin-top: -50px;
