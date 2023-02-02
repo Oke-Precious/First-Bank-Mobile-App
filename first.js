@@ -173,19 +173,20 @@ const freqTrans=()=>{
 }
 
 const signOut=()=>{
-    dispBlur.innerHTML =`
-    <div class="blurBg">
-    <div class="Lognotice shadow shadow-lg bg-light">
-        <header><b>Hey user!</b></header>
-        <p>Are you sure you want to Sign out</p>
-        <div>
-            <button class="btn btn-danger" onclick="logCancel()">Cancel</button>
-            <button class="btn btn-primary" onclick="logContinue()">Continue</button>
+    warningPage.style.transition="4s";
+    warningPage.style.height="100vh";
+        warningPage.style.overflowY="hidden";
+        warningPage.innerHTML=`
+        <div class="warningPage text-light">
+          <div class="text-center w-50">
+            <h2>Warning</h2>
+            <p>Are you sure you want to sign out</p>
+            <button onclick="cancelWarning()" class="mt-5 btn btn-warning rounded rounded-5 w-100">No</button>
+            <button class="mt-5 btn btn-warning rounded rounded-5 w-100" onclick="logContinue()">Continue</button>
+          </div>
         </div>
-    </div>
-</div>
-                        `
-
+        `
+    
 }
 const logContinue=()=>{
     window.location.href="firstsignIn.html";
@@ -515,7 +516,20 @@ const contAirtime=()=>{
 allPhoneNo = allCustomer[currentUserIndex].history;
 
 const confirmedPayment = () =>{
-
+    if(allCustomer[currentUserIndex].balance < allAmount[currentUserIndex].amountPaid){
+        warningPage.style.transition="4s";
+        warningPage.overflowY="hidden";
+        warningPage.innerHTML=`
+        <div class="warningPage text-light">
+          <div class="text-center w-50">
+            <h2>Warning</h2>
+            <p>Insufficient fund</p>
+            <button onclick="cancelWarning()" class="mt-5 btn btn-warning rounded rounded-5 w-100">OK</button>
+          </div>
+        </div>
+        `
+    }
+    else{
     let allTransactionHistory = {
         fromAccount: allCustomer[currentUserIndex].accNo,
         toAccount: allPhoneNo[currentUserIndex].airtimeNumber,
@@ -530,13 +544,24 @@ const confirmedPayment = () =>{
 
     allAmount = allCustomer[currentUserIndex].amount;
     // alert("worki oo")
-    if(allCustomer[currentUserIndex].balance < allAmount[currentUserIndex].amountPaid){
-        alert("insufficient Fund")
-    }
-    else{
+    
+    
         allCustomer[currentUserIndex].balance = Number(allCustomer[currentUserIndex].balance) - Number(allAmount[currentUserIndex].amountPaid)
         localStorage.setItem("customerPersonalDetails", JSON.stringify(allCustomer));
-        // accNumDisp3.innerHTML= allCustomer[currentUserIndex].balance;
+       
+        warningPage.style.transition="4s";
+        warningPage.overflowY="hidden";
+        warningPage.innerHTML=`
+        <div class="warningPage text-light">
+          <div class="text-center w-50">
+            <h2>Successful</h2>
+            <div class="btn btn-warning text-light rounded rounded-circle fs-1">
+                <i class="fa fa-check"></i>
+            </div>
+            <button onclick="myAcc()" class="mt-5 btn btn-warning rounded rounded-5 w-100">OK</button>
+          </div>
+        </div>
+        `
     }
     
 }
@@ -670,15 +695,8 @@ const transfer =()=>{
 
 
 const toMyBank=()=>{
-    alert("izz working")
 
-    let airtimeHistory = {
-        airtimeNumber : enterPhone.value
-    };
-    allCustomer[currentUserIndex].history.splice(0,1, airtimeHistory);
-    localStorage.setItem("customerPersonalDetails", JSON.stringify(allCustomer))
 
- 
 
     bodyDisp.innerHTML =    `
     <nav class="navbar p-2 position-fixed w-100" style="z-index:7;top:0; background-color: rgb(46, 62, 97); color:white;">
@@ -706,7 +724,7 @@ const toMyBank=()=>{
                 <div class="modal-dialog">
                   <div class="modal-content">
                     <div class="modal-header">
-                      <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+                      <h1 class="modal-title fs-5" id="staticBackdropLabel">Select Account to debit</h1>
                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
