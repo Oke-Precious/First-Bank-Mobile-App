@@ -382,9 +382,10 @@
 /* ==================================================TRANSACTION HISTORY========================= */
 .transC{
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     background-color: rgb(243, 243, 245);
     width: 100%;
+    gap: 20px;
     border-radius: 20px;
     padding: 15px;
     align-items: center;
@@ -412,7 +413,14 @@
     position: fixed;
     width: 100%;     z-index: 10;
 }
-#phoneLabel{
+.phoneLabel{
     margin-top: -50px;
+    height: 20px;
     font-size: 12px;
+}
+#amountLabel{
+    margin-bottom: 50px;
+}
+#enterAmount{
+    margin-bottom: -50px;
 }

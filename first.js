@@ -266,13 +266,24 @@ const buyAirtime = ()=>{
             </div>
         </div>
             
-            <input type="text" id="enterPhone" class="w-100 " placeholder="Enter Phone Number">
-            <label for="enterPhone" id="phoneLabel" class="text-danger"></label>
+            <input type="tel" onkeydown="phoneNumberkey()" id="enterPhone" class="w-100 " placeholder="Enter Phone Number">
+            <label for="enterPhone"  id="phoneLabel" class="phoneLabel text-danger"></label>
             <button class="btn btn-warning rounded rounded-5 w-100" onclick="contPayment()">Continue</button>
 
         </div>
     </section>
                     `;
+}
+
+const phoneNumberkey=()=>{
+    if(enterPhone.value.length < 11){
+        enterPhone.style.color="red";
+        phoneLabel.innerHTML = "Enter a valid Phone Number"
+    }
+    else{
+        enterPhone.style.color="black";
+        phoneLabel.innerHTML = ""
+    }
 }
 
 
@@ -318,7 +329,7 @@ const contPayment=()=>{
         </div>
         `
     }
-    else if(enterPhone.value==""){
+    else if(enterPhone.value=="" || enterPhone.value.length < 11){
         enterPhone.style.borderBottomColor = "red";
         phoneLabel.innerHTML = "Enter a valid Phone Number"
     }
@@ -384,7 +395,8 @@ const contPayment=()=>{
                     </div>
                 </div>
                 
-                <input type="text" id="enterAmount" class="w-100 ownerAcc" placeholder="Enter Amount">
+                <input type="number" id="enterAmount" class="w-100 ownerAcc" placeholder="Enter Amount">
+                <label for="enterPhone" id="amountLabel" class="phoneLabel text-danger"></label>
                 <button class="btn btn-warning rounded rounded-5 w-100" onclick="contAirtime()">Continue</button>
             
             </div>
@@ -393,6 +405,7 @@ const contPayment=()=>{
     `
 }
 }
+
 
 const billAccount=()=>{
     accBalDispp.innerHTML="";
@@ -419,10 +432,32 @@ const accountDet=()=>{
 }
 
 const contAirtime=()=>{
+    if(acctd.innerHTML=="Select account to debit"){
+        warningPage.style.transition="4s";
+        warningPage.overflowY="hidden";
+        warningPage.innerHTML=`
+        <div class="warningPage text-light">
+          <div class="text-center w-50">
+            <h2>Warning</h2>
+            <p>Select account to debit</p>
+            <button onclick="cancelWarning()" class="mt-5 btn btn-warning rounded rounded-5 w-100">OK</button>
+          </div>
+        </div>
+        `
+    }
+    else if(enterAmount.value==""){
+        enterAmount.style.borderBottomColor = "red";
+        amountLabel.innerHTML = "Enter amount"
+    }
+    else if(enterAmount.value < 50){
+        enterAmount.style.borderBottomColor = "red";
+        amountLabel.innerHTML = "You can't enter less than ₦50"
+    }
+    
+    else{
     
     let amountHistory = {
         amountPaid: enterAmount.value,
-        airtimeTime:`${new Date().toLocaleTimeString()}`,
         airtimeDay: `${new Date().toDateString()}`,
     }
     allCustomer[currentUserIndex].amount.splice(0,1, amountHistory);
@@ -473,8 +508,9 @@ const contAirtime=()=>{
     dispMyAcc.innerHTML=`<p>ACCOUNT ${allCustomer[currentUserIndex].accNo} </p>`;
     toNum.innerHTML = allPhoneNo[currentUserIndex].airtimeNumber;
     dispAm.innerHTML = `&#8358 ${allAmount[currentUserIndex].amountPaid}.00`;
-    dispT.innerHTML = `${allAmount[currentUserIndex].airtimeTime}`;
+    dispT.innerHTML = `${allAmount[currentUserIndex].airtimeDay}`;
    
+}
 }
 allPhoneNo = allCustomer[currentUserIndex].history;
 
@@ -483,6 +519,7 @@ const confirmedPayment = () =>{
     let allTransactionHistory = {
         fromAccount: allCustomer[currentUserIndex].accNo,
         toAccount: allPhoneNo[currentUserIndex].airtimeNumber,
+        TransactionTime:`${new Date().toLocaleTimeString()}`,
         TransactionDay: allAmount[currentUserIndex].airtimeDay,
         TransactionAmount: ` ${allAmount[currentUserIndex].amountPaid}.00`,
         TransactionID: `AT${Math.floor(Math.random()*1000)}/${allCustomer[currentUserIndex].history[currentUserIndex].airtimeNetwork}`
@@ -514,15 +551,19 @@ const hist=()=>{
         <button class="text-danger">
             <i class="fa fa-arrow-down"></i>
         </button>
-        <div class="d-block">
-            <p style="margin: 0;" id="">From: ${allCustomer[currentUserIndex].accNo}</p>
-            <p style="margin: 0;" id="toUser">to: ${allHistory[index].toAccount}</p>
-            <p style="margin: 0;">${allHistory[index].TransactionID}</p>
-            <p style="margin: 0; color: gray;" id="day">${allHistory[index].TransactionDay}</p>
-        </div>
-        <div class="text-danger">
-            <p id="hAmount">- &#8358${allHistory[index].TransactionAmount}</p>
-        </div>
+        <div>
+       <div class="navbar align-items-center">
+       <div class="d-block">
+       <p style="margin: 0;" id="">From: ${allCustomer[currentUserIndex].accNo}</p>
+       <p style="margin: 0;" id="toUser">to: ${allHistory[index].toAccount}</p>
+       <p style="margin: 0;">${allHistory[index].TransactionID}</p>
+   </div>
+   <div class="text-danger">
+       <p id="hAmount">- &#8358${allHistory[index].TransactionAmount}</p>
+   </div>
+       </div>
+       <p style="margin: 0; color: gray;" id="day">${allHistory[index].TransactionDay} | ${allHistory[index].TransactionTime}</p>
+    </div>    
     </div>
             
                     `
