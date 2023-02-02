@@ -782,10 +782,10 @@ const toMyBank=()=>{
                     </div>
                 </div>
                 
-                <input type="text" id="enterAmount" class="w-100 ownerAcc" placeholder="Enter Destination Account">
-                <input type="text" id="enterAmount" class="w-100 ownerAcc" placeholder="Enter Amount">
-                <input type="text" id="enterAmount" class="w-100 ownerAcc" placeholder="Enter Narration">
-                <button class="btn btn-warning rounded rounded-5 w-100" onclick="goTransferPin()">Continue</button>
+                <input type="number" maxlength="10" id="destinationAccount" class="w-100 ownerAcc" placeholder="Enter Destination Account">
+                <input type="number" id="sendAmount" class="w-100 ownerAcc" placeholder="Enter Amount">
+                <input type="text" id="senderNarration" class="w-100 ownerAcc" placeholder="Enter Narration">
+                <button class="btn btn-warning rounded rounded-5 w-100 my-3" onclick="confirmTransfer()">Continue</button>
             
             </div>
             </div>
@@ -808,8 +808,70 @@ accBalDispp2.innerHTML +=`
     }
 }
 
-const goTransferPin=()=>{
-    alert("iss working")
+let transferConfirm= allCustomer[currentUserIndex].localHistory
+const confirmTransfer=()=>{
+    let transferHistory = {
+        debitAccount : `${allCustomer[currentUserIndex].accNo}`,
+        debitBalance: `₦${allCustomer[currentUserIndex].balance}`,
+        beneficiaryBank : selectBiller.innerHTML,
+        destinationAcc : destinationAccount.value,
+        amountSend : sendAmount.value,
+        transferDate:   new Date().toLocaleDateString(),
+        narration : senderNarration.value,
+    }
+    allCustomer[currentUserIndex].localHistory.splice(0,1, transferHistory);
+    localStorage.setItem("customerPersonalDetails", JSON.stringify(allCustomer))
+
+    bodyDisp.innerHTML=`
+                        <nav class="navbar p-2 position-fixed w-100" style="z-index:7; background-color: rgb(46, 62, 97); color:white;">
+                <div onclick="toMyBank()"><i class="fa text-light fa-arrow-left"></i></div>
+                <p>Buy Airtime</p>
+                <div></div>
+            </nav>
+            <p style="height: 50px;"></p>
+            <section class="p-3">
+                <div class="confirmBuy">
+                    <p>From:</p>
+                    <p id="">${transferConfirm[currentUserIndex].debitAccount}</p>
+                </div>
+
+                <div class="confirmBuy">
+                    <p>Beneficiary Bank:</p>
+                    <p id="">${transferConfirm[currentUserIndex].beneficiaryBank}</p>
+                </div>
+
+                <div class="confirmBuy">
+                    <p>To:</p>
+                    <p id="">${transferConfirm[currentUserIndex].destinationAcc}</p>
+                </div>
+
+                <div class="confirmBuy">
+                    <p>Amount:</p>
+                    <p id="">${transferConfirm[currentUserIndex].amountSend}</p>
+                </div>
+
+                <div class="confirmBuy">
+                    <p>Date:</p>
+                    <p id="">${transferConfirm[currentUserIndex].transferDate}.00</p>
+                </div>
+
+                <div class="confirmBuy">
+                    <p>Narration:</p>
+                    <p id="">${transferConfirm[currentUserIndex].narration}</p>
+                </div>
+
+                <div class="pinContainer">
+                    <p>Enter Transaction PIN</p>
+                    <input type="password">
+                </div>
+                
+                <div class="butn w-100 gap-3 p-2 mt-5 row">
+                    <button class="btn col-9 btn-warning rounded rounded-5" onclick="confirmedPayment()">CONFIRM</button>
+                    <button class="btn col-2 btn-warning rounded rounded-circle fs-3"><i class="fa fa-fingerprint"></i></button>
+                </div>
+            </section>
+    `
+    
 }
 
 
