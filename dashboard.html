@@ -26,7 +26,7 @@
         
                         <button class="" onclick="buyAirtime()"><i class="fa fa-mobile-android"> </i> <p>Buy Airtime</p></button>
         
-                        <button class=""><i class="fa fa-exchange"> </i> <p>Transfer Money</p></button>
+                        <button class="" onclick="transfer()"><i class="fa fa-exchange"> </i> <p>Transfer Money</p></button>
         
                         <button class=""><i class="fa fa-user"> </i> <p>Beneficiary Management</p></button>
         
@@ -76,11 +76,7 @@
                     </div>
     
                     <div>
-<<<<<<< HEAD
-                        <button class="border-0 bg-transparent" onclick="myHistory()">HISTORY <i class="far fa-calendar"></i></button>
-=======
                         <button class="border-0 bg-transparent" onclick="goHistory()">HISTORY <i class="far fa-calendar"></i></button>
->>>>>>> precious
                     </div>
                 </div>
                 
@@ -92,14 +88,14 @@
     
         <section class="sec2 w-100 d-flex align-items-center justify-content-center">
             <div class="row w-100 justify-content-center taskCont">
-                <div class="col-4 my-3">
+                <div class="col-4 my-3" onclick="transfer()">
                     <button class="iconTaskBut">
                         <div class="iconTask"><i class="fa fa-exchange"></i></div>
                         Transfer
                     </button>
                 </div>
     
-                <div class="col-4 my-3">
+                <div class="col-4 my-3" onclick="">
                     <button class="iconTaskBut">
                         <div class="iconTask"><i class="fa fa-money-bill-alt"></i></div>
                         PayBills
@@ -134,6 +130,31 @@
                     </button>
                 </div>
             </div>
+
+            <!-- Button trigger modal -->
+<!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+    Launch static backdrop modal
+  </button> -->
+  
+  <!-- Modal -->
+<!-- <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Understood</button>
+            </div>
+        </div>
+    </div>
+  </div> -->
         </section>
     
         <section class="sec3">

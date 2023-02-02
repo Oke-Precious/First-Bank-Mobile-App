@@ -95,7 +95,7 @@ const toOpenAcc2=()=>{
 
 const cancelEmpty=()=>{
     empty.innerHTML ="";
-    // noUser.innerHTML = "";
+    noUser.innerHTML = "";
 }
 const signInbut=()=>{
     window.location.href = "firstsignIn.html";
@@ -199,6 +199,7 @@ const backFav = ()=>{
     buyAirtime()
 }
 
+// ===================AIRTIME PAGE ================================
 
 const buyAirtime = ()=>{
     bodyDisp.innerHTML=`
@@ -271,34 +272,8 @@ const buyAirtime = ()=>{
 
         </div>
     </section>
-                    `
-                    // enterPhone.value==toNum.innerHTML;    
-                    
-               
+                    `;
 }
-<<<<<<< HEAD
-const displayNet=(param)=>{
-    selectBiller.innerHTML=param;
-}
-const contPayment=()=>{
-    if(selectBiller.innerHTML== "Select Biller"){
-        alert("Fill in the Require Details")
-    }
-    else if(enterPhone.value==""){
-        alert("Fill in the Require Details")
-    }
-    else if(selectBiller.innerHTML== "Select Biller" && enterPhone.value==""){
-        alert("Fill in the Require Details")
-    }
-    else{
-    phoneNumberDetails={
-        recPhoneNumber: enterPhone.value,
-        biller: selectBiller.innerHTML,
-    }            
-    allCustomer[currentUserIndex].history.splice(0,1, phoneNumberDetails);
-    localStorage.setItem("customerPersonalDetails", JSON.stringify(allCustomer));
-    
-=======
 
 const phoneNumberkey=()=>{
     if(enterPhone.value.length < 11){
@@ -365,7 +340,6 @@ const contPayment=()=>{
     };
     allCustomer[currentUserIndex].history.splice(0,1, airtimeHistory);
     localStorage.setItem("customerPersonalDetails", JSON.stringify(allCustomer))
->>>>>>> precious
     bodyDisp.innerHTML =    `
     <nav class="navbar p-2 position-fixed w-100" style="z-index:7; background-color: rgb(46, 62, 97); color:white;">
     <div onclick="buyAirtime()"><i class="fa text-light fa-arrow-left"></i></div>
@@ -379,6 +353,10 @@ const contPayment=()=>{
                 <div class="" style="height: 70px;"></div>
             <header class="m-5 text-center"><b>Enter Details</b></header>
             <div>
+
+
+            
+
                 
                 <div class="selectBene navbar position-relative w-100">
                     <div class="w-100 p-0 ownerAccD" id="selectBiller" onclick="billAccount()" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom"
@@ -406,7 +384,7 @@ const contPayment=()=>{
                                 </div>
                                 <div class="d-flex">
                                     <h2>&#8358</h2>
-                                    <h2 id="accBalDispp">#</h2>
+                                    <h2 id="accBalDispp"></h2>
                                 </div>
                             </div>
                         </div>
@@ -424,16 +402,10 @@ const contPayment=()=>{
             </div>
             </div>
         </section>
-
     `
 }
-<<<<<<< HEAD
-         
-}
-=======
 }
 
->>>>>>> precious
 
 const billAccount=()=>{
     accBalDispp.innerHTML="";
@@ -459,8 +431,6 @@ const accountDet=()=>{
     }
 }
 
-<<<<<<< HEAD
-=======
 const contAirtime=()=>{
     if(acctd.innerHTML=="Select account to debit"){
         warningPage.style.transition="4s";
@@ -493,34 +463,18 @@ const contAirtime=()=>{
     allCustomer[currentUserIndex].amount.splice(0,1, amountHistory);
     localStorage.setItem("customerPersonalDetails", JSON.stringify(allCustomer))
     
->>>>>>> precious
 
-allRecNumber = allCustomer[currentUserIndex].history;
-let allInputAmuont = allCustomer[currentUserIndex].amount;
-const contAirtime=()=>{
-
-
-    for (let index = 0; index < allCustomer.length; index++) {
-        amountDetails={
-            amountEnter: enterAmount.value,
-            currentDate: new Date().toLocaleDateString(),
-        }                
-    
-    allCustomer[currentUserIndex].amount.splice(0,1, amountDetails);
-    localStorage.setItem("customerPersonalDetails", JSON.stringify(allCustomer));
-     
-    // allRecNumber = allCustomer[currentUserIndex].history;
     bodyDisp.innerHTML = `
             <nav class="navbar p-2 position-fixed w-100" style="z-index:7; background-color: rgb(46, 62, 97); color:white;">
-                <div onclick="contPayment()"><i class="fa text-light fa-arrow-left"></i></div>
+                <div onclick="buyAirtime()"><i class="fa text-light fa-arrow-left"></i></div>
                 <p>Buy Airtime</p>
                 <div></div>
             </nav>
             <p style="height: 50px;"></p>
             <section class="p-3">
                 <div class="confirmBuy">
-                    <p>From: </p>
-                    <p id="dispMyAcc">ACCOUNT ${allCustomer[currentUserIndex].accNo}</p>
+                    <p>From:</p>
+                    <p id="dispMyAcc"></p>
                 </div>
 
                 <div class="confirmBuy">
@@ -530,12 +484,12 @@ const contAirtime=()=>{
 
                 <div class="confirmBuy">
                     <p>Date:</p>
-                    <p>${allCustomer[currentUserIndex].amount[currentUserIndex].currentDate}</p>
+                    <p id="dispT"></p>
                 </div>
 
                 <div class="confirmBuy">
                     <p>Amount:</p>
-                    <p id="">kjhjkh</p>
+                    <p id="dispAm">0.00</p>
                 </div>
 
                 <div class="pinContainer">
@@ -544,16 +498,11 @@ const contAirtime=()=>{
                 </div>
                 
                 <div class="butn w-100 gap-3 p-2 mt-5 row">
-                    <button class="btn col-9 btn-warning rounded rounded-5 ">CONFIRM</button>
+                    <button class="btn col-9 btn-warning rounded rounded-5" onclick="confirmedPayment()">CONFIRM</button>
                     <button class="btn col-2 btn-warning rounded rounded-circle fs-3"><i class="fa fa-fingerprint"></i></button>
                 </div>
             </section>
     `;
-<<<<<<< HEAD
-    
-    // dispMyAcc.innerHTML=`<p>ACCOUNT ${allCustomer[currentUserIndex].accNo} </p>`;
-    
-=======
     allPhoneNo = allCustomer[currentUserIndex].history;
     allAmount = allCustomer[currentUserIndex].amount;
     dispMyAcc.innerHTML=`<p>ACCOUNT ${allCustomer[currentUserIndex].accNo} </p>`;
@@ -838,25 +787,31 @@ const billAccount2=()=>{
 accBalDispp2.innerHTML +=`
     ${allCustomer[currentUserIndex].balance}
 `;
->>>>>>> precious
     }
 }
 
-const myHistory=()=>{
-    window.location.href="history.html";
+const goTransferPin=()=>{
+    alert("iss working")
 }
 
-const pada=()=>{
-    window.history.back() ="history.html";
+
+const addTransBene = ()=>{
+    bodyDisp.innerHTML =    `
+    <nav class="navbar p-2 position-fixed w-100" style="z-index:7; background-color: rgb(46, 62, 97); color:white;">
+    <div onclick="transfer()"><i class="fa text-light fa-arrow-left"></i></div>
+    <p>Add Favorites</p>
+    <div></div>
+    </nav>
+    <section class="p-2">
+    <div class="" style="height: 70px;"></div>
+    <header class="mb-5"><b>BENEFICIARIES</b></header>
+    <div>
+        <p>No Beneficiaries Yet</p>
+    </div>
+    </section>
+
+    `
 }
 
-<<<<<<< HEAD
-const hist=()=>{
-    // alert("izz working")
-    accNumDisp3.innerHTML +=`${allCustomer[currentUserIndex].accNo}`;
-    accBalDisp3.innerHTML +=`${allCustomer[currentUserIndex].balance}`;
-}
-=======
 
 // ====================TRANSFER PAGE END================================
->>>>>>> precious
