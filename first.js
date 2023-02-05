@@ -646,7 +646,7 @@ const transfer =()=>{
         <div class="w-100 navbar rounded rounded-4 my-2 bg-light p-3" onclick="toMyBank()">
             <div class="d-flex gap-3 align-items-center">
                 <button class="border-0 bg-warning rounded rounded-circle text-light fs-5 px-3 py-2">FB</button>
-                <p class="my-2">To FirstBank Account</p>
+                <p class="my-2">To PreciousBank Account</p>
             </div>
             <div>
                 <i class="fa fa-arrow-right fs-3"></i>
@@ -701,7 +701,7 @@ const toMyBank=()=>{
     bodyDisp.innerHTML =    `
     <nav class="navbar p-2 position-fixed w-100" style="z-index:7;top:0; background-color: rgb(46, 62, 97); color:white;">
     <div onclick="transfer()"><i class="fa text-light fa-arrow-left"></i></div>
-    <p>To First Bank</p>
+    <p>To Precious Bank</p>
     <div></div>
     </nav>
     
@@ -769,7 +769,7 @@ const toMyBank=()=>{
                 
                         <div class="networkBTN" data-bs-dismiss="offcanvas">
                         
-                        <button onclick="displayNet('First Bank')" data-bs-dismiss="offcanvas">First Bank</button>
+                        <button onclick="displayNet('Precious Bank')" data-bs-dismiss="offcanvas">Precious Bank</button>
                         <button onclick="displayNet('Special Bank')" data-bs-dismiss="offcanvas">Special Bank</button>
                         <button onclick="displayNet('SQI Bank')" data-bs-dismiss="offcanvas">SQI Bank</button>
                         <button onclick="displayNet('Kuda Bank')" data-bs-dismiss="offcanvas">Kuda Bank</button></button>
@@ -895,3 +895,273 @@ const addTransBene = ()=>{
 
 
 // ====================TRANSFER PAGE END================================
+
+const payBill=()=>{
+    bodyDisp.innerHTML=bodyDisp.innerHTML=`
+    <nav class="navbar position-fixed top-0 w-100" style="z-index:1; background-color: rgb(46, 62, 97); color:white;">
+        <div></div>
+        <p>Pay Bills</p>
+        <div></div>
+    </nav>
+
+    <section class="p-3 airtimeSec">
+        <div class="" style="height: 50px;"></div>
+
+        
+        <header class="navbar"><p>BILLER CATEGORIES</p> <i class="fa fa-search"></i></header>
+
+        <div class="w-100 navbar rounded rounded-4 my-2 bg-light p-3" >
+            <div class="d-flex gap-3 align-items-center">
+                <button class="border-0 bg-warning rounded rounded-circle text-light fs-5 px-3 py-2">A</button>
+                <p class="my-2">Airlines and Hotels Payment</p>
+            </div>
+            <div>
+                <i class="fa fa-arrow-right fs-3"></i>
+            </div>
+        </div>
+
+        <div class="w-100 navbar rounded rounded-4 my-2 bg-light p-3">
+            <div class="d-flex gap-3 align-items-center">
+                <button class="border-0 bg-warning rounded rounded-circle text-light fs-5 px-3 py-2">A</button>
+                <p class="my-2">Airtime</p>
+            </div>
+            <div>
+                <i class="fa fa-arrow-right fs-3"></i>
+            </div>
+        </div>
+
+        <div class="w-100 navbar rounded rounded-4 my-2 bg-light p-3">
+            <div class="d-flex gap-3 align-items-center">
+                <button class="border-0 bg-warning rounded rounded-circle text-light fs-5 px-3 py-2">A</button>
+                <p class="my-2">APM Terminals</p>
+            </div>
+            <div>
+                <i class="fa fa-arrow-right fs-3"></i>
+            </div>
+        </div>
+
+        <div class="w-100 navbar rounded rounded-4 my-2 bg-light  p-3">
+            <div class="d-flex gap-3 align-items-center">
+                <button class="border-0 bg-warning rounded rounded-circle text-light fs-5 px-3 py-2">B</button>
+                <p class="my-2">Betting, Lottery and Gaming</p>
+            </div>
+            <div>
+                <i class="fa fa-arrow-right fs-3"></i>
+            </div>
+        </div>
+
+        <div class="w-100 navbar rounded rounded-4 my-2 bg-light  p-3">
+            <div class="d-flex gap-3 align-items-center">
+                <button class="border-0 bg-warning rounded rounded-circle text-light fs-5 px-3 py-2">C</button>
+                <p class="my-2">Cable TV</p>
+            </div>
+            <div>
+                <i class="fa fa-arrow-right fs-3"></i>
+            </div>
+        </div>
+
+        <div class="w-100 navbar rounded rounded-4 my-2 bg-light  p-3">
+            <div class="d-flex gap-3 align-items-center">
+                <button class="border-0 bg-warning rounded rounded-circle text-light fs-5 px-3 py-2">D</button>
+                <p class="my-2">Data</p>
+            </div>
+            <div>
+                <i class="fa fa-arrow-right fs-3"></i>
+            </div>
+        </div>
+
+        <div class="w-100 navbar rounded rounded-4 my-2 bg-light  p-3">
+            <div class="d-flex gap-3 align-items-center">
+                <button class="border-0 bg-warning rounded rounded-circle text-light fs-5 px-3 py-2">D</button>
+                <p class="my-2">Donations</p>
+            </div>
+            <div>
+                <i class="fa fa-arrow-right fs-3"></i>
+            </div>
+        </div>
+
+        <div class="w-100 navbar rounded rounded-4 my-2 bg-light  p-3">
+            <div class="d-flex gap-3 align-items-center">
+                <button class="border-0 bg-warning rounded rounded-circle text-light fs-5 px-3 py-2">E</button>
+                <p class="my-2">Electricity</p>
+            </div>
+            <div>
+                <i class="fa fa-arrow-right fs-3"></i>
+            </div>
+        </div>
+        
+        <div class="w-100 navbar rounded rounded-4 my-2 bg-light  p-3">
+        <div class="d-flex gap-3 align-items-center">
+            <button class="border-0 bg-warning rounded rounded-circle text-light fs-5 px-3 py-2">G</button>
+            <p class="my-2">Gift and Reward</p>
+        </div>
+        <div>
+            <i class="fa fa-arrow-right fs-3"></i>
+        </div>
+    </div>
+
+    <div class="w-100 navbar rounded rounded-4 my-2 bg-light  p-3">
+    <div class="d-flex gap-3 align-items-center">
+        <button class="border-0 bg-warning rounded rounded-circle text-light fs-5 px-3 py-2">E</button>
+        <p class="my-2">Electricity</p>
+    </div>
+    <div>
+        <i class="fa fa-arrow-right fs-3"></i>
+    </div>
+</div>
+        <div class="w-100 navbar rounded rounded-4 my-2 bg-light  p-3">
+            <div class="d-flex gap-3 align-items-center">
+                <button class="border-0 bg-warning rounded rounded-circle text-light fs-5 px-3 py-2">I</button>
+                <p class="my-2">Internet Services</p>
+            </div>
+            <div>
+                <i class="fa fa-arrow-right fs-3"></i>
+            </div>
+        </div>
+        <div class="w-100 navbar rounded rounded-4 my-2 bg-light  p-3">
+            <div class="d-flex gap-3 align-items-center">
+                <button class="border-0 bg-warning rounded rounded-circle text-light fs-5 px-3 py-2">L</button>
+                <p class="my-2">Loan Repayment</p>
+            </div>
+            <div>
+                <i class="fa fa-arrow-right fs-3"></i>
+            </div>
+        </div>
+          
+        
+    </section>`
+}
+
+const qrPayment=()=>{
+    bodyDisp.innerHTML=`
+    <nav class="navbar position-fixed top-0 w-100" style="z-index:1; background-color: rgb(46, 62, 97); color:white;">
+        <div></div>
+        <p>Digital Payment</p>
+        <div></div>
+    </nav>
+
+    <section class="p-3 airtimeSec "  style="height:100vh">
+        <div class="" style="height: 50px;"></div>
+       
+
+        <div class="w-100 navbar rounded rounded-4 my-2 bg-light p-3" >
+            <div class="d-flex gap-3 align-items-center">
+                <button class="border-0 bg-warning rounded rounded-circle text-light fs-5 px-3 py-2"><i class="fa fa-qrcode"></i></button>
+                <p class="my-2">QR Payment</p>
+            </div>
+            <div>
+                <i class="fa fa-arrow-right fs-3"></i>
+            </div>
+        </div>
+
+        
+    </section>`
+}
+
+const loans=()=>{
+    bodyDisp.innerHTML=`
+    <nav class="navbar position-fixed top-0 w-100" style="z-index:1; background-color: rgb(46, 62, 97); color:white;">
+        <div></div>
+        <p>Loans</p>
+        <div></div>
+    </nav>
+
+    <section class="p-3 airtimeSec "  style="height:100vh">
+        <div class="" style="height: 50px;"></div>
+       
+
+        <div class="w-100 navbar rounded rounded-4 my-2 bg-light p-3" onclick="nano()">
+            <div class="d-flex gap-3 align-items-center">
+                <button class="border-0 bg-warning rounded rounded-circle text-light fs-5 px-3 py-2">N</i></button>
+                <p class="my-2">Nano Loan</p>
+            </div>
+            <div>
+                <i class="fa fa-arrow-right fs-3"></i>
+            </div>
+        </div>
+
+        <div class="w-100 navbar rounded rounded-4 my-2 bg-light p-3" >
+            <div class="d-flex gap-3 align-items-center">
+                <button class="border-0 bg-warning rounded rounded-circle text-light fs-5 px-3 py-2">F</i></button>
+                <p class="my-2">First Advance</p>
+            </div>
+            <div>
+                <i class="fa fa-arrow-right fs-3"></i>
+            </div>
+        </div>
+
+        
+    </section>`
+}
+const nano=()=>{
+    bodyDisp.innerHTML=`
+    <nav class="navbar position-fixed top-0 w-100 px-3" style="z-index:5; background-color: rgb(46, 62, 97); color:white;">
+    <div onclick="loans()"><i class="fa text-light fa-arrow-left"></i></div>
+        <p>Nano Loan</p>
+        <div></div>
+    </nav>
+
+    <section class="p-3 airtimeSec "  style="height:100vh">
+        <div class="" style="height: 50px;"></div>
+       
+
+        <div class="w-100 navbar rounded rounded-4 my-2 bg-light p-3" >
+            <div class="d-flex gap-3 align-items-center">
+                <button class="border-0 bg-warning rounded rounded-circle text-light fs-5 px-3 py-2"><i class="fa fa-mobile"></i></button>
+                <p class="my-2">Get a loan</p>
+            </div>
+            <div>
+                <i class="fa fa-arrow-right fs-3"></i>
+            </div>
+        </div>
+
+        <div class="w-100 navbar rounded rounded-4 my-2 bg-light p-3" >
+            <div class="d-flex gap-3 align-items-center">
+                <button class="border-0 bg-warning rounded rounded-circle text-light fs-5 px-3 py-2"><i class="fa fa-mobile"></i></button>
+                <p class="my-2">See current loan</p>
+            </div>
+            <div>
+                <i class="fa fa-arrow-right fs-3"></i>
+            </div>
+        </div>
+
+        <div class="w-100 navbar rounded rounded-4 my-2 bg-light p-3" >
+            <div class="d-flex gap-3 align-items-center">
+                <button class="border-0 bg-warning rounded rounded-circle text-light fs-5 px-3 py-2"><i class="fa fa-mobile"></i></button>
+                <p class="my-2">Review Previous Loans</p>
+            </div>
+            <div>
+                <i class="fa fa-arrow-right fs-3"></i>
+            </div>
+        </div>
+
+        
+    </section>`
+}
+
+const virtualCard=()=>{
+    bodyDisp.innerHTML=`
+ 
+    <nav class="navbar position-fixed top-0 w-100 px-3" style="z-index:5; background-color: rgb(46, 62, 97); color:white;">
+    <div onclick="myAcc()"><i class="fa text-light fa-arrow-left"></i></div>
+        <p>Virtual Cards</p>
+        <div></div>
+    </nav>
+
+    <section class="p-3 airtimeSec "  style="height:100vh; z-index:15;">
+        <div class="" style="height: 50px;"></div>
+       
+
+        <div class="w-100 navbar rounded rounded-4 my-2 bg-light p-3" >
+            <div class="d-flex gap-3 align-items-center">
+                <button class="border-0 bg-warning rounded rounded-circle text-light fs-5 px-3 py-2"><i class="fa fa-credit-card"></i></button>
+                <p class="my-2">Create Virtual Cards</p>
+            </div>
+            <div>
+                <i class="fa fa-arrow-right fs-3"></i>
+            </div>
+        </div>
+
+        
+    </section>`
+}
