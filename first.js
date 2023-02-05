@@ -1148,7 +1148,7 @@ const virtualCard=()=>{
         <div></div>
     </nav>
 
-    <section class="p-3 airtimeSec "  style="height:100vh; z-index:15;">
+    <section class="p-3 airtimeSec "  style="height:100vh; z-index:10;">
         <div class="" style="height: 50px;"></div>
        
 
@@ -1160,6 +1160,56 @@ const virtualCard=()=>{
             <div>
                 <i class="fa fa-arrow-right fs-3"></i>
             </div>
+        </div>
+
+        
+    </section>`
+}
+
+const settings=()=>{
+    bodyDisp.innerHTML=bodyDisp.innerHTML=`
+    <nav class="navbar position-fixed top-0 w-100" style="z-index:1; background-color: rgb(46, 62, 97); color:white;">
+        <div></div>
+        <p class="my-2">Account Settings</p>
+        <div></div>
+    </nav>
+
+    <section class="p-3 airtimeSec">
+        <div class="" style="height: 50px;"></div>
+
+        <div class="w-100 navbar rounded rounded-4 my-3 bg-light p-3" >
+            <div class="d-flex gap-3 align-items-center">
+                <button class="border-0 bg-warning rounded rounded-circle text-light fs-5 px-3 py-2"><i class="fa fa-edit"></i></button>
+                <p class="my-2">Set Transfer Pin</p>
+            </div>
+            <div>
+                <i class="fa fa-arrow-right fs-3"></i>
+            </div>
+        </div>
+
+        <div class="w-100 navbar rounded rounded-4 my-3 bg-light p-3">
+            <div class="d-flex gap-3 align-items-center">
+                <button class="border-0 bg-warning rounded rounded-circle text-light fs-5 px-3 py-2"><i class="fa fa-share"></i></button>
+                <p class="my-2">Share This App</p>
+            </div>
+            <div>
+                <i class="fa fa-arrow-right fs-3"></i>
+            </div>
+        </div>
+
+        <div class="w-100 navbar rounded rounded-4 my-3 bg-light p-3">
+            <div class="d-flex gap-3 align-items-center">
+                <button class="border-0 bg-warning rounded rounded-circle text-light fs-5 px-3 py-2">A</button>
+                <p class="my-2">Account On & Off Switch</p>
+            </div>
+            <div>
+                <i class="fa fa-arrow-right fs-3"></i>
+            </div>
+        </div>
+
+        <div class="w-100 navbar rounded rounded-4 my-3 bg-light p-3"
+            <p>Show Password</p>
+            <input type="checkbox"  class="form-check-input">
         </div>
 
         
