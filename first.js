@@ -1177,7 +1177,7 @@ const settings=()=>{
     <section class="p-3 airtimeSec">
         <div class="" style="height: 50px;"></div>
 
-        <div class="w-100 navbar rounded rounded-4 my-3 bg-light p-3" >
+        <div class="w-100 navbar rounded rounded-4 my-3 bg-light p-3" onclick="setTransferPin()">
             <div class="d-flex gap-3 align-items-center">
                 <button class="border-0 bg-warning rounded rounded-circle text-light fs-5 px-3 py-2"><i class="fa fa-edit"></i></button>
                 <p class="my-2">Set Transfer Pin</p>
@@ -1214,4 +1214,37 @@ const settings=()=>{
 
         
     </section>`
+}
+const setTransferPin=()=>{
+    bodyDisp.innerHTML=`
+    <nav class="navbar position-fixed top-0 w-100 px-3" style="z-index:5; background-color: rgb(46, 62, 97); color:white;">
+    <div onclick="settings()"><i class="fa text-light fa-arrow-left"></i></div>
+        <p>Transfer Pin</p>
+        <div></div>
+    </nav>
+
+    <div class="" style="height: 100px;"></div>
+    <section class="p-3">
+        <header ><p class="text-center fs-3 fw-bold">BILLER CATEGORIES</p></header>
+        <input type="password" id="nPin" class="w-100 my-3 py-2 ownerAcc" placeholder="New Pin">
+        <input type="password" id="cnPin" class="w-100 py-2 ownerAcc" placeholder="Confirm New Pin">
+        <button class="btn w-100 my-5 btn-warning rounded rounded-5" onclick="setpin()">CONFIRM</button>
+    </section>
+    `
+}
+const setpin=()=>{
+    if(nPin.value=cnPin.value){
+    let transferPin = {
+        newPin : nPin.value,
+    }
+    allCustomer[currentUserIndex].pin.splice(0,1, transferPin);
+    localStorage.setItem("customerPersonalDetails", JSON.stringify(allCustomer));
+    alert("correct")
+    }
+    else if(nPin.value=="" || cnPin.value==""){
+        alert("pin incorrect")
+    }
+    else{
+
+    }
 }
