@@ -955,10 +955,13 @@ const confirmedTransferPayment = () =>{
     else if(transferPagePin.value == myPin[currentUserIndex].newPin){
     let allTransferHistory = {
         fromAccountNumber: fromAccNo.innerHTML,
+        fromAccountName: `${allCustomer[currentUserIndex].middleName} ${allCustomer[currentUserIndex].firstName}  `,
         toAccountNumber: toAccNo.innerHTML,
         transferTime:`${new Date().toLocaleTimeString()}`,
         transactionDay: tDate.innerHTML,
+        narration: narr.innerHTML,
         transferAmount: amountPaid.innerHTML,
+        beneficiaryBank: beneBank.innerHTML,
         transferID: `TR${Math.floor(Math.random()*1000)}/SPE`
     }
     allCustomer[currentUserIndex].realHist.push(allTransferHistory);
@@ -981,7 +984,7 @@ const confirmedTransferPayment = () =>{
             <div class="btn btn-warning text-light rounded rounded-circle fs-1">
                 <i class="fa fa-check"></i>
             </div>
-            <button onclick="myAcc()" class="mt-5 btn btn-warning rounded rounded-5 w-100">OK</button>
+            <button onclick="goReceipt()" class="mt-5 btn btn-warning rounded rounded-5 w-100">Generate Receipt</button>
           </div>
         </div>
         `
@@ -989,6 +992,9 @@ const confirmedTransferPayment = () =>{
 }
 
 // ===========HISTORY==================
+const goReceipt=()=>{
+    window.location.href="receipt.html";
+}
 
 const hist=()=>{
     allHistory.reverse();
@@ -1002,16 +1008,16 @@ const hist=()=>{
                 <div>
                <div class="navbar align-items-center">
                <div class="d-block">
-               <p style="margin: 0;" id="">From: ${allCustomer[currentUserIndex].fromAccountNumber}</p>
+               <p style="margin: 0;" id="">From: ${allHistory[index].fromAccountNumber}</p>
                <p style="margin: 0;" id="">to: ${allHistory[index].toAccountNumber}</p>
                <p style="margin: 0;" id="">ID: ${allHistory[index].transferID}</p>
-               <p style="margin: 0;" id="">B. Bank: ${allHistory[index]}</p>
+               <p style="margin: 0;" id="">B. Bank: ${allHistory[index].beneficiaryBank}</p>
            </div>
            <div class="text-danger">
-               <p id="hAmount">- &#8358${allHistory[index].transferAmount}</p>
+               <p id="hAmount">- ${allHistory[index].transferAmount}</p>
            </div>
                </div>
-               <p style="margin: 0; color: gray;" id="day">${allHistory[index].TransactionDay} | ${allHistory[index].transferTime}</p>
+               <p style="margin: 0; color: gray;" id="day">${allHistory[index].transactionDay} | ${allHistory[index].transferTime}</p>
             </div>    
             </div>
             `
@@ -1075,15 +1081,15 @@ const receipt=()=>{
 
     for (let index = 0; index < allHistory.length; index++) {
         // alert(allHistory[index].transactionDay)
-        receiptDate.innerHTML == `${allHistory[index].transactionDay} | ${allHistory[index].transferTime}` ;
-        recieptAmount.innerHTML == allHistory[index].transferAmount;
+        receiptDate.innerHTML = `${allHistory[index].transactionDay} | ${allHistory[index].transferTime}` ;
+        recieptAmount.innerHTML = allHistory[index].transferAmount;
         // alert(allHistory[index].fromAccountNumber)
         receiptSourceAccNumber.innerHTML = allHistory[index].fromAccountNumber;
-        // receiptSourceAccName.innerHTML == ;
-        receiptBeneAccNumber.innerHTML ==  allHistory[index].toAccountNumber;
+        receiptSourceAccName.innerHTML =allHistory[index].fromAccountName;
+        receiptBeneAccNumber.innerHTML =  allHistory[index].toAccountNumber;
         // receiptBeneAccName.innerHTML == ;
-        // receiptBank.innerHTML == ;
-        // receiptnarration.innerHTML == ;
+        receiptBank.innerHTML = allHistory[index].beneficiaryBank;
+        receiptnarration.innerHTML = allHistory[index].narration;
     }
 // window.print()
 
@@ -1242,8 +1248,6 @@ const payBill=()=>{
                 <i class="fa fa-arrow-right fs-3"></i>
             </div>
         </div>
-          
-        
     </section>`
 }
 
