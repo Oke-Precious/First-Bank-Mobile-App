@@ -1072,17 +1072,20 @@ const pada=()=>{
 // =====RECEIPT======================
 const receipt=()=>{
     // alert("9834498")
-    // for (let index = 0; index < allCustomer.length; index++) {
-        // receiptDate.innerHTML == ;
-        // recieptAmount.innerHTML == ;
-        receiptSourceAccNumber.innerHTML == allCustomer[currentUserIndex].fromAccountNumber;
+
+    for (let index = 0; index < allHistory.length; index++) {
+        // alert(allHistory[index].transactionDay)
+        receiptDate.innerHTML == `${allHistory[index].transactionDay} | ${allHistory[index].transferTime}` ;
+        recieptAmount.innerHTML == allHistory[index].transferAmount;
+        // alert(allHistory[index].fromAccountNumber)
+        receiptSourceAccNumber.innerHTML = allHistory[index].fromAccountNumber;
         // receiptSourceAccName.innerHTML == ;
-        // receiptBeneAccNumber.innerHTML == ;
+        receiptBeneAccNumber.innerHTML ==  allHistory[index].toAccountNumber;
         // receiptBeneAccName.innerHTML == ;
         // receiptBank.innerHTML == ;
         // receiptnarration.innerHTML == ;
-    // }
-
+    }
+// window.print()
 
 }
 
