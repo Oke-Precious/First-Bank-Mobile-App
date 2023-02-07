@@ -72,7 +72,7 @@ const toOpenAcc2=()=>{
             immediateTime : [],
             pin:[],
             confirmPassword: cPassword.value,
-            balance: 1000,
+            balance: 10000,
             cvv:Math.floor(Math.random()*1000),
             accNo: `319${Math.floor(Math.random()*10000000)}`,
             atmCardNumber: `5399 ${Math.floor(Math.random()*10000)} ${Math.floor(Math.random()*10000)} ${Math.floor(Math.random()*10000)}` 
@@ -171,7 +171,39 @@ const freqTrans=()=>{
         `;
         
 }
-
+const deposit=()=>{
+    if(depositAmount.value==""){
+        warningPage.style.transition="4s";
+        warningPage.overflowY="hidden";
+        warningPage.innerHTML=`
+        <div class="warningPage text-light">
+          <div class="text-center w-50">
+            <h2>Warning</h2>
+            <p>Enter Amount to Deposit</p>
+            <button onclick="cancelWarning()" class="mt-5 btn btn-warning rounded rounded-5 w-100">OK</button>
+          </div>
+        </div>
+        `
+    }
+    else{
+        
+        allCustomer[currentUserIndex].balance = Number(allCustomer[currentUserIndex].balance) + Number(depositAmount.value)
+        localStorage.setItem("customerPersonalDetails", JSON.stringify(allCustomer));
+        warningPage.style.transition="4s";
+        warningPage.overflowY="hidden";
+        warningPage.innerHTML=`
+        <div class="warningPage text-light">
+          <div class="text-center w-50">
+            <h2>Deposit Successful</h2>
+            <div class="btn btn-warning text-light rounded rounded-circle fs-1">
+                <i class="fa fa-check"></i>
+            </div>
+            <button onclick="myAcc()" class="mt-5 btn btn-warning rounded rounded-5 w-100">OK</button>
+          </div>
+        </div>
+        `
+    }
+}
 const signOut=()=>{
     warningPage.style.transition="4s";
     warningPage.style.height="100vh";
@@ -277,14 +309,22 @@ const buyAirtime = ()=>{
 }
 
 const phoneNumberkey=()=>{
-    if(enterPhone.value.length < 11){
+    if(enterPhone.value.length < 10){
         enterPhone.style.color="red";
         phoneLabel.innerHTML = "Enter a valid Phone Number"
     }
+    // else if(destinationAccount.value.length < 10){
+    //     destinationAccount.style.color="red";
+    //     destinationLabel.innerHTML = "Enter a valid Phone Number"
+    // }
     else{
         enterPhone.style.color="black";
-        phoneLabel.innerHTML = ""
+        destinationAccount.style.color="black";
+        destinationLabel.innerHTML = "";
+        phoneLabel.innerHTML="";
     }
+ 
+
 }
 
 
@@ -330,7 +370,7 @@ const contPayment=()=>{
         </div>
         `
     }
-    else if(enterPhone.value=="" || enterPhone.value.length < 11){
+    else if(enterPhone.value=="" || enterPhone.value.length < 10){
         enterPhone.style.borderBottomColor = "red";
         phoneLabel.innerHTML = "Enter a valid Phone Number"
     }
@@ -495,7 +535,7 @@ const contAirtime=()=>{
 
                 <div class="pinContainer">
                     <p>Enter Transaction PIN</p>
-                    <input type="password">
+                    <input type="password" id="confirmPin">
                 </div>
                 
                 <div class="butn w-100 gap-3 p-2 mt-5 row">
@@ -516,7 +556,24 @@ const contAirtime=()=>{
 allPhoneNo = allCustomer[currentUserIndex].history;
 
 const confirmedPayment = () =>{
-    if(allCustomer[currentUserIndex].balance < allAmount[currentUserIndex].amountPaid){
+    if(confirmPin.value=="" ){
+        warningPage.style.transition="4s";
+            warningPage.overflowY="hidden";
+            warningPage.innerHTML=`
+            <div class="warningPage text-light">
+              <div class="text-center w-50">
+                <h2>Warning</h2>
+                <p>Please, kindly enter your pin</p>
+                <button onclick="cancelWarning()" class="mt-5 btn btn-warning rounded rounded-5 w-100">OK</button>
+              </div>
+            </div>
+            `
+    }
+    
+    
+
+
+    else if(allCustomer[currentUserIndex].balance < allAmount[currentUserIndex].amountPaid){
         warningPage.style.transition="4s";
         warningPage.overflowY="hidden";
         warningPage.innerHTML=`
@@ -529,7 +586,22 @@ const confirmedPayment = () =>{
         </div>
         `
     }
-    else{
+
+    else if(confirmPin.value !== myPin[currentUserIndex].newPin){
+        warningPage.style.transition="4s";
+        warningPage.overflowY="hidden";
+        warningPage.innerHTML=`
+        <div class="warningPage text-light">
+          <div class="text-center w-50">
+            <h2>Warning</h2>
+            <p>Incorrect Pin</p>
+            <button onclick="cancelWarning()" class="mt-5 btn btn-warning rounded rounded-5 w-100">OK</button>
+          </div>
+        </div>
+        `
+    }
+
+    else if(confirmPin.value == myPin[currentUserIndex].newPin){
     let allTransactionHistory = {
         fromAccount: allCustomer[currentUserIndex].accNo,
         toAccount: allPhoneNo[currentUserIndex].airtimeNumber,
@@ -563,63 +635,10 @@ const confirmedPayment = () =>{
         </div>
         `
     }
-    
 }
 
 // ==========================AIRTIME PAGE END======================
 
-const hist=()=>{
-    allHistory.reverse();
-    for (let index = 0; index < allHistory.length; index++) {
-        trtHistDisp.innerHTML +=`
-        <div class="transC">
-        <button class="text-danger">
-            <i class="fa fa-arrow-down"></i>
-        </button>
-        <div>
-       <div class="navbar align-items-center">
-       <div class="d-block">
-       <p style="margin: 0;" id="">From: ${allCustomer[currentUserIndex].accNo}</p>
-       <p style="margin: 0;" id="toUser">to: ${allHistory[index].toAccount}</p>
-       <p style="margin: 0;">${allHistory[index].TransactionID}</p>
-   </div>
-   <div class="text-danger">
-       <p id="hAmount">- &#8358${allHistory[index].TransactionAmount}</p>
-   </div>
-       </div>
-       <p style="margin: 0; color: gray;" id="day">${allHistory[index].TransactionDay} | ${allHistory[index].TransactionTime}</p>
-    </div>    
-    </div>
-            
-                    `
-}
-    
-
-    
-    allHistory = allCustomer[currentUserIndex].realHist;
-
-    
-    
-    accNumDisp3.innerHTML +=`
-                        ${allCustomer[currentUserIndex].accNo}
-                    `
-//    accNumDisp4.innerHTML +=`
-//                     ${allCustomer[currentUserIndex].accNo}
-//                 `;
-    accBalDisp3.innerHTML +=`
-                        ${allCustomer[currentUserIndex].balance}
-                    `;
-   
-    }
-    allPhoneNo = allCustomer[currentUserIndex].history;
-    allAmount = allCustomer[currentUserIndex].amount;
-    allHistory = allCustomer[currentUserIndex].realHist;
-const goHistory=()=>{
-    window.location.href="history.html"
-}
-const pada=()=>{
-    window.history.back()
-}
 
 
             // ===============Transfer Page==================
@@ -782,7 +801,8 @@ const toMyBank=()=>{
                     </div>
                 </div>
                 
-                <input type="number" maxlength="10" id="destinationAccount" class="w-100 ownerAcc" placeholder="Enter Destination Account">
+                <input type="number" maxlength="10" onkeydown="phoneNumberkey()" id="destinationAccount" class="w-100 ownerAcc" placeholder="Enter Destination Account">
+                <label for="" id="destinationLabel"></label>
                 <input type="number" id="sendAmount" class="w-100 ownerAcc" placeholder="Enter Amount">
                 <input type="text" id="senderNarration" class="w-100 ownerAcc" placeholder="Enter Narration">
                 <button class="btn btn-warning rounded rounded-5 w-100 my-3" onclick="confirmTransfer()">Continue</button>
@@ -793,6 +813,8 @@ const toMyBank=()=>{
     `
 
 }
+
+
 
 const billAccount2=()=>{
     accNumDispp2.innerHTML="";
@@ -810,6 +832,15 @@ accBalDispp2.innerHTML +=`
 
 let transferConfirm= allCustomer[currentUserIndex].localHistory
 const confirmTransfer=()=>{
+    // if(destinationAccount.value.length < 10){
+    //     destinationAccount.style.color="red";
+    //     destinationLabel.innerHTML = "Enter a valid Phone Number"
+    // }
+    // else if(destinationAccount.value.length > 10){
+    //     destinationAccount.style.color="black";
+    //     destinationLabel.innerHTML = ""
+    // }
+    // else{
     let transferHistory = {
         debitAccount : `${allCustomer[currentUserIndex].accNo}`,
         debitBalance: `₦${allCustomer[currentUserIndex].balance}`,
@@ -832,49 +863,230 @@ const confirmTransfer=()=>{
             <section class="p-3">
                 <div class="confirmBuy">
                     <p>From:</p>
-                    <p id="">${transferConfirm[currentUserIndex].debitAccount}</p>
+                    <p id="fromAccNo">${transferConfirm[currentUserIndex].debitAccount}</p>
                 </div>
 
                 <div class="confirmBuy">
                     <p>Beneficiary Bank:</p>
-                    <p id="">${transferConfirm[currentUserIndex].beneficiaryBank}</p>
+                    <p id="beneBank">${transferConfirm[currentUserIndex].beneficiaryBank}</p>
                 </div>
 
                 <div class="confirmBuy">
                     <p>To:</p>
-                    <p id="">${transferConfirm[currentUserIndex].destinationAcc}</p>
+                    <p id="toAccNo">${transferConfirm[currentUserIndex].destinationAcc}</p>
                 </div>
 
                 <div class="confirmBuy">
                     <p>Amount:</p>
-                    <p id="">${transferConfirm[currentUserIndex].amountSend}</p>
+                    <p id="amountPaid">₦${transferConfirm[currentUserIndex].amountSend}.00</p>
                 </div>
 
                 <div class="confirmBuy">
                     <p>Date:</p>
-                    <p id="">${transferConfirm[currentUserIndex].transferDate}.00</p>
+                    <p id="tDate">${transferConfirm[currentUserIndex].transferDate}</p>
                 </div>
 
                 <div class="confirmBuy">
                     <p>Narration:</p>
-                    <p id="">${transferConfirm[currentUserIndex].narration}</p>
+                    <p id="narr">${transferConfirm[currentUserIndex].narration}</p>
                 </div>
 
                 <div class="pinContainer">
                     <p>Enter Transaction PIN</p>
-                    <input type="password">
+                    <input id="transferPagePin" type="password">
                 </div>
                 
                 <div class="butn w-100 gap-3 p-2 mt-5 row">
-                    <button class="btn col-9 btn-warning rounded rounded-5" onclick="confirmedPayment()">CONFIRM</button>
+                    <button class="btn col-9 btn-warning rounded rounded-5" onclick="confirmedTransferPayment()">CONFIRM</button>
                     <button class="btn col-2 btn-warning rounded rounded-circle fs-3"><i class="fa fa-fingerprint"></i></button>
                 </div>
             </section>
     `
-    
+// }
 }
 
+const confirmedTransferPayment = () =>{
+    if(transferPagePin.value=="" ){
+        warningPage.style.transition="4s";
+            warningPage.overflowY="hidden";
+            warningPage.innerHTML=`
+            <div class="warningPage text-light">
+              <div class="text-center w-50">
+                <h2>Warning</h2>
+                <p>Please, kindly enter your pin</p>
+                <button onclick="cancelWarning()" class="mt-5 btn btn-warning rounded rounded-5 w-100">OK</button>
+              </div>
+            </div>
+            `
+    }
+    
+    
 
+
+    else if(allCustomer[currentUserIndex].balance < transferConfirm[currentUserIndex].amountSend){
+        warningPage.style.transition="4s";
+        warningPage.overflowY="hidden";
+        warningPage.innerHTML=`
+        <div class="warningPage text-light">
+          <div class="text-center w-50">
+            <h2>Warning</h2>
+            <p>Insufficient fund</p>
+            <button onclick="cancelWarning()" class="mt-5 btn btn-warning rounded rounded-5 w-100">OK</button>
+          </div>
+        </div>
+        `
+    }
+
+    else if(transferPagePin.value !== myPin[currentUserIndex].newPin){
+        warningPage.style.transition="4s";
+        warningPage.overflowY="hidden";
+        warningPage.innerHTML=`
+        <div class="warningPage text-light">
+          <div class="text-center w-50">
+            <h2>Warning</h2>
+            <p>Incorrect Pin</p>
+            <button onclick="cancelWarning()" class="mt-5 btn btn-warning rounded rounded-5 w-100">OK</button>
+          </div>
+        </div>
+        `
+    }
+    
+
+    else if(transferPagePin.value == myPin[currentUserIndex].newPin){
+    let allTransferHistory = {
+        fromAccountNumber: fromAccNo.innerHTML,
+        toAccountNumber: toAccNo.innerHTML,
+        transferTime:`${new Date().toLocaleTimeString()}`,
+        transactionDay: tDate.innerHTML,
+        transferAmount: amountPaid.innerHTML,
+        transferID: `TR${Math.floor(Math.random()*1000)}/SPE`
+    }
+    allCustomer[currentUserIndex].realHist.push(allTransferHistory);
+    localStorage.setItem("customerPersonalDetails", JSON.stringify(allCustomer))
+
+
+    allAmount = allCustomer[currentUserIndex].amount;
+    // alert("worki oo")
+    
+    
+        allCustomer[currentUserIndex].balance = Number(allCustomer[currentUserIndex].balance) - Number(transferConfirm[currentUserIndex].amountSend)
+        localStorage.setItem("customerPersonalDetails", JSON.stringify(allCustomer));
+       
+        warningPage.style.transition="4s";
+        warningPage.overflowY="hidden";
+        warningPage.innerHTML=`
+        <div class="warningPage text-light">
+          <div class="text-center w-50">
+            <h2>Successful</h2>
+            <div class="btn btn-warning text-light rounded rounded-circle fs-1">
+                <i class="fa fa-check"></i>
+            </div>
+            <button onclick="myAcc()" class="mt-5 btn btn-warning rounded rounded-5 w-100">OK</button>
+          </div>
+        </div>
+        `
+    }
+}
+
+// ===========HISTORY==================
+
+const hist=()=>{
+    allHistory.reverse();
+    for (let index = 0; index < allHistory.length; index++) {
+        if (allHistory[index].toAccount== undefined && allHistory[index].TransactionID== undefined && allHistory[index].TransactionAmount == undefined && allHistory[index].TransactionDay == undefined && allHistory[index].TransactionTime == undefined) {
+                trtHistDisp.innerHTML +=`
+                <div class="transC">
+                <button class="text-danger">
+                    <i class="fa fa-arrow-down"></i>
+                </button>
+                <div>
+               <div class="navbar align-items-center">
+               <div class="d-block">
+               <p style="margin: 0;" id="">From: ${allCustomer[currentUserIndex].fromAccountNumber}</p>
+               <p style="margin: 0;" id="">to: ${allHistory[index].toAccountNumber}</p>
+               <p style="margin: 0;" id="">ID: ${allHistory[index].transferID}</p>
+               <p style="margin: 0;" id="">B. Bank: ${allHistory[index]}</p>
+           </div>
+           <div class="text-danger">
+               <p id="hAmount">- &#8358${allHistory[index].transferAmount}</p>
+           </div>
+               </div>
+               <p style="margin: 0; color: gray;" id="day">${allHistory[index].TransactionDay} | ${allHistory[index].transferTime}</p>
+            </div>    
+            </div>
+            `
+                
+        }
+        else{
+        
+        trtHistDisp.innerHTML +=`
+        <div class="transC">
+        <button class="text-danger">
+            <i class="fa fa-arrow-down"></i>
+        </button>
+        <div>
+       <div class="navbar align-items-center">
+       <div class="d-block">
+       <p style="margin: 0;" id="">From: ${allCustomer[currentUserIndex].accNo}</p>
+       <p style="margin: 0;" id="">to: ${allHistory[index].toAccount}</p>
+       <p style="margin: 0;" id="">${allHistory[index].TransactionID}</p>
+   </div>
+   <div class="text-danger">
+       <p id="hAmount">- &#8358${allHistory[index].TransactionAmount}</p>
+   </div>
+       </div>
+       <p style="margin: 0; color: gray;" id="day">${allHistory[index].TransactionDay} | ${allHistory[index].TransactionTime}</p>
+    </div>    
+    </div>
+    `
+}
+}
+    
+
+    
+    allHistory = allCustomer[currentUserIndex].realHist;
+
+    
+    
+    accNumDisp3.innerHTML +=`
+                        ${allCustomer[currentUserIndex].accNo}
+                    `
+//    accNumDisp4.innerHTML +=`
+//                     ${allCustomer[currentUserIndex].accNo}
+//                 `;
+    accBalDisp3.innerHTML +=`
+                        ${allCustomer[currentUserIndex].balance}
+                    `;
+   
+    }
+    allPhoneNo = allCustomer[currentUserIndex].history;
+    allAmount = allCustomer[currentUserIndex].amount;
+    allHistory = allCustomer[currentUserIndex].realHist;
+const goHistory=()=>{
+    window.location.href="history.html"
+}
+const pada=()=>{
+    window.history.back()
+}
+
+// =====RECEIPT======================
+const receipt=()=>{
+    // alert("9834498")
+    // for (let index = 0; index < allCustomer.length; index++) {
+        // receiptDate.innerHTML == ;
+        // recieptAmount.innerHTML == ;
+        receiptSourceAccNumber.innerHTML == allCustomer[currentUserIndex].fromAccountNumber;
+        // receiptSourceAccName.innerHTML == ;
+        // receiptBeneAccNumber.innerHTML == ;
+        // receiptBeneAccName.innerHTML == ;
+        // receiptBank.innerHTML == ;
+        // receiptnarration.innerHTML == ;
+    // }
+
+
+}
+
+// ==================HISTORY END
 const addTransBene = ()=>{
     bodyDisp.innerHTML =    `
     <nav class="navbar p-2 position-fixed w-100" style="z-index:7; background-color: rgb(46, 62, 97); color:white;">
@@ -1232,19 +1444,60 @@ const setTransferPin=()=>{
     </section>
     `
 }
+let myPin = allCustomer[currentUserIndex].pin;
 const setpin=()=>{
-    if(nPin.value=cnPin.value){
-    let transferPin = {
-        newPin : nPin.value,
+    
+    if(nPin.value=="" || cnPin.value=="" || nPin.value=="" && cnPin.value==""){
+            
+    warningPage.style.transition="4s";
+    warningPage.overflowY="hidden";
+    warningPage.innerHTML=`
+    <div class="warningPage text-light">
+      <div class="text-center w-50">
+        <h2>Warning</h2>
+        <div>
+            Kindly Input Pin
+        </div>
+        <button onclick="cancelWarning()" class="mt-5 btn btn-warning rounded rounded-5 w-100">OK</button>
+      </div>
+    </div>
+    `
     }
-    allCustomer[currentUserIndex].pin.splice(0,1, transferPin);
-    localStorage.setItem("customerPersonalDetails", JSON.stringify(allCustomer));
-    alert("correct")
-    }
-    else if(nPin.value=="" || cnPin.value==""){
-        alert("pin incorrect")
-    }
+    else if(nPin.value==cnPin.value){
+        let transferPin = {
+            newPin : cnPin.value,
+        }
+        allCustomer[currentUserIndex].pin.splice(0,1, transferPin);
+        localStorage.setItem("customerPersonalDetails", JSON.stringify(allCustomer));
+         
+        warningPage.style.transition="4s";
+        warningPage.overflowY="hidden";
+        warningPage.innerHTML=`
+        <div class="warningPage text-light">
+          <div class="text-center w-50">
+            <h2>Pin Set Successful</h2>
+            <div class="btn btn-warning text-light rounded rounded-circle fs-1">
+                <i class="fa fa-check"></i>
+            </div>
+            <button onclick="myAcc()" class="mt-5 btn btn-warning rounded rounded-5 w-100">OK</button>
+          </div>
+        </div>
+        `
+        }
     else{
-
+        warningPage.style.transition="4s";
+        warningPage.overflowY="hidden";
+        warningPage.innerHTML=`
+        <div class="warningPage text-light">
+          <div class="text-center w-50">
+            <h2>Warning</h2>
+            <div>
+                Incorrect Pin
+            </div>
+            <button onclick="cancelWarning()" class="mt-5 btn btn-warning rounded rounded-5 w-100">OK</button>
+          </div>
+        </div>
+        `
     }
+    
 }

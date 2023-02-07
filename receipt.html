@@ -10,10 +10,65 @@
     <link rel="stylesheet" href="bootstrap.css">
     <link rel="stylesheet" href="./all.css">
 </head>
-<body>
-    <div class="btn btn-warning text-light rounded rounded-circle fs-1">
-        <i class="fa fa-check"></i>
+<body onload="receipt()">
+<section class="receipt">
+    <div class="logobg"></div>
+    <div class="recieptBody">
+        <div class="receiptLogo">
+            <img src="./my sketch logo black transpt.png" alt="">
+            <p class="logoHeader"><i>PreciousBank</i></p>
+            <p class="label"><i>Since 2023</i></p>
+        </div>
+        <header class="text-center header">Transaction Receipt</header>
+        <div class="receiptContent">
+            <div class="d-flex align-items-center gap-2">
+                <p class="receiptTitle">Transaction Date:</p>
+                <p id="receiptDate"></p>
+            </div>
+
+            <div class="d-flex align-items-center gap-2">
+                <p class="receiptTitle">Transaction Type:</p>
+                <p class="recieptItem">NIP Transfer</p>
+            </div>
+
+            <div class="d-flex align-items-center gap-2">
+                <p class="receiptTitle">Amount:</p>
+                <p class="recieptItem" id="recieptAmount"></p>
+            </div>
+
+            <div class="d-flex align-items-center gap-2">
+                <p class="receiptTitle">Source Account:</p>
+                <p class="recieptItem" id="receiptSourceAccNumber"></p>
+            </div>
+
+            <div class="d-flex align-items-center gap-2">
+                <p class="receiptTitle">Source Account Name:</p>
+                <p class="recieptItem" id="receiptSourceAccName"></p>
+            </div>
+
+            <div class="d-flex align-items-center gap-2">
+                <p class="receiptTitle">Beneficiary Account Number:</p>
+                <p class="recieptItem" id="receiptBeneAccNumber"></p>
+            </div>
+
+            <div class="d-flex align-items-center gap-2">
+                <p class="receiptTitle">Beneficiary Account Name:</p>
+                <p class="recieptItem" id="receiptBeneAccName">Balablu Bulaba</p>
+            </div>
+
+            <div class="d-flex align-items-center gap-2">
+                <p class="receiptTitle">Bank:</p>
+                <p class="recieptItem" id="receiptBank"></p>
+            </div>
+
+            <div class="d-flex align-items-center gap-2">
+                <p class="receiptTitle">Narration:</p>
+                <p class="recieptItem" id="receiptnarration"></p>
+            </div>
+        </div>
+        <footer class="text-center footer">Generated from PreciousMobile</footer>
     </div>
+</section>
 
 
     <script src="first.js"></script>

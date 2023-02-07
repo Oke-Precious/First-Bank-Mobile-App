@@ -2,8 +2,10 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    overflow-x: hidden;
     /* outline: red solid 1px; */
 }
+
 .land{
     background-image: url(./bg.webp);
     background-repeat: no-repeat;
@@ -207,7 +209,7 @@
 }
 .sec2{
     background-color: white;
-    margin-top: 200px;
+    /* margin-top: 200px; */
 }
 .iconTaskBut{
     background-color: transparent;
@@ -424,4 +426,68 @@
 }
 #enterAmount{
     margin-bottom: -50px;
+}
+.receipt{
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    /* outline: red 1px solid; */
+    /* text */
+}
+.logobg{
+    position: absolute;
+    height:100vh;
+    width: 100%;
+    background-image: url(./my\ sketch\ logo\ black\ transpt.png);
+    background-size: 60%;
+    /* back */
+    background-position:50px;
+    opacity: 5%;
+}
+.receiptLogo{
+    text-align: center;
+    padding: 20px;
+}
+.recieptBody{
+    padding: 0 40px;
+    width: 100%;
+}
+.receiptLogo img{
+    width: 50px;
+}
+.receiptLogo .logoHeader {
+    color: rgb(15, 15, 75);
+    font-size: 35px;
+    margin-top: -10px;
+    font-weight: 500;
+}
+.receiptLogo .label{
+    color: rgb(15, 15, 75);
+    font-weight: 500;
+    margin-top:-20px;
+}
+.recieptBody .header{
+    color: rgb(15, 15, 75);
+    font-weight: 500;
+    font-family: 'Times New Roman', Times, serif;
+    margin-top: -20px;
+    /* font-size: 17px; */
+    border-bottom: 1px solid rgb(228, 195, 9);
+}
+.recieptBody .footer{
+    color: rgb(15, 15, 75);
+    font-weight: 500;
+    font-family: 'Times New Roman', Times, serif;
+    margin-top: 50px;
+    /* font-size: 17px; */
+    border-top: 1px solid rgb(228, 195, 9);
+}
+.receiptContent{
+    margin-top: 20px;
+}
+.receiptContent .receiptTitle{
+    font-size: 17px;
+    color: rgb(15, 15, 75);
+    font-weight: 600;
+    font-family: 'Times New Roman', Times, serif;
 }
