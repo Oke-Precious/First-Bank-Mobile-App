@@ -19,33 +19,33 @@
                 <div style="background-color:rgb(57, 57, 104) ;" class="offcanvas leftDet offcanvas-start w-75" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions"
                     aria-labelledby="offcanvasWithBothOptionsLabel">
                     <div class="offcanvas-body  offbtnns">
-                        <button class="" onclick="myAcc()"><i class="far fa-user"> </i> <p>My account</p></button>
+                        <button class="" data-bs-dismiss="offcanvas" onclick="myAcc()"><i class="far fa-user"> </i> <p>My account</p></button>
         
-                        <button class=""><i class="fa fa-exchange-alt"> </i> <p>Frequent Transaction</p></button>
+                        <button class="" onclick="freqTrans()" data-bs-dismiss="offcanvas"><i class="fa fa-exchange-alt"> </i> <p>Frequent Transaction</p></button>
         
-                        <button class=""><i class="fa fa-money-bills"> </i> <p>Pay Bills</p></button>
+                        <button onclick="payBill()" data-bs-dismiss="offcanvas" class=""><i class="fa fa-money-bills"> </i> <p>Pay Bills</p></button>
         
-                        <button class="" onclick="buyAirtime()"><i class="fa fa-mobile-android"> </i> <p>Buy Airtime</p></button>
+                        <button data-bs-dismiss="offcanvas" class="" onclick="buyAirtime()"><i class="fa fa-mobile-android"> </i> <p>Buy Airtime</p></button>
         
-                        <button class="" onclick="transfer()"><i class="fa fa-exchange"> </i> <p>Transfer Money</p></button>
+                        <button class="" data-bs-dismiss="offcanvas" onclick="transfer()"><i class="fa fa-exchange"> </i> <p>Transfer Money</p></button>
         
-                        <button class=""><i class="fa fa-user"> </i> <p>Beneficiary Management</p></button>
+                        <button class="" data-bs-dismiss="offcanvas"><i class="fa fa-user"> </i> <p>Beneficiary Management</p></button>
         
-                        <button class=""><i class="far fa-credit-card"> </i> <p>Card Services</p></button>
+                        <button class="" data-bs-dismiss="offcanvas" onclick="virtualCard()"><i class="far fa-credit-card"> </i> <p>Card Services</p></button>
         
-                        <button class=""><i class="fa fa-exclamation-circle"> </i> <p>Self Service</p></button>
+                        <button class="" data-bs-dismiss="offcanvas"><i class="fa fa-exclamation-circle"> </i> <p>Self Service</p></button>
         
-                        <button class=""><p class="">&#8358 </p> <p>My account</p></button>
+                        <button class=""  data-bs-dismiss="offcanvas"><p class="">&#8358 </p> <p>My account</p></button>
         
-                        <button class=""><i class="fa fa-credit-card"> </i> <p>Digital Payment</p></button>
+                        <button class="" data-bs-dismiss="offcanvas"><i class="fa fa-credit-card"> </i> <p>Digital Payment</p></button>
         
-                        <button class=""><i class="fa fa-glass-cheers"> </i> <p>Lifestyle</p></button>
+                        <button class="" onclick="freqTrans()" data-bs-dismiss="offcanvas"><i class="fa fa-glass-cheers"> </i> <p>Lifestyle</p></button>
         
                         <hr class="border-light border-2 bg-light">
         
-                        <button class=""><i class="fa fa-cog"> </i> <p>Account Setting</p></button>
+                        <button class="" data-bs-dismiss="offcanvas" onclick="settings()"><i class="fa fa-cog"> </i> <p>Account Setting</p></button>
         
-                        <button class=""><i class="fa fa-share"> </i> <p>Share Experience</p></button>
+                        <button data-bs-dismiss="offcanvas" class=""><i class="fa fa-share"> </i> <p>Share Experience</p></button>
         
                         <button class="" onclick="signOut()"><i class="fa fa-sign-out"> </i> <p>Log out</p></button>
                         
@@ -91,6 +91,11 @@
         <div class="p-2">
             <input type="number" id="depositAmount" placeholder="Enter Amount to Deposit" class="form-control w-100">
             <button class="w-100 btn form-control btn-warning my-2" onclick="deposit()">Deposit</button>
+           
+              
+              
+
+
         </div>
         <section class="sec2 w-100 d-flex align-items-center justify-content-center">
             <div class="row w-100 justify-content-center taskCont">
@@ -177,7 +182,7 @@
             </div>
         </section>
     </div>  
-    <div id="dispBlur"></div>
+    <!-- <div id="dispBlur"></div> -->
     
 
     <p class="spaced"></p>

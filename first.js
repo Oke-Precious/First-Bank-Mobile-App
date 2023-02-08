@@ -204,7 +204,7 @@ const deposit=()=>{
         `
         let allDepositHistory = {
             SourceAccount: allCustomer[currentUserIndex].accNo,
-            amountDeposit:  depositAmount.value,
+            amountDeposit:  `₦${depositAmount.value}`,
             depositTime:`${new Date().toLocaleTimeString()}`,
             depositDay: new Date().toLocaleDateString(),
             totalAmount: ` ${allCustomer[currentUserIndex].balance}.00`,
@@ -223,7 +223,8 @@ const signOut=()=>{
           <div class="text-center w-50">
             <h2>Warning</h2>
             <p>Are you sure you want to sign out</p>
-            <button onclick="cancelWarning()" class="mt-5 btn btn-warning rounded rounded-5 w-100">No</button>
+            <button onclick="myAcc()" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions"
+            aria-controls="offcanvasWithBothOptions" class="mt-5 btn btn-warning rounded rounded-5 w-100">No</button>
             <button class="mt-5 btn btn-warning rounded rounded-5 w-100" onclick="logContinue()">Continue</button>
           </div>
         </div>
@@ -234,9 +235,9 @@ const logContinue=()=>{
     window.location.href="firstsignIn.html";
 };
 
-const logCancel=()=>{
-    dispBlur.innerHTML = "";
-}
+// const logCancel=()=>{
+//     dispBlur.innerHTML = "";
+// }
 
 const backFav = ()=>{
     buyAirtime()
@@ -362,7 +363,8 @@ const displayNet=(param)=>{
 
 const cancelWarning=()=>{
     warningPage.innerHTML="";
-    warningPage.style.transition="4s";
+    // dispBlur.innerHTML=""
+    warningPage.style.transition=="4s";
     
 }
 
@@ -1009,10 +1011,112 @@ const goReceipt=()=>{
 const hist=()=>{
     allHistory.reverse();
     for (let index = 0; index < allHistory.length; index++) {
-        if (allHistory[index].toAccount== undefined && allHistory[index].TransactionID== undefined && allHistory[index].TransactionAmount == undefined && allHistory[index].TransactionDay == undefined && allHistory[index].TransactionTime == undefined) {
+        if(allHistory[index].beneficiaryBank ==undefined  && allHistory[index].fromAccountName ==undefined && allHistory[index].fromAccountNumber==undefined && allHistory[index].narration==undefined && allHistory[index].toAccountNumber==undefined && allHistory[index].transactionDay==undefined && allHistory[index].transferAmount==undefined && allHistory[index].transferID==undefined && allHistory[index].transferTime==undefined){
+        
+            trtHistDisp.innerHTML +=`
+            <div class="transC w-100" onclick="getReceipt(${index})" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+  
+ 
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content w-100"  style="height:100vh;">
+        <div class=" w-100">
+        <section class="receipt" style="margin-top:-20px; ">
+        <div class="logobg"></div>
+        <div class="recieptBod">
+            <div class="receiptLogo">
+                <img src="./my sketch logo black transpt.png" alt="">
+                <p class="logoHeader"><i>PreciousBank</i></p>
+                <p class="label"><i>Since 2023</i></p>
+            </div>
+            <header class="text-center header">Transaction Receipt</header>
+            <div class="receiptContent">
+                <div class="d-flex align-items-center gap-2">
+                    <p class="receiptTitle">Transaction Date:</p>
+                    <p id="receiptDate" class="recieptItem"></p>
+                </div>
+    
+                <div class="d-flex align-items-center gap-2">
+                    <p class="receiptTitle">Transaction Type:</p>
+                    <p class="recieptItem">NIP Transfer</p>
+                </div>
+    
+                <div class="d-flex align-items-center gap-2">
+                    <p class="receiptTitle">Amount:</p>
+                    <p class="recieptItem" id="recieptAmount"></p>
+                </div>
+    
+                <div class="d-flex align-items-center gap-2">
+                    <p class="receiptTitle">Source Account:</p>
+                    <p class="recieptItem" id="receiptSourceAccNumber"></p>
+                </div>
+    
+                <div class="d-flex align-items-center gap-2">
+                    <p class="receiptTitle">Source Account Name:</p>
+                    <p class="recieptItem" id="receiptSourceAccName"></p>
+                </div>
+    
+                <div class="d-flex align-items-center gap-2">
+                    <p class="receiptTitle">Beneficiary Account Number:</p>
+                    <p class="recieptItem" id="receiptBeneAccNumber"></p>
+                </div>
+    
+                <div class="d-flex align-items-center gap-2">
+                    <p class="receiptTitle">Beneficiary Account Name:</p>
+                    <p class="recieptItem" id="receiptBeneAccName">Balablu Bulaba</p>
+                </div>
+    
+                <div class="d-flex align-items-center gap-2">
+                    <p class="receiptTitle">Bank:</p>
+                    <p class="recieptItem" id="receiptBank"></p>
+                </div>
+    
+                <div class="d-flex align-items-center gap-2">
+                    <p class="receiptTitle">Narration:</p>
+                    <p class="recieptItem" id="receiptnarration"></p>
+                </div>
+            </div>
+            <footer class="text-center footer">Generated from PreciousMobile</footer>
+        </div>
+    </section>
+    <div class="d-flex gap-2 p-2">
+        
+    </div>
+    
+        </div>
+        <div class=" w-100  gap-2 justify-content-center d-flex">
+            <button class=" okr" data-bs-dismiss="modal">Cancel</button>
+            <button class=" ddr" onclick="downloadReceipt()">Download</button>
+        </div>
+      </div>
+    </div>
+  </div>
+            <button class="bg-light withdepo text-success">
+                <i class="fa fa-arrow-up"></i>
+            </button>
+            <div>
+           <div class="navbar gap-5 w-100 align-items-center">
+           <div class="d-block">
+                <p style="margin: 0;" id="">From: ${allHistory[index].SourceAccount}</p>
+                <p style="margin: 0;" id="">to: ${allHistory[index].SourceAccount}</p>
+                <p style="margin: 0;" id="">ID: ${allHistory[index].depositID}</p>
+                <p style="margin: 0;" id="">Total: ${allHistory[index].totalAmount}</p>
+            </div>
+       <div class="text-success">
+           <p id="hAmount"> ${allHistory[index].amountDeposit}</p>
+       </div>
+           </div>
+           <p style="margin: 0; color: gray;" id="day">${allHistory[index].depositDay} | ${allHistory[index].depositTime}</p>
+        </div>    
+        </div>
+        `
+            
+            }
+        
+        else if (allHistory[index].toAccount== undefined && allHistory[index].TransactionID== undefined && allHistory[index].TransactionAmount == undefined && allHistory[index].TransactionDay == undefined && allHistory[index].TransactionTime == undefined) {
                 trtHistDisp.innerHTML +=`
                 <div class="transC">
-                <button class="text-danger">
+                <button class="text-danger withdepo">
                     <i class="fa fa-arrow-down"></i>
                 </button>
                 <div>
@@ -1033,39 +1137,13 @@ const hist=()=>{
             `
                 
         }
-        else if(allHistory[index].toAccount== undefined && allHistory[index].TransactionID== undefined && allHistory[index].TransactionAmount == undefined && allHistory[index].TransactionDay == undefined && allHistory[index].TransactionTime == undefined || allHistory[index].fromAccountNumber== undefined && allHistory[index].toAccountNumber== undefined && allHistory[index].transferID== undefined && allHistory[index].beneficiaryBank== undefined && allHistory[index].transferAmount== undefined && allHistory[index].transactionDay==undefined && allHistory[index].transferTime){
-            alert(allHistory[index].SourceAccount);
-            trtHistDisp.innerHTML +=`
-            <div class="transC">
-            <button class="text-success">
-                <i class="fa fa-arrow-up"></i>
-            </button>
-            <div>
-           <div class="navbar align-items-center">
-           <div class="d-block">
-           <p style="margin: 0;" id="">From: ${allHistory[index].SourceAccount}</p>
-           <p style="margin: 0;" id="">to: ${allHistory[index].toAccountNumber}</p>
-           <p style="margin: 0;" id="">ID: ${allHistory[index].depositID}</p>
-           <p style="margin: 0;" id="">Total: ${allHistory[index].totalAmount}</p>
-           <p style="margin: 0;" id="">B. Bank: ${allHistory[index].beneficiaryBank}</p>
-       </div>
-       <div class="text-danger">
-           <p id="hAmount"> ${allHistory[index].amountDeposit}</p>
-       </div>
-           </div>
-           <p style="margin: 0; color: gray;" id="day">${allHistory[index].depositDay} | ${allHistory[index].depositTime}</p>
-        </div>    
-        </div>
-        `
-            
-            }
          
 
         else{
         
         trtHistDisp.innerHTML +=`
         <div class="transC">
-        <button class="text-danger">
+        <button class="text-danger withdepo">
             <i class="fa fa-arrow-down"></i>
         </button>
         <div>
@@ -1113,19 +1191,53 @@ const pada=()=>{
     window.history.back()
 }
 
+const getReceipt=(userIndex)=>{
+for (let index = 0; index < allCustomer.length; index++) {
+
+    
+
+    historyBody.innerHTML==`
+    <div class="w-100 p-0 ownerAccD" id="" onclick="" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom"
+    aria-controls="offcanvasBottom">
+    Select Beneficiary Bank
+</div>
+<i class="fa position-absolute angleDbtn fa-angle-down"></i>
+</div>
+<div class="offcanvas offcanvas-bottom" style="height: 100vh;" tabindex="-1" id="offcanvasBottom"
+aria-labelledby="offcanvasBottomLabel">
+<div class="offcanvas-header">
+
+</div>
+<div class="offcanvas-body small">
+    <header class="fs-3 text-center mb-5">Select account to debit</header>
+
+    <div class="networkBTN" data-bs-dismiss="offcanvas">
+    
+    <button onclick="displayNet('Precious Bank')" data-bs-dismiss="offcanvas">Precious Bank</button>
+    <button onclick="displayNet('Special Bank')" data-bs-dismiss="offcanvas">Special Bank</button>
+    <button onclick="displayNet('SQI Bank')" data-bs-dismiss="offcanvas">SQI Bank</button>
+    <button onclick="displayNet('Kuda Bank')" data-bs-dismiss="offcanvas">Kuda Bank</button></button>
+
+    </div>
+    <div class="d-flex justify-content-center">
+        <button type="button" class=" btn" style="position: fixed; bottom: 2%; margin: auto;"
+            data-bs-dismiss="offcanvas" aria-label="Close">Cancel</button>
+    </div>
+</div>
+</div>
+    `
+}
+}
 // =====RECEIPT======================
 const receipt=()=>{
     // alert("9834498")
 
     for (let index = 0; index < allHistory.length; index++) {
-        // alert(allHistory[index].transactionDay)
         receiptDate.innerHTML = `${allHistory[index].transactionDay} | ${allHistory[index].transferTime}` ;
         recieptAmount.innerHTML = allHistory[index].transferAmount;
-        // alert(allHistory[index].fromAccountNumber)
         receiptSourceAccNumber.innerHTML = allHistory[index].fromAccountNumber;
         receiptSourceAccName.innerHTML =allHistory[index].fromAccountName;
         receiptBeneAccNumber.innerHTML =  allHistory[index].toAccountNumber;
-        // receiptBeneAccName.innerHTML == ;
         receiptBank.innerHTML = allHistory[index].beneficiaryBank;
         receiptnarration.innerHTML = allHistory[index].narration;
     }
