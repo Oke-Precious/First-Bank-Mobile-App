@@ -202,6 +202,16 @@ const deposit=()=>{
           </div>
         </div>
         `
+        let allDepositHistory = {
+            SourceAccount: allCustomer[currentUserIndex].accNo,
+            amountDeposit:  depositAmount.value,
+            depositTime:`${new Date().toLocaleTimeString()}`,
+            depositDay: new Date().toLocaleDateString(),
+            totalAmount: ` ${allCustomer[currentUserIndex].balance}.00`,
+            depositID: `DP${Math.floor(Math.random()*1000)}NIP${Math.floor(Math.random()*10000)}`
+        }
+        allCustomer[currentUserIndex].realHist.push(allDepositHistory);
+        localStorage.setItem("customerPersonalDetails", JSON.stringify(allCustomer))
     }
 }
 const signOut=()=>{
@@ -1023,6 +1033,34 @@ const hist=()=>{
             `
                 
         }
+        else if(allHistory[index].toAccount== undefined && allHistory[index].TransactionID== undefined && allHistory[index].TransactionAmount == undefined && allHistory[index].TransactionDay == undefined && allHistory[index].TransactionTime == undefined || allHistory[index].fromAccountNumber== undefined && allHistory[index].toAccountNumber== undefined && allHistory[index].transferID== undefined && allHistory[index].beneficiaryBank== undefined && allHistory[index].transferAmount== undefined && allHistory[index].transactionDay==undefined && allHistory[index].transferTime){
+            alert(allHistory[index].SourceAccount);
+            trtHistDisp.innerHTML +=`
+            <div class="transC">
+            <button class="text-success">
+                <i class="fa fa-arrow-up"></i>
+            </button>
+            <div>
+           <div class="navbar align-items-center">
+           <div class="d-block">
+           <p style="margin: 0;" id="">From: ${allHistory[index].SourceAccount}</p>
+           <p style="margin: 0;" id="">to: ${allHistory[index].toAccountNumber}</p>
+           <p style="margin: 0;" id="">ID: ${allHistory[index].depositID}</p>
+           <p style="margin: 0;" id="">Total: ${allHistory[index].totalAmount}</p>
+           <p style="margin: 0;" id="">B. Bank: ${allHistory[index].beneficiaryBank}</p>
+       </div>
+       <div class="text-danger">
+           <p id="hAmount"> ${allHistory[index].amountDeposit}</p>
+       </div>
+           </div>
+           <p style="margin: 0; color: gray;" id="day">${allHistory[index].depositDay} | ${allHistory[index].depositTime}</p>
+        </div>    
+        </div>
+        `
+            
+            }
+         
+
         else{
         
         trtHistDisp.innerHTML +=`
@@ -1093,6 +1131,9 @@ const receipt=()=>{
     }
 // window.print()
 
+}
+const downloadReceipt=()=>{
+    window.print()
 }
 
 // ==================HISTORY END

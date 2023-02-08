@@ -429,7 +429,7 @@
 }
 .receipt{
     position: relative;
-    height: 100vh;
+    /* height: 100vh; */
     width: 100%;
     /* outline: red 1px solid; */
     /* text */
@@ -474,6 +474,9 @@
     /* font-size: 17px; */
     border-bottom: 1px solid rgb(228, 195, 9);
 }
+.receiptBodyCon{
+    height: 100vh;
+}
 .recieptBody .footer{
     color: rgb(15, 15, 75);
     font-weight: 500;
@@ -493,4 +496,22 @@
 }
 .recieptItem{
     font-weight: 500;
+}
+.okr, .ddr{
+    padding:10px 20px;
+    border-radius: 10px;
+    color: white;
+    font-weight: 500;
+    border: 0;
+    margin-top: 20px;
+}
+.okr{
+    background-color:rgb(228, 195, 9);
+}
+.ddr{
+    background-color: rgb(15, 15, 75);
+}
+.okr:hover, .ddr:hover{
+    transform: scaleY(1.2);
+    box-shadow: gray 0px 0px 7px 0px;
 }

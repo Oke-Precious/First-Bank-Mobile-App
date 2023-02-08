@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="bootstrap.css">
     <link rel="stylesheet" href="./all.css">
 </head>
-<body onload="receipt()">
+<body onload="receipt()" class="receiptBodyCon">
 <section class="receipt">
     <div class="logobg"></div>
     <div class="recieptBody">
@@ -69,7 +69,10 @@
         <footer class="text-center footer">Generated from PreciousMobile</footer>
     </div>
 </section>
-
+<div class="d-flex gap-2 p-2">
+    <button class="w-50 okr" onclick="pada()">OK</button>
+    <button class="w-50 ddr" onclick="downloadReceipt()">Download</button>
+</div>
 
     <script src="first.js"></script>
     <script src="bootstrap.bundle.js"></script>   
