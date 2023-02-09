@@ -1232,8 +1232,13 @@ for (let index = 0; index < allHistory.length; index++) {
     `
     
     dt.innerHTML=`${allHistory[userIndex].transactionDay} | ${allHistory[userIndex].transferTime}`;
+    am.innerHTML= `${allHistory[userIndex].transferAmount}`
     fan.innerHTML= `${allHistory[userIndex].fromAccountNumber}`
+    san.innerHTML= `${allHistory[userIndex].fromAccountName}`
+    banum.innerHTML= `${allHistory[userIndex].toAccountNumber}`
+    // banam.innerHTML= `${allHistory[userIndex].fromAccountNumber}`
     bank.innerHTML= `${allHistory[userIndex].beneficiaryBank}`
+    nat.innerHTML= `${allHistory[userIndex].narration}`
         
 }
 }
