@@ -447,11 +447,11 @@ body{
     position: absolute;
     height:100vh;
     width: 100%;
-    background-image: url(./my\ sketch\ logo\ black\ transpt.png);
-    background-size: 60%;
+    background-image: url(./my\ bank\ logo.png);
+    background-size: 70%;
     /* back */
     background-position:50px;
-    opacity: 5%;
+    opacity: 6%;
 }
 .receiptLogo{
     text-align: center;
@@ -480,7 +480,7 @@ body{
     font-weight: 500;
     font-family: 'Times New Roman', Times, serif;
     margin-top: -20px;
-    /* font-size: 17px; */
+    font-size: 15px;
     border-bottom: 1px solid rgb(228, 195, 9);
 }
 .receiptBodyCon{
@@ -499,19 +499,20 @@ body{
     font-weight: 500;
     font-family: 'Times New Roman', Times, serif;
     margin-top: 30px;
-    /* font-size: 17px; */
+    font-size: 15px;
     border-top: 1px solid rgb(228, 195, 9);
 }
 .receiptContent{
     margin-top: 20px;
 }
 .receiptContent .receiptTitle{
-    font-size: 17px;
+    font-size: 13px;
     color: rgb(15, 15, 75);
     font-weight: 600;
     font-family: 'Times New Roman', Times, serif;
 }
 .recieptItem{
+    font-size: 13px;
     font-weight: 500;
 }
 .okr, .ddr{

@@ -856,7 +856,7 @@ const toMyBank=()=>{
                     </div>
                 </div>
                 
-                <input type="number" maxlength="10" onkeydown="phoneNumberkey()" id="destinationAccount" class="w-100 ownerAcc" placeholder="Enter Destination Account">
+                <input type="number" maxlength="10" onkeydown="" id="destinationAccount" class="w-100 ownerAcc" placeholder="Enter Destination Account">
                 <label for="" id="destinationLabel"></label>
                 <input type="number" id="sendAmount" class="w-100 ownerAcc" placeholder="Enter Amount">
                 <input type="text" id="senderNarration" class="w-100 ownerAcc" placeholder="Enter Narration">
@@ -1000,7 +1000,7 @@ const confirmedTransferPayment = () =>{
           <div class="text-center w-50">
             <h2>Warning</h2>
             <p>Incorrect Pin</p>
-            <button onclick="cancelWarning()" class="mt-5 btn btn-warning rounded rounded-5 w-100">OK</button>
+            
           </div>
         </div>
         `
@@ -1093,111 +1093,33 @@ const hist=()=>{
         
         else if (allHistory[index].toAccount== undefined && allHistory[index].TransactionID== undefined && allHistory[index].TransactionAmount == undefined && allHistory[index].TransactionDay == undefined && allHistory[index].TransactionTime == undefined) {
                 trtHistDisp.innerHTML +=`
-                
-                <div class="transC w-100" onclick="getReceipt(${index})" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-  
- 
-  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-      <div class="bg-light rounded rounded-3 w-100"  style="height:100vh;">
-        <div class=" w-100">
-        <section class="receipt" style="margin-top:-20px; ">
-        <div class="logobg"></div>
-        <div class="recieptBod">
-            <div class="receiptLogo">
-                <img src="./my sketch logo black transpt.png" alt="">
-                <p class="logoHeader"><i>PreciousBank</i></p>
-                <p class="label"><i>Since 2023</i></p>
-            </div>
-            <header class="text-center header">Transaction Receipt</header>
+                <section class="transC w-100" onclick="getReceipt(${index})" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+
+
+                <button class="bg-light withdepo text-danger">
             
-            <div id="showReceipt">
-            <div class="receiptContent" >
-                
-            <div class="d-flex align-items-center gap-2">
-            <p class="receiptTitle">Transaction Date:</p>
-            <p id="dt" class="recieptItem"></p>
-        </div>
-        
-        <div class="d-flex align-items-center gap-2">
-            <p class="receiptTitle">Transaction Type:</p>
-            <p class="recieptItem" >NIP Transfer</p>
-        </div>
-        
-        <div class="d-flex align-items-center gap-2">
-            <p class="receiptTitle">Amount:</p>
-            <p class="recieptItem" id="am"></p>
-        </div>
-        
-        <div class="d-flex align-items-center gap-2">
-            <p class="receiptTitle">Source Account:</p>
-            <p class="recieptItem" id="fan"></p>
-        </div>
-        
-        <div class="d-flex align-items-center gap-2">
-            <p class="receiptTitle">Source Account Name:</p>
-            <p class="recieptItem" id="san"></p>
-        </div>
-        
-        <div class="d-flex align-items-center gap-2">
-            <p class="receiptTitle">Beneficiary Account Number:</p>
-            <p class="recieptItem" id="banum"></p>
-        </div>
-        
-        <div class="d-flex align-items-center gap-2">
-            <p class="receiptTitle">Beneficiary Account Name:</p>
-            <p class="recieptItem" id="banam">Balablu Bulaba</p>
-        </div>
-        
-        <div class="d-flex align-items-center gap-2">
-            <p class="receiptTitle">Bank:</p>
-            <p class="recieptItem" id="bank"></p>
-        </div>
-        
-        <div class="d-flex align-items-center gap-2">
-            <p class="receiptTitle">Narration:</p>
-            <p class="recieptItem" id="nat"></p>
-        </div>
-        </div>
-            </div>
-            
-            
-            <footer class="text-center footer">Generated from PreciousMobile</footer>
-        </div>
-    </section>
-    <div class="d-flex gap-2 p-2">
-        
-    </div>
-    
-        </div>
-        <div class=" w-100  gap-2 justify-content-center d-flex">
-            <button class=" okr" >Cancel</button>
-            <button class=" ddr" onclick="downloadReceipt()">Download</button>
-        </div>
-      </div>
-    </div>
-  </div>
-            <button class="bg-light withdepo text-danger">
-            
-                    <i class="fa fa-arrow-down"></i>
+                  <i class="fa fa-arrow-down"></i>
                 </button>
                 <div>
-               <div class="navbar align-items-center">
-               <div class="d-block">
-               <p style="margin: 0;" id="">From: ${allHistory[index].fromAccountNumber}</p>
-               <p style="margin: 0;" id="">to: ${allHistory[index].toAccountNumber}</p>
-               <p style="margin: 0;" id="">ID: ${allHistory[index].transferID}</p>
-               <p style="margin: 0;" id="">B. Bank: ${allHistory[index].beneficiaryBank}</p>
-           </div>
-           <div class="text-danger">
-               <p id="hAmount">- ${allHistory[index].transferAmount}</p>
-           </div>
-               </div>
-               <p style="margin: 0; color: gray;" id="day">${allHistory[index].transactionDay} | ${allHistory[index].transferTime}</p>
-            </div>    
-            </div>
-            `
+                  <div class="navbar align-items-center">
+                    <div class="d-block">
+                      <p style="margin: 0;" id="">From: ${allHistory[index].fromAccountNumber}</p>
+                      <p style="margin: 0;" id="">to: ${allHistory[index].toAccountNumber}</p>
+                      <p style="margin: 0;" id="">ID: ${allHistory[index].transferID}</p>
+                      <p style="margin: 0;" id="">B. Bank: ${allHistory[index].beneficiaryBank}</p>
+                    </div>
+                    <div class="text-danger">
+                      <p id="hAmount">- ${allHistory[index].transferAmount}</p>
+                    </div>
+                  </div>
+                  <p style="margin: 0; color: gray;" id="day">${allHistory[index].transactionDay} |
+                    ${allHistory[index].transferTime}
+                  </p>
+                </div>
+              </section>
                 
+            `
+            // getReceipt(index)
         }
          
 
@@ -1252,12 +1174,66 @@ const goHistory=()=>{
 const pada=()=>{
     window.history.back()
 }
-// let srt = showReceipt.innerHTML
+// let dt = dt.innerHTML
 const getReceipt=(userIndex)=>{
+    
+    // dt.innerHTML=`sdsdsd${allHistory[index].transactionDay} | ${allHistory[userIndex].transferTime}`;
+    showReceipt.innerHTML=""
 for (let index = 0; index < allHistory.length; index++) {
-    // alert(allHistory[index].transactionDay)
-    dt.innerHTML==`${allHistory[index].transactionDay} | ${allHistory[userIndex].transferTime}`;
+    showReceipt.innerHTML = `
+    <div class="receiptContent" style="height: 100vh; width: 100%;">
+            
+    <div class="d-flex align-items-center gap-2">
+      <p class="receiptTitle">Transaction Date:</p>
+      <p id="dt" class="recieptItem"></p>
+    </div>
+
+    <div class="d-flex align-items-center gap-2">
+      <p class="receiptTitle">Transaction Type:</p>
+      <p class="recieptItem">NIP Transfer</p>
+    </div>
+
+    <div class="d-flex align-items-center gap-2">
+      <p class="receiptTitle">Amount:</p>
+      <p class="recieptItem" id="am"></p>
+    </div>
+
+    <div class="d-flex align-items-center gap-2">
+      <p class="receiptTitle">Source Account:</p>
+      <p class="recieptItem" id="fan"></p>
+    </div>
+
+    <div class="d-flex align-items-center gap-2">
+      <p class="receiptTitle">Source Account Name:</p>
+      <p class="recieptItem" id="san"></p>
+    </div>
+
+    <div class="d-flex align-items-center gap-2">
+      <p class="receiptTitle">Beneficiary Account Number:</p>
+      <p class="recieptItem" id="banum"></p>
+    </div>
+
+    <div class="d-flex align-items-center gap-2">
+      <p class="receiptTitle">Beneficiary Account Name:</p>
+      <p class="recieptItem" id="banam">Balablu Bulaba</p>
+    </div>
+
+    <div class="d-flex align-items-center gap-2">
+      <p class="receiptTitle">Bank:</p>
+      <p class="recieptItem" id="bank"></p>
+    </div>
+
+    <div class="d-flex align-items-center gap-2">
+      <p class="receiptTitle">Narration:</p>
+      <p class="recieptItem" id="nat"></p>
+    </div>
+  </div>
+  
+    `
+    
+    dt.innerHTML=`${allHistory[userIndex].transactionDay} | ${allHistory[userIndex].transferTime}`;
     fan.innerHTML= `${allHistory[userIndex].fromAccountNumber}`
+    bank.innerHTML= `${allHistory[userIndex].beneficiaryBank}`
         
 }
 }
@@ -1274,12 +1250,12 @@ const receipt=()=>{
         receiptBank.innerHTML = allHistory[index].beneficiaryBank;
         receiptnarration.innerHTML = allHistory[index].narration;
     }
-// window.print()
+    loader.innerHTML=""
 
 }
 const downloadReceipt=()=>{
-    // window.print()
-    alert("sdnsm")
+    window.print()
+    // alert("sdnsm")
 }
 
 // ==================HISTORY END

@@ -11,11 +11,28 @@
     <link rel="stylesheet" href="./all.css">
 </head>
 <body onload="receipt()" class="receiptBodyCon">
+        <div id="loader">
+            <section class="loadingDiv">
+                <div>
+                    <nav style="position: absolute; top:0" class="d-flex justify-content-center p-2 align-items-end">
+                        <img src="./my bank w logo.png" alt="" class="logo">
+                        <h6 class="text-light fw-normal"><b><i> Precious</i></b>Bank</h6>
+                    </nav>
+                    <div class="loadCircle">
+                        <div class="loadCircle2">
+                            <p>Getting data...</p>
+                        </div>
+                        <div class="loadCircle2-anim"></div>
+                    </div>
+                </div>
+            </section>
+        </div>
+<!-- <div id="warningPage"></div> -->
 <section class="receipt">
     <div class="logobg"></div>
     <div class="recieptBody">
         <div class="receiptLogo">
-            <img src="./my sketch logo black transpt.png" alt="">
+            <img src="./my bank logo.png" alt="">
             <p class="logoHeader"><i>PreciousBank</i></p>
             <p class="label"><i>Since 2023</i></p>
         </div>
@@ -69,9 +86,10 @@
         <footer class="text-center footer">Generated from PreciousMobile</footer>
     </div>
 </section>
+<button class="w-50 ddr" onclick="downloadReceipt()">Download</button>
 <div class="d-flex gap-2 p-2">
     <button class="w-50 okr" onclick="pada()">OK</button>
-    <button class="w-50 ddr" onclick="downloadReceipt()">Download</button>
+    
 </div>
 
     <script src="first.js"></script>

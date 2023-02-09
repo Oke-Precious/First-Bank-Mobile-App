@@ -11,8 +11,9 @@
     <link rel="stylesheet" href="./all.css">
 </head>
 <body onload="hist()" id="historyBody">
+
+
     <div id="loader">
-        
         <section class="loadingDiv">
             <div>
                 <nav style="position: absolute; top:0" class="d-flex justify-content-center p-2 align-items-end">
@@ -20,14 +21,50 @@
                     <h6 class="text-light fw-normal"><b><i> Precious</i></b>Bank</h6>
                 </nav>
                 <div class="loadCircle">
-                  <div class="loadCircle2">
-                    <p>Getting data...</p>
-                  </div>
-                  <div class="loadCircle2-anim"></div>
+                    <div class="loadCircle2">
+                        <p>Getting data...</p>
+                    </div>
+                    <div class="loadCircle2-anim"></div>
                 </div>
             </div>
-          </section>
+        </section>
     </div>
+
+
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="bg-light rounded rounded-3 w-100" style="height:100vh;">
+                <div class=" w-100">
+                    <section class="receipt" style="margin-top:-20px; ">
+                        <div class="logobg"></div>
+                        <div class="recieptBod">
+                            <div class="receiptLogo">
+                                <img src="./my sketch logo black transpt.png" alt="">
+                                <p class="logoHeader"><i>PreciousBank</i></p>
+                                <p class="label"><i>Since 2023</i></p>
+                            </div>
+                            <header class="text-center header">Transaction Receipt</header>
+    
+                            <div id="showReceipt">
+    
+                            </div>
+    
+    
+                            <footer class="text-center footer">Generated from PreciousMobile</footer>
+                        </div>
+                    </section>
+    
+                </div>
+                <div class=" w-100  gap-2 justify-content-center d-flex">
+                    <button class=" okr">Cancel</button>
+                    <button class=" ddr" onclick="downloadReceipt()">Download</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <div id="historyDisp"></div>
     <nav class=" p-2 position-fixed w-100" style="z-index:7; background-color: rgb(46, 62, 97); color:white;">
         <div class="navbar">
@@ -46,9 +83,9 @@
             <p>Last 20 transactions Only</p>
             <button class="btn"><i class="fa fa-calendar-week"></i></button>
         </div>
-    
+
         <div class="transactionHistory" id="trtHistDisp">
-            
+
             <!-- <div class="transC">
                     <button class="text-success">
                         <i class="fa fa-arrow-up"></i>
@@ -63,7 +100,7 @@
                         <p id="hAmount"></p>
                     </div>
                 </div> -->
-                <!-- <div class="transC">
+            <!-- <div class="transC">
             <button class="text-danger">
                 <i class="fa fa-arrow-down"></i>
             </button>
@@ -79,11 +116,11 @@
         </div>
                  -->
 
-            
-    
+
+
         </div>
-    
-    
+
+
     </section>
 
     <script src="./all.js"></script>
