@@ -4,15 +4,32 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>First Bank Dashboard</title>
-    <link rel="icon" href="./my sketch logo red transpt.png">
+    <title>Precious Bank Dashboard</title>
+    <link rel="icon" href=".//my bank w logo.png">
     <link rel="stylesheet" href="first.css">
     <link rel="stylesheet" href="bootstrap.css">
     <link rel="stylesheet" href="./all.css">
 </head>
 <body onload="displayDash()">
-    <section id="warningPage"></section>
+    <div id="loader">
+        <section class="loadingDiv">
+            <div>
+                <nav style="position: absolute; top:0" class="d-flex justify-content-center p-2 align-items-end">
+                    <img src="./my bank w logo.png" alt="" class="logo">
+                    <h6 class="text-light fw-normal"><b><i> Precious</i></b>Bank</h6>
+                </nav>
+                <div class="loadCircle">
+                  <div class="loadCircle2">
+                    <p>Getting data...</p>
+                  </div>
+                  <div class="loadCircle2-anim"></div>
+                </div>
+            </div>
+          </section>
+    </div>
+    
     <div class="dashNav">
+
         <button class="bg-transparent text-light border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions"
                     aria-controls="offcanvasWithBothOptions"><i class="fa fa-bars"></i></button>
                 

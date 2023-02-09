@@ -18,7 +18,8 @@ body{
     position: relative;
 }
 .logo{
-    width: 200px;
+    width: 50px;
+    margin:10px;
 }
 .bell{
     position: fixed;
@@ -531,4 +532,67 @@ body{
 .okr:hover, .ddr:hover{
     transform: scaleY(1.2);
     box-shadow: gray 0px 0px 7px 0px;
+}
+
+/* =========================LOADING ANIMATION====================== */
+#loader{
+    /* background-color: rgb(15, 15, 75); */
+    /* height: 100vh; */
+    width: 100%;
+}
+.loadingDiv{
+    background-color: rgb(15, 15, 75);
+    height: 100vh;
+    width: 100%;
+    position: absolute;
+    z-index: 12;
+    display: flex;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+}
+.loadCircle{
+    height: 200px;
+    border-radius: 50%;
+    width: 200px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid white;
+}
+.loadCircle2{
+    height: 150px;
+    position: relative;
+    width: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    justify-items: center;
+    border-radius: 50%;
+    border: 3px solid white;
+}
+.loadCircle2-anim{
+    height: 150px;
+    display: flex;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    border-radius: 50%;
+    border: none;
+    border-top: solid rgb(255, 217, 3) 2px !important;
+    /* background-color: white; */
+    border: 3px solid white;
+    animation-name: load;
+    /* animation-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); */
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+}
+@keyframes load{
+    
+    100%{
+        transform: rotate(360deg);
+    }
 }

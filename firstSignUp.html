@@ -4,13 +4,35 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>First Bank Sign Up page</title>
+    <title>Precious Bank Sign Up page</title>
     <link rel="stylesheet" href="first.css">
+    <link rel="icon" href=".//my bank w logo.png">
     <link rel="stylesheet" href="bootstrap.css">
     <link rel="stylesheet" href="./all.css">
 </head>
-<body id="bdisp">
-    <div class="upFixed"><nav class="d-flex justify-content-center suNav"><img src="./First-bank logo.png" alt="" class="logo"></nav>
+<body id="bdisp" onload="signUpPage()">
+    <div id="loader">
+        <section class="loadingDiv">
+            <div>
+                <nav style="position: absolute; top:0" class="d-flex justify-content-center p-2 align-items-end">
+                    <img src="./my bank w logo.png" alt="" class="logo">
+                    <h6 class="text-light fw-normal"><b><i> Precious</i></b>Bank</h6>
+                </nav>
+                <div class="loadCircle">
+                    <div class="loadCircle2">
+                        <p>Getting data...</p>
+                    </div>
+                    <div class="loadCircle2-anim"></div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <div id="warningPage"></div>
+    
+    <div class="upFixed"><nav class="d-flex p-2 align-items-end justify-content-center suNav">
+        <img src="./my bank w logo.png" alt="" class="logo">
+        <h6 class="text-light fw-normal"><b><i> Precious</i></b>Bank</h6>
+    </nav>
     <header class="regHead p-1">
         <p class="fw-bold p-2">REGISTRATION FOR BANKING APP</p>
         <div id="empty"></div>
@@ -54,7 +76,7 @@
 
                 <div class="mb-3 justify-content-center d-flex">
                     <label for="bvnPhoneNo" class="form-label w-50">BVN Phone No.<span class="text-danger">*</span></label>
-                    <input type="text" class=" w-50" id="bvnPhoneNo">
+                    <input type="tel" class=" w-50" id="bvnPhoneNo">
                 </div>
 
                 <div class="mb-3 justify-content-center d-flex">
@@ -65,6 +87,7 @@
                 <div class="mb-3 justify-content-center d-flex">
                     <label for="gender" class="form-label w-50">Gender<span class="text-danger">*</span></label>
                     <select name="" id="gender" class="w-50">
+                        <option value="Male">Select an option</option>
                         <option value="Male">Male</option>
                         <option value=" Female">Female</option>
                     </select>

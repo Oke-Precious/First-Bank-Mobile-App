@@ -4,14 +4,33 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SignIN</title>
+    <title>Precious Bank Sign in</title>
     <link rel="stylesheet" href="./all.css">
+    <link rel="icon" href=".//my bank w logo.png">
     <link rel="stylesheet" href="./bootstrap.css">
     <link rel="stylesheet" href="./first.css">
 </head>
-<body class="land">
-    <nav class="d-flex justify-content-center align">
-        <img src="./First-bank logo.png" class="logo" alt="">
+<body class="land" onload="signInPage()">
+    <div id="loader">
+        <section class="loadingDiv">
+            <div>
+                <nav style="position: absolute; top:0" class="d-flex justify-content-center p-2 align-items-end">
+                    <img src="./my bank w logo.png" alt="" class="logo">
+                    <h6 class="text-light fw-normal"><b><i> Precious</i></b>Bank</h6>
+                </nav>
+                <div class="loadCircle">
+                    <div class="loadCircle2">
+                        <p>Getting data...</p>
+                    </div>
+                    <div class="loadCircle2-anim"></div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <div id="warningPage"></div>
+    <nav class="d-flex justify-content-center p-2 align-items-end">
+        <img src="./my bank w logo.png" alt="" class="logo">
+        <h6 class="text-light fw-normal"><b><i> Precious</i></b>Bank</h6>
     </nav>
     <button class="border-0 bg-transparent text-light fs-3 bell">
         <i class="far fa-bell"></i>
@@ -20,7 +39,7 @@
 
 
     <section>
-        <header class="text-light text-center"><h1><b><i> First</i></b>Mobile</h1></header>
+        <header class="text-light text-center"><h1><b><i> Precious</i></b>Mobile</h1></header>
         <p class="text-light fs-4">Sign in now</p>
         <div class="justify-content-center  align-items-center px-3">
             <div class=" align-items-center arrBut rounded rounded-3 signInInput">

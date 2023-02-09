@@ -1,3 +1,7 @@
+const landing =()=>{
+    
+    loader.innerHTML=""
+}
 const alr = () =>{
     window.location.href = "firstsignIn.html"
 }
@@ -5,8 +9,26 @@ const reg = () =>{
     window.location.href = "firstSignUp.html"
 }
 const not = () =>{
-    alert("Working on it")
+    warningPage.style.transition="4s";
+        warningPage.overflowY="hidden";
+        warningPage.innerHTML=`
+        <div class="warningPage text-light">
+          <div class="text-center w-50">
+            <h2>Notice!</h2>
+            <p>Thanks for Using PreciousBank</p>
+            <p>Dear Customer go to our bank to register with your full details</p>
+            <button onclick="cancelWarning()" class="mt-5 btn btn-warning rounded rounded-5 w-100">OK</button>
+          </div>
+        </div>
+        `
 }
+const signUpPage=()=>{
+    loader.innerHTML=""
+}
+const signInPage=()=>{
+    loader.innerHTML=""
+}
+
 let allCustomer = [];
 if(localStorage.customerPersonalDetails){
     allCustomer = JSON.parse(localStorage.getItem("customerPersonalDetails"))
@@ -31,20 +53,32 @@ const toOpenAcc2=()=>{
          cPassword.value=="" 
          )
          {
-        empty.innerHTML=`
-        <div class="border-danger bg-light justify-content-between d-flex align-items-center px-2 bg-gray border-start border-2">
-            <div> error! Please Kindly Input The require field to continue your  Registration</div>
-            <button class="btn fs-4 text-danger" onclick="cancelEmpty()"><i class="fa fa-times-circle"></i></button>
-        </div>            `
+            warningPage.style.transition="4s";
+        warningPage.overflowY="hidden";
+        warningPage.innerHTML=`
+        <div class="warningPage text-light">
+          <div class="text-center w-50">
+            <h2>Warning</h2>
+            <p> error! Please Kindly Input The require field to continue your  Registration</p>
+            <button onclick="cancelWarning()" class="mt-5 btn btn-warning rounded rounded-5 w-100">OK</button>
+          </div>
+        </div>
+        `
+
     }
     else if(password.value != cPassword.value){
-        // alert("ssjj")
-        empty.innerHTML=`
-        <div class="border-danger bg-light justify-content-between d-flex align-items-center px-2 bg-gray border-start border-2">
-            <div> error! Your password does not correspond</div>
-            <button class="btn fs-4 text-danger" onclick="cancelEmpty()"><i class="fa fa-times-circle"></i></button>
+        warningPage.style.transition="4s";
+        warningPage.overflowY="hidden";
+        warningPage.innerHTML=`
+        <div class="warningPage text-light">
+          <div class="text-center w-50">
+            <h2>Warning</h2>
+            <p> error! Your password does not correspond</p>
+            <button onclick="cancelWarning()" class="mt-5 btn btn-warning rounded rounded-5 w-100">OK</button>
+          </div>
         </div>
-                        `
+        `
+
     }
     else{
         let customerDetails = {
@@ -93,10 +127,7 @@ const toOpenAcc2=()=>{
     }
 }
 
-const cancelEmpty=()=>{
-    empty.innerHTML ="";
-    noUser.innerHTML = "";
-}
+
 const signInbut=()=>{
     window.location.href = "firstsignIn.html";
 }
@@ -117,12 +148,18 @@ const signIn = () => {
         window.location.href = "dashboard.html";
     }
     else{
-        empty.innerHTML = `
-        <div class="border-danger bg-light justify-content-between d-flex align-items-center px-2 bg-gray border-start border-2">
-        <div> No User with that Details </div>
-        <button class="btn fs-4 text-danger" onclick="cancelEmpty()"><i class="fa fa-times-circle"></i></button>
+        warningPage.style.transition="4s";
+        warningPage.overflowY="hidden";
+        warningPage.innerHTML=`
+        <div class="warningPage text-light">
+          <div class="text-center w-50">
+            <h2>Warning</h2>
+            <p>No User with that Details</p>
+            <button onclick="cancelWarning()" class="mt-5 btn btn-warning rounded rounded-5 w-100">OK</button>
+          </div>
         </div>
         `
+
     }
 }
 let currentUserIndex = localStorage.getItem("currentUserIndex");
@@ -135,15 +172,19 @@ const displayDash=()=>{
     accBalDisp.innerHTML +=`
                         ${allCustomer[currentUserIndex].balance}
                     `;
-               
+                    loader.innerHTML="";
 }
 
 
 const myAcc= ()=>{
     window.location.href="dashboard.html"
 }
+
 const freqTrans=()=>{
+    
     bodyDisp.innerHTML =`
+
+
     <nav class="transNav text-light">
     <div></div>
         <p>Transaction</p>
@@ -169,8 +210,10 @@ const freqTrans=()=>{
             </div>
             </section>   
         `;
+        // loader.innerHTML===""
         
 }
+
 const deposit=()=>{
     if(depositAmount.value==""){
         warningPage.style.transition="4s";
@@ -1009,90 +1052,25 @@ const goReceipt=()=>{
 }
 
 const hist=()=>{
+//     loader.innerHTML=`
+//     <section class="loadingDiv">
+//     <div class="loadCircle">
+//       <div class="loadCircle2">
+//         <p>Getting data...</p>
+//       </div>
+//       <div class="loadCircle2-anim"></div>
+//     </div>
+//   </section>
+//                     `
     allHistory.reverse();
     for (let index = 0; index < allHistory.length; index++) {
         if(allHistory[index].beneficiaryBank ==undefined  && allHistory[index].fromAccountName ==undefined && allHistory[index].fromAccountNumber==undefined && allHistory[index].narration==undefined && allHistory[index].toAccountNumber==undefined && allHistory[index].transactionDay==undefined && allHistory[index].transferAmount==undefined && allHistory[index].transferID==undefined && allHistory[index].transferTime==undefined){
         
             trtHistDisp.innerHTML +=`
-            <div class="transC w-100" onclick="getReceipt(${index})" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-  
- 
-  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-      <div class="modal-content w-100"  style="height:100vh;">
-        <div class=" w-100">
-        <section class="receipt" style="margin-top:-20px; ">
-        <div class="logobg"></div>
-        <div class="recieptBod">
-            <div class="receiptLogo">
-                <img src="./my sketch logo black transpt.png" alt="">
-                <p class="logoHeader"><i>PreciousBank</i></p>
-                <p class="label"><i>Since 2023</i></p>
-            </div>
-            <header class="text-center header">Transaction Receipt</header>
-            <div class="receiptContent">
-                <div class="d-flex align-items-center gap-2">
-                    <p class="receiptTitle">Transaction Date:</p>
-                    <p id="receiptDate" class="recieptItem"></p>
-                </div>
-    
-                <div class="d-flex align-items-center gap-2">
-                    <p class="receiptTitle">Transaction Type:</p>
-                    <p class="recieptItem">NIP Transfer</p>
-                </div>
-    
-                <div class="d-flex align-items-center gap-2">
-                    <p class="receiptTitle">Amount:</p>
-                    <p class="recieptItem" id="recieptAmount"></p>
-                </div>
-    
-                <div class="d-flex align-items-center gap-2">
-                    <p class="receiptTitle">Source Account:</p>
-                    <p class="recieptItem" id="receiptSourceAccNumber"></p>
-                </div>
-    
-                <div class="d-flex align-items-center gap-2">
-                    <p class="receiptTitle">Source Account Name:</p>
-                    <p class="recieptItem" id="receiptSourceAccName"></p>
-                </div>
-    
-                <div class="d-flex align-items-center gap-2">
-                    <p class="receiptTitle">Beneficiary Account Number:</p>
-                    <p class="recieptItem" id="receiptBeneAccNumber"></p>
-                </div>
-    
-                <div class="d-flex align-items-center gap-2">
-                    <p class="receiptTitle">Beneficiary Account Name:</p>
-                    <p class="recieptItem" id="receiptBeneAccName">Balablu Bulaba</p>
-                </div>
-    
-                <div class="d-flex align-items-center gap-2">
-                    <p class="receiptTitle">Bank:</p>
-                    <p class="recieptItem" id="receiptBank"></p>
-                </div>
-    
-                <div class="d-flex align-items-center gap-2">
-                    <p class="receiptTitle">Narration:</p>
-                    <p class="recieptItem" id="receiptnarration"></p>
-                </div>
-            </div>
-            <footer class="text-center footer">Generated from PreciousMobile</footer>
-        </div>
-    </section>
-    <div class="d-flex gap-2 p-2">
-        
-    </div>
-    
-        </div>
-        <div class=" w-100  gap-2 justify-content-center d-flex">
-            <button class=" okr" data-bs-dismiss="modal">Cancel</button>
-            <button class=" ddr" onclick="downloadReceipt()">Download</button>
-        </div>
-      </div>
-    </div>
-  </div>
+            <div class="transC">    
+            
             <button class="bg-light withdepo text-success">
-                <i class="fa fa-arrow-up"></i>
+            <i class="fa fa-arrow-up"></i>
             </button>
             <div>
            <div class="navbar gap-5 w-100 align-items-center">
@@ -1115,8 +1093,92 @@ const hist=()=>{
         
         else if (allHistory[index].toAccount== undefined && allHistory[index].TransactionID== undefined && allHistory[index].TransactionAmount == undefined && allHistory[index].TransactionDay == undefined && allHistory[index].TransactionTime == undefined) {
                 trtHistDisp.innerHTML +=`
-                <div class="transC">
-                <button class="text-danger withdepo">
+                
+                <div class="transC w-100" onclick="getReceipt(${index})" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+  
+ 
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="bg-light rounded rounded-3 w-100"  style="height:100vh;">
+        <div class=" w-100">
+        <section class="receipt" style="margin-top:-20px; ">
+        <div class="logobg"></div>
+        <div class="recieptBod">
+            <div class="receiptLogo">
+                <img src="./my sketch logo black transpt.png" alt="">
+                <p class="logoHeader"><i>PreciousBank</i></p>
+                <p class="label"><i>Since 2023</i></p>
+            </div>
+            <header class="text-center header">Transaction Receipt</header>
+            
+            <div id="showReceipt">
+            <div class="receiptContent" >
+                
+            <div class="d-flex align-items-center gap-2">
+            <p class="receiptTitle">Transaction Date:</p>
+            <p id="dt" class="recieptItem"></p>
+        </div>
+        
+        <div class="d-flex align-items-center gap-2">
+            <p class="receiptTitle">Transaction Type:</p>
+            <p class="recieptItem" >NIP Transfer</p>
+        </div>
+        
+        <div class="d-flex align-items-center gap-2">
+            <p class="receiptTitle">Amount:</p>
+            <p class="recieptItem" id="am"></p>
+        </div>
+        
+        <div class="d-flex align-items-center gap-2">
+            <p class="receiptTitle">Source Account:</p>
+            <p class="recieptItem" id="fan"></p>
+        </div>
+        
+        <div class="d-flex align-items-center gap-2">
+            <p class="receiptTitle">Source Account Name:</p>
+            <p class="recieptItem" id="san"></p>
+        </div>
+        
+        <div class="d-flex align-items-center gap-2">
+            <p class="receiptTitle">Beneficiary Account Number:</p>
+            <p class="recieptItem" id="banum"></p>
+        </div>
+        
+        <div class="d-flex align-items-center gap-2">
+            <p class="receiptTitle">Beneficiary Account Name:</p>
+            <p class="recieptItem" id="banam">Balablu Bulaba</p>
+        </div>
+        
+        <div class="d-flex align-items-center gap-2">
+            <p class="receiptTitle">Bank:</p>
+            <p class="recieptItem" id="bank"></p>
+        </div>
+        
+        <div class="d-flex align-items-center gap-2">
+            <p class="receiptTitle">Narration:</p>
+            <p class="recieptItem" id="nat"></p>
+        </div>
+        </div>
+            </div>
+            
+            
+            <footer class="text-center footer">Generated from PreciousMobile</footer>
+        </div>
+    </section>
+    <div class="d-flex gap-2 p-2">
+        
+    </div>
+    
+        </div>
+        <div class=" w-100  gap-2 justify-content-center d-flex">
+            <button class=" okr" >Cancel</button>
+            <button class=" ddr" onclick="downloadReceipt()">Download</button>
+        </div>
+      </div>
+    </div>
+  </div>
+            <button class="bg-light withdepo text-danger">
+            
                     <i class="fa fa-arrow-down"></i>
                 </button>
                 <div>
@@ -1178,8 +1240,8 @@ const hist=()=>{
 //                 `;
     accBalDisp3.innerHTML +=`
                         ${allCustomer[currentUserIndex].balance}
-                    `;
-   
+                    `
+                    loader.innerHTML="";
     }
     allPhoneNo = allCustomer[currentUserIndex].history;
     allAmount = allCustomer[currentUserIndex].amount;
@@ -1190,42 +1252,13 @@ const goHistory=()=>{
 const pada=()=>{
     window.history.back()
 }
-
+// let srt = showReceipt.innerHTML
 const getReceipt=(userIndex)=>{
-for (let index = 0; index < allCustomer.length; index++) {
-
-    
-
-    historyBody.innerHTML==`
-    <div class="w-100 p-0 ownerAccD" id="" onclick="" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom"
-    aria-controls="offcanvasBottom">
-    Select Beneficiary Bank
-</div>
-<i class="fa position-absolute angleDbtn fa-angle-down"></i>
-</div>
-<div class="offcanvas offcanvas-bottom" style="height: 100vh;" tabindex="-1" id="offcanvasBottom"
-aria-labelledby="offcanvasBottomLabel">
-<div class="offcanvas-header">
-
-</div>
-<div class="offcanvas-body small">
-    <header class="fs-3 text-center mb-5">Select account to debit</header>
-
-    <div class="networkBTN" data-bs-dismiss="offcanvas">
-    
-    <button onclick="displayNet('Precious Bank')" data-bs-dismiss="offcanvas">Precious Bank</button>
-    <button onclick="displayNet('Special Bank')" data-bs-dismiss="offcanvas">Special Bank</button>
-    <button onclick="displayNet('SQI Bank')" data-bs-dismiss="offcanvas">SQI Bank</button>
-    <button onclick="displayNet('Kuda Bank')" data-bs-dismiss="offcanvas">Kuda Bank</button></button>
-
-    </div>
-    <div class="d-flex justify-content-center">
-        <button type="button" class=" btn" style="position: fixed; bottom: 2%; margin: auto;"
-            data-bs-dismiss="offcanvas" aria-label="Close">Cancel</button>
-    </div>
-</div>
-</div>
-    `
+for (let index = 0; index < allHistory.length; index++) {
+    // alert(allHistory[index].transactionDay)
+    dt.innerHTML==`${allHistory[index].transactionDay} | ${allHistory[userIndex].transferTime}`;
+    fan.innerHTML= `${allHistory[userIndex].fromAccountNumber}`
+        
 }
 }
 // =====RECEIPT======================
@@ -1245,7 +1278,8 @@ const receipt=()=>{
 
 }
 const downloadReceipt=()=>{
-    window.print()
+    // window.print()
+    alert("sdnsm")
 }
 
 // ==================HISTORY END

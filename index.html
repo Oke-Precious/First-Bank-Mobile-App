@@ -6,31 +6,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Landing</title>
     <link rel="stylesheet" href="./all.css">
+    <link rel="icon" href=".//my bank w logo.png">
     <link rel="stylesheet" href="./bootstrap.css">
     <link rel="stylesheet" href="./first.css">
 </head>
-<body class="land">
-    <nav class="d-flex justify-content-center align">
-        <img src="./First-bank logo.png" class="logo" alt="">
+<body class="land" onload="landing()">
+    <div id="loader">
+        <section class="loadingDiv">
+            <div>
+                <nav style="position: absolute; top:0" class="d-flex justify-content-center p-2 align-items-end">
+                    <img src="./my bank w logo.png" alt="" class="logo">
+                    <h6 class="text-light fw-normal"><b><i> Precious</i></b>Bank</h6>
+                </nav>
+                <div class="loadCircle">
+                  <div class="loadCircle2">
+                    <p>Getting data...</p>
+                  </div>
+                  <div class="loadCircle2-anim"></div>
+                </div>
+            </div>
+          </section>
+    </div>
+    <div id="warningPage"></div>
+    <nav class="d-flex justify-content-center pt-3 align">
+        <img src="./my bank w logo.png" class="logo" alt="">
     </nav>
     <button class="border-0 bg-transparent text-light fs-3 bell">
         <i class="far fa-bell"></i>
     </button>
 
     <section>
-        <header class="text-light text-center"><h1><b><i> First</i></b>Mobile</h1></header>
+        <header class="text-light text-center"><h1><b><i> Precious</i></b>Mobile App</h1></header>
         <div class="justify-content-center align-items-center p-3">
-            <button class="d-flex align-items-center arrBut " onclick="not()">
-                <div class="">
-                    <p class="sm">Not a First Bank Customer?</p>
-                    <p class="gd text-warning fw-bold">OPEN ACCOUNT</p>
-                </div>
-                <i class="fa fa-arrow-right fs-1"></i>
-            </button>
-
+            
             <button class="d-flex align-items-center arrBut" onclick="reg()">
                 <div class="">
-                    <p class="sm">New user?</p>
+                    <p class="sm">New user? Kindly sign up</p>
                     <p class="gd text-warning fw-bold">REGISTER</p>
                 </div>
                 <i class="fa fa-arrow-right fs-1"></i>
@@ -38,11 +49,20 @@
 
             <button class="d-flex align-items-center arrBut" onclick="alr()">
                 <div class="">
-                    <p class="sm">Already have an account?</p>
+                    <p class="sm">Already have an account? Sign in</p>
                     <p class="gd text-warning fw-bold">ACTIVATE THIS DEVICE</p>
                 </div>
                 <i class="fa fa-arrow-right fs-1"></i>
             </button>
+
+            <button class="d-flex align-items-center arrBut " onclick="not()">
+                <div class="">
+                    <p class="sm">Not a Precious Bank Customer?</p>
+                    <p class="gd text-warning fw-bold">OPEN ACCOUNT</p>
+                </div>
+                <i class="fa fa-arrow-right fs-1"></i>
+            </button>
+
         </div>
     </section>
 
