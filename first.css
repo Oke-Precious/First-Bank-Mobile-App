@@ -3,7 +3,7 @@
     margin: 0;
     box-sizing: border-box;
     /* overflow-x: hidden; */
-    /* outline: red solid 1px; */
+    outline: red solid 1px;
 }
 
 .land{
@@ -448,10 +448,10 @@ body{
     height:100vh;
     width: 100%;
     background-image: url(./my\ bank\ logo.png);
-    background-size: 70%;
-    /* back */
+    background-size: 60%;
     background-position:50px;
-    opacity: 6%;
+    opacity: 1-0%;
+    z-index: -1;
 }
 .receiptLogo{
     text-align: center;
@@ -460,7 +460,13 @@ body{
 .recieptBody{
     padding: 0 40px;
     width: 100%;
+    /* height: 100vh; */
+   
 }
+.allReceiptDetails{
+    z-index: 5;
+}
+
 .receiptLogo img{
     width: 50px;
 }

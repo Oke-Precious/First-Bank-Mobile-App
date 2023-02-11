@@ -1168,9 +1168,13 @@ const hist=()=>{
     allPhoneNo = allCustomer[currentUserIndex].history;
     allAmount = allCustomer[currentUserIndex].amount;
     allHistory = allCustomer[currentUserIndex].realHist;
-const goHistory=()=>{
-    window.location.href="history.html"
-}
+
+const okreceipt=()=>{
+    alert("hey you boy")
+}    
+// const goHistory=()=>{
+//     window.location.href="history.html"
+// }
 const pada=()=>{
     window.history.back()
 }
