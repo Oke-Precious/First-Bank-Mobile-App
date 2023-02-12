@@ -31,28 +31,42 @@
     </div>
 
 
-    <!-- 
-        <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">Toggle top offcanvas</button>
+    
+        <!-- <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">Toggle top offcanvas</button> -->
 
-<div class="offcanvas offcanvas-top" tabindex="-1" id="offcanvasTop" aria-labelledby="offcanvasTopLabel">
-  <div class="offcanvas-header">
-    <h5 class="offcanvas-title" id="offcanvasTopLabel">Offcanvas top</h5>
-    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-  </div>
-  <div class="offcanvas-body">
-    ...
-  </div>
+<div class="offcanvas offcanvas-top receipt" tabindex="-1" id="offcanvasTop" style="height:100vh;" aria-labelledby="offcanvasTopLabel">
+    <div class="logobg"></div>
+        <div class="recieptBody" >
+        <div class="receiptLogo">
+            <img src="./my sketch logo black transpt.png" alt="">
+            <p class="logoHeader"><i>PreciousBank</i></p>
+            <p class="label"><i>Since 2023</i></p>
+        </div>
+        <header class="text-center header">Transaction Receipt</header>
+
+        <div id="showReceipt" >
+            <div id="showReceipt2" style="height: 50vh;"></div>
+            <div  class="text-center m-2 footer">Generated from PreciousMobile</div>
+        <div class=" modal-footer w-100  gap-2 justify-content-center d-flex" style="z-index: 5;">
+            <button class=" okr"data-bs-dismiss="offcanvas" aria-label="Close">Cancel</button>
+            <button class=" ddr" onclick="downloadReceipt()">Download</button>
+        </div>
+        </div>
+        
+
+        
+    </div>
+ 
 </div>
-     -->
+    
 
-    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <!-- <div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="1"  aria-labelledby="staticBackdrop2Label" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-            <div class="bg-light rounded rounded-3 w-100" style="height:100vh;">
+            <div class="bg-light rounded rounded-3 w-100" >
                 <div class=" w-100">
-                    <section class="receipt" style="margin-top:-20px; ">
-                        <div class="logobg"></div>
-                        <div class="recieptBod">
+                    <section class="receipt" style="margin-top:-20px; height:100vh" >
+                        <div class="logobg2"></div>
+                        <div class="recieptBod" >
                             <div class="receiptLogo">
                                 <img src="./my sketch logo black transpt.png" alt="">
                                 <p class="logoHeader"><i>PreciousBank</i></p>
@@ -60,15 +74,15 @@
                             </div>
                             <header class="text-center header">Transaction Receipt</header>
     
-                            <div id="showReceipt">
-                                
-                               
-                            </div>
-                            <div class="text-center footer">Generated from PreciousMobile</div>
-                            <div class=" modal-footer w-100  gap-2 justify-content-center d-flex">
-                                <button class=" okr" data-bs-dismiss="modal">Cancel</button>
+                            <div id="showReceipt" >
+                                <div id="showReceipt2" style="height: 50vh;"></div>
+                                <div  class="text-center footer">Generated from PreciousMobile</div>
+                            <div class=" modal-footer w-100  gap-2 justify-content-center d-flex" style="z-index: 5;">
+                                <button class=" okr" data-bs-dismiss="modal" >Cancel</button>
                                 <button class=" ddr" onclick="downloadReceipt()">Download</button>
                             </div>
+                            </div>
+                            
     
                             
                         </div>
@@ -79,7 +93,7 @@
             </div>
         </div>
     </div>
-
+ -->
 
     <div id="historyDisp"></div>
     <nav class=" p-2 position-fixed w-100" style="z-index:7; background-color: rgb(46, 62, 97); color:white;">

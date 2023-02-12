@@ -1093,7 +1093,7 @@ const hist=()=>{
         
         else if (allHistory[index].toAccount== undefined && allHistory[index].TransactionID== undefined && allHistory[index].TransactionAmount == undefined && allHistory[index].TransactionDay == undefined && allHistory[index].TransactionTime == undefined) {
                 trtHistDisp.innerHTML +=`
-                <section class="transC w-100" onclick="getReceipt(${index})" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                <section class="transC w-100" onclick="getReceipt(${index})" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">
 
 
                 <button class="bg-light withdepo text-danger">
@@ -1169,12 +1169,11 @@ const hist=()=>{
     allAmount = allCustomer[currentUserIndex].amount;
     allHistory = allCustomer[currentUserIndex].realHist;
 
-const okreceipt=()=>{
-    alert("hey you boy")
-}    
-// const goHistory=()=>{
-//     window.location.href="history.html"
-// }
+
+const goHistory=()=>{
+    window.location.href="history.html"
+}
+
 const pada=()=>{
     window.history.back()
 }
@@ -1182,9 +1181,9 @@ const pada=()=>{
 const getReceipt=(userIndex)=>{
     
     // dt.innerHTML=`sdsdsd${allHistory[index].transactionDay} | ${allHistory[userIndex].transferTime}`;
-    showReceipt.innerHTML=""
+    showReceipt2.innerHTML=""
 for (let index = 0; index < allHistory.length; index++) {
-    showReceipt.innerHTML = `
+    showReceipt2.innerHTML = `
     <div class="receiptContent" style="height: 100vh; width: 100%;">
             
     <div class="d-flex align-items-center gap-2">
