@@ -402,6 +402,10 @@ const addBene = ()=>{
 
 const displayNet=(param)=>{
     selectBiller.innerHTML=param;
+    selectBeneBank.innerHTML=param;
+}
+const displayBank=(param)=>{
+    selectBeneBank.innerHTML=param;
 }
 
 const cancelWarning=()=>{
@@ -519,6 +523,18 @@ const accountDet=()=>{
    
     for (let index = 0; index < allCustomer.length; index++) {
         acctd.innerHTML =   `
+        <div class="navbar">
+        <p>SAVINGS ACCOUNT ${allCustomer[currentUserIndex].accNo} </p>
+        <p>&#8358 ${allCustomer[currentUserIndex].balance}</p>
+        </div>
+        `
+    }
+}
+
+const accountDet2=()=>{
+   
+    for (let index = 0; index < allCustomer.length; index++) {
+        acctd2.innerHTML =   `
         <div class="navbar">
         <p>SAVINGS ACCOUNT ${allCustomer[currentUserIndex].accNo} </p>
         <p>&#8358 ${allCustomer[currentUserIndex].balance}</p>
@@ -720,37 +736,7 @@ const transfer =()=>{
         <div class="w-100 navbar rounded rounded-4 my-2 bg-light p-3" onclick="toMyBank()">
             <div class="d-flex gap-3 align-items-center">
                 <button class="border-0 bg-warning rounded rounded-circle text-light fs-5 px-3 py-2">FB</button>
-                <p class="my-2">To PreciousBank Account</p>
-            </div>
-            <div>
-                <i class="fa fa-arrow-right fs-3"></i>
-            </div>
-        </div>
-
-        <div class="w-100 navbar rounded rounded-4 my-2 bg-light p-3">
-            <div class="d-flex gap-3 align-items-center">
-                <button class="border-0 bg-warning rounded rounded-circle text-light fs-5 px-3 py-2"><i class="fa fa-bank"></i></button>
-                <p class="my-2">To Other Bank Account</p>
-            </div>
-            <div>
-                <i class="fa fa-arrow-right fs-3"></i>
-            </div>
-        </div>
-
-        <div class="w-100 navbar rounded rounded-4 my-2 bg-light p-3">
-            <div class="d-flex gap-3 align-items-center">
-                <button class="border-0 bg-warning rounded rounded-circle text-light fs-5 px-3 py-2"><i class="fa fa-bank"></i></button>
-                <p class="my-2">Send To Saved Beneficiary</p>
-            </div>
-            <div>
-                <i class="fa fa-arrow-right fs-3"></i>
-            </div>
-        </div>
-
-        <div class="w-100 navbar rounded rounded-4 my-2 bg-light mb-5 p-3">
-            <div class="d-flex gap-3 align-items-center">
-                <button class="border-0 bg-warning rounded rounded-circle text-light fs-5 px-3 py-2"><i class="fa fa-bank"></i></button>
-                <p class="my-2">eNaira</p>
+                <p class="my-2">Tranfer to your Account</p>
             </div>
             <div>
                 <i class="fa fa-arrow-right fs-3"></i>
@@ -782,15 +768,15 @@ const toMyBank=()=>{
     <section class="p-4 mt-5">
             <p class="text-center">Available Daily Transaction Limit <br>&#8358 1,000 000.00</p>
             <div class="container shadow  rounded ">
-                <div class="" "></div>
+                <div class=""></div>
             <header class="m-4 text-center">Enter Transaction Details</header>
             <div>
 
 
             <section>
             <!-- Button trigger modal -->
-            <div class="w-100 ownerAcc" id="acctd" onclick="billAccount2()" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-            Select account to debit   
+            <div class="w-100 ownerAcc"  onclick="billAccount2()" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+            <p id="acctd2">Select account to debit</p>   
               </div>
               
               <!-- Modal -->
@@ -802,7 +788,7 @@ const toMyBank=()=>{
                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                    <div onclick="accountDet()" data-bs-dismiss="modal" style="background-color: rgb(141, 135, 135);" class="rounded rounded-4 py-2 px-3 text-light">
+                    <div onclick="accountDet2()" data-bs-dismiss="modal" style="background-color: rgb(141, 135, 135);" class="rounded rounded-4 py-2 px-3 text-light">
                     <div class="navbar">
                         <p>SAVINGS ACCOUNT</p>
                         <div class="d-flex gap-2">
@@ -827,7 +813,7 @@ const toMyBank=()=>{
 
                 
                 <div class="selectBene navbar position-relative w-100">
-                    <div class="w-100 p-0 ownerAccD" id="selectBiller" onclick="" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom"
+                    <div class="w-100 p-0 ownerAccD" id="selectBeneBank" onclick="" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom"
                         aria-controls="offcanvasBottom">
                         Select Beneficiary Bank
                     </div>
@@ -843,10 +829,10 @@ const toMyBank=()=>{
                 
                         <div class="networkBTN" data-bs-dismiss="offcanvas">
                         
-                        <button onclick="displayNet('Precious Bank')" data-bs-dismiss="offcanvas">Precious Bank</button>
-                        <button onclick="displayNet('Special Bank')" data-bs-dismiss="offcanvas">Special Bank</button>
-                        <button onclick="displayNet('SQI Bank')" data-bs-dismiss="offcanvas">SQI Bank</button>
-                        <button onclick="displayNet('Kuda Bank')" data-bs-dismiss="offcanvas">Kuda Bank</button></button>
+                        <button onclick="displayBank('Precious Bank')" data-bs-dismiss="offcanvas">Precious Bank</button>
+                        <button onclick="displayBank('Special Bank')" data-bs-dismiss="offcanvas">Special Bank</button>
+                        <button onclick="displayBank('SQI Bank')" data-bs-dismiss="offcanvas">SQI Bank</button>
+                        <button onclick="displayBank('Kuda Bank')" data-bs-dismiss="offcanvas">Kuda Bank</button></button>
                     
                         </div>
                         <div class="d-flex justify-content-center">
@@ -887,19 +873,51 @@ accBalDispp2.innerHTML +=`
 
 let transferConfirm= allCustomer[currentUserIndex].localHistory
 const confirmTransfer=()=>{
-    // if(destinationAccount.value.length < 10){
-    //     destinationAccount.style.color="red";
-    //     destinationLabel.innerHTML = "Enter a valid Phone Number"
-    // }
-    // else if(destinationAccount.value.length > 10){
-    //     destinationAccount.style.color="black";
-    //     destinationLabel.innerHTML = ""
-    // }
-    // else{
+    if(acctd2.innerHTML =="Select Account to debit"){
+        warningPage.style.transition="4s";
+        warningPage.overflowY="hidden";
+        warningPage.innerHTML=`
+        <div class="warningPage text-light">
+          <div class="text-center w-50">
+            <h2>Warning</h2>
+            <p>Select Account to Debit</p>
+            <button onclick="cancelWarning()" class="mt-5 btn btn-warning rounded rounded-5 w-100">OK</button>
+          </div>
+        </div>
+        `
+    }
+    else if(selectBeneBank.innerHTML=="Select Beneficiary Bank"){
+        warningPage.style.transition="4s";
+        warningPage.overflowY="hidden";
+        warningPage.innerHTML=`
+        <div class="warningPage text-light">
+          <div class="text-center w-50">
+            <h2>Warning</h2>
+            <p>Select Beneficiary Bank</p>
+            <button onclick="cancelWarning()" class="mt-5 btn btn-warning rounded rounded-5 w-100">OK</button>
+          </div>
+        </div>
+        `
+    }
+    else if(destinationAccount.value==""){
+        warningPage.style.transition="4s";
+        warningPage.overflowY="hidden";
+        warningPage.innerHTML=`
+        <div class="warningPage text-light">
+          <div class="text-center w-50">
+            <h2>Warning</h2>
+            <p>Beneficiary number</p>
+            <button onclick="cancelWarning()" class="mt-5 btn btn-warning rounded rounded-5 w-100">OK</button>
+          </div>
+        </div>
+        `
+    }
+    
+else{
     let transferHistory = {
         debitAccount : `${allCustomer[currentUserIndex].accNo}`,
         debitBalance: `₦${allCustomer[currentUserIndex].balance}`,
-        beneficiaryBank : selectBiller.innerHTML,
+        beneficiaryBank : selectBeneBank.innerHTML,
         destinationAcc : destinationAccount.value,
         amountSend : sendAmount.value,
         transferDate:   new Date().toLocaleDateString(),
@@ -949,6 +967,7 @@ const confirmTransfer=()=>{
                 <div class="pinContainer">
                     <p>Enter Transaction PIN</p>
                     <input id="transferPagePin" type="password">
+                    <label class="text-success">Note! if you haven't set pin <span class="text-danger" onclick="settings()">Go Settings</span></label>
                 </div>
                 
                 <div class="butn w-100 gap-3 p-2 mt-5 row">
@@ -957,7 +976,7 @@ const confirmTransfer=()=>{
                 </div>
             </section>
     `
-// }
+}
 }
 
 const confirmedTransferPayment = () =>{
