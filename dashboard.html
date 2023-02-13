@@ -98,9 +98,12 @@
                     </div>
                 </div>
                 
-            <div class="balanceContainer text-light">
-                <p id="accNumDisp">ACCOUNT #</p>
-                <h1 id="accBalDisp">&#8358 </h1>
+            <div class="balanceContainer navbar px-3 text-light">
+                <div>
+                    <p id="accNumDisp">ACCOUNT #</p>
+                <h1 >₦ <span id="accBalDisp"></span> </h1>
+                </div>
+                <button class="bg-transparent btn border-0" onclick="showBalance()" id="showBalanceBtn"><i class="fa fa-eye"></i></button>
             </div>    
         </section>
     
@@ -218,6 +221,7 @@
     <script src="bootstrap.bundle.js"></script>   
     <script src="all.js"></script>
 </body>
+
 </html>
 
 

@@ -180,6 +180,21 @@ const myAcc= ()=>{
     window.location.href="dashboard.html"
 }
 
+  function showBalance() {
+    
+    var x = document.getElementById("accBalDisp");
+    // let astk = "*****"
+    if (x.innerHTML == allCustomer[currentUserIndex].balance ) {
+        x.innerHTML= "****"
+      showBalanceBtn.innerHTML = `<i class="fa fa-eye-slash"></i>`;
+    }
+    else {
+        x.innerHTML = allCustomer[currentUserIndex].balance;
+        showBalanceBtn.innerHTML = `<i class="fa fa-eye"></i>`;
+    }
+    
+  }
+
 const freqTrans=()=>{
     
     bodyDisp.innerHTML =`
@@ -1617,13 +1632,16 @@ const settings=()=>{
         </div>
 
         <div class="w-100 navbar rounded rounded-4 my-3 bg-light p-3"
-            <p>Show Password</p>
-            <input type="checkbox"  class="form-check-input">
+            <p>Show ADS when log in</p>
+            <div class="form-check form-switch ">
+                <input class="form-check-input border border-1 border-primary" type="checkbox" role="switch" id="flexSwitchCheckDefault" >
+            </div>
         </div>
 
         
     </section>`
 }
+
 const setTransferPin=()=>{
     bodyDisp.innerHTML=`
     <nav class="navbar position-fixed top-0 w-100 px-3" style="z-index:5; background-color: rgb(46, 62, 97); color:white;">
